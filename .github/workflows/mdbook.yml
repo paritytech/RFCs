@@ -53,7 +53,7 @@ jobs:
 
               require('fs').writeFileSync(
                 `mdbook/src/proposed/${rfcFile.filename.replace('text/','')}`,
-                `[(source)](${pr.url})\n\n`
+                `[(source)](${pr.html_url})\n\n`
               )
             }
 
