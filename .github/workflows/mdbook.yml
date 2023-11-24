@@ -29,6 +29,10 @@ jobs:
             const repo = 'RFCs'
             const prs = await github.paginate(github.rest.pulls.list, {owner, repo, state: 'open'})
 
+            /*
+              The open PRs are potential proposed RFCs.
+              We iterate over them and filter those that include a new RFC markdown file.
+            */
             for (const pr of prs) {
               const addedMarkdownFiles = (
                 await github.rest.pulls.listFiles({
@@ -42,44 +46,50 @@ jobs:
               const [rfcFile] = addedMarkdownFiles;
 
               /*
-                The git patches seems to be the only thing available right away.
-                The alternative would be to download the file contents but that adds API calls.
+                The git patches are the only way to get the RFC contents without additional API calls.
+                The alternative would be to download the file contents, one call per PR.
                 The patch in this object is not a full patch with valid syntax, so we need to modify it a bit - add a header.
               */
+              // This header will cause the patch to create a file in patches/text/*.md.
               const patch = `--- /dev/null\n+++ b/patches/${rfcFile.filename}\n` + rfcFile.patch + "\n"
               require('fs').writeFileSync(`patches/${rfcFile.filename}.patch`, patch)
 
-              console.log("filename: " + rfcFile.filename)
-
+              /*
+                We want to link the proposed RFCs to their respective PRs.
+                While we have it, we add a link to the source to markdown files.
+                Later, we will append the text of the RFCs to those files.
+              */
               require('fs').writeFileSync(
                 `mdbook/src/proposed/${rfcFile.filename.replace('text/','')}`,
                 `[(source)](${pr.html_url})\n\n`
               )
             }
 
-        # Apply the patches (resulting in .md files on disk)
+        # Create the proposed RFC markdown files from the patches gather in the step above.
       - run: |
-          echo "currently in proposed"
-          ls mdbook/src/proposed
-          # for f in ./patches/text/*.md
-          # do
-          #   mv f ./patches/text/
-          # done;
-
+          # We execute the patches, which results in markdown files created in patches/text/*.md
           for f in ./patches/text/*.patch;
           do
+            [ -e "$f" ] || break
             git apply $f
           done;
 
           cd patches/text/
+          # We go over the created markdown files and move them for mdbook to pick up.
           for f in *.md
           do
+            [ -e "$f" ] || break
+            # We append the contents - because the links to source already exist there at this point.
             cat $f >> "../../mdbook/src/proposed/$f"
           done;
       - name: Setup mdBook binary
         uses: peaceiris/actions-mdbook@adeb05db28a0c0004681db83893d56c0388ea9ea # v1.2.0
         with:
           mdbook-version: '0.4.35'
+        # This will: 
+        # - gather the proposed RFCs (constructed in the steps above).
+        # - gather the approved RFCs (they exists in this repo in text/ directory)
+        # - generate the mdbook out of it
       - name: Generate the mdbook
         run: mdbook/book.sh
 
