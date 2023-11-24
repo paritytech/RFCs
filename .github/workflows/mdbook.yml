@@ -1,0 +1,71 @@
+on:
+  push:
+    branches:
+      - main
+  # schedule:
+  #   - cron: "0 0 * * *" # Once a day
+
+jobs:
+  mdbook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v3
+
+      - name: Precreate necessary directories
+        run: |
+          mkdir -p mdbook/src/proposed
+          mkdir -p patches/text
+          
+      - name: Download all proposed RFCs (open PRs)
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.READ_FELLOWS_TOKEN }}
+          script: |
+            const owner = 'polkadot-fellows'
+            const repo = 'RFCs'
+            const prs = await github.paginate(github.rest.pulls.list, {owner, repo, state: 'open'})
+
+            for (const pr of prs) {
+              const addedMarkdownFiles = (
+                await github.rest.pulls.listFiles({
+                  owner, repo,
+                  pull_number: pr.number,
+                })
+              ).data.filter(
+                (file) => file.status === "added" && file.filename.startsWith("text/") && file.filename.includes(".md"),
+              );
+              if (addedMarkdownFiles.length !== 1) continue;
+              const [rfcFile] = addedMarkdownFiles;
+
+              /*
+                The git patches seems to be the only thing available right away.
+                The alternative would be to download the file contents but that adds API calls.
+                The patch in this object is not a full patch with valid syntax, so we need to modify it a bit - add a header.
+              */
+              const patch = `--- /dev/null\n+++ b/patches/${rfcFile.filename}\n` + rfcFile.patch + "\n"
+              require('fs').writeFileSync(`patches/${rfcFile.filename}.patch`, patch)
+
+              require('fs').writeFileSync(`patches/${rfcFile.filename}.source.md`, "[(source)](${pr.url})\n")
+            }
+
+        # Apply the patches (resulting in .md files on disk)
+      - run: |
+          for f in ./patches/text/*.patch;
+          do
+            git apply $f
+          done;
+          mv patches/text/*.md mdbook/src/proposed
+
+      - name: Setup mdBook binary
+        uses: peaceiris/actions-mdbook@adeb05db28a0c0004681db83893d56c0388ea9ea # v1.2.0
+        with:
+          mdbook-version: '0.4.35'
+      - name: Generate the mdbook
+        run: mdbook/book.sh
+
+      - name: Deploy to github pages
+        uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3.9.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./book
