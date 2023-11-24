@@ -59,6 +59,8 @@ jobs:
 
         # Apply the patches (resulting in .md files on disk)
       - run: |
+          echo "currently in proposed"
+          ls mdbook/src/proposed
           # for f in ./patches/text/*.md
           # do
           #   mv f ./patches/text/
