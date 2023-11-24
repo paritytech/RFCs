@@ -72,9 +72,9 @@ jobs:
           done;
 
           cd patches/text/
-          for f in ./*.md
+          for f in *.md
           do
-            cat $f >> "mdbook/src/proposed/$f"
+            cat $f >> "../../mdbook/src/proposed/$f"
           done;
       - name: Setup mdBook binary
         uses: peaceiris/actions-mdbook@adeb05db28a0c0004681db83893d56c0388ea9ea # v1.2.0
