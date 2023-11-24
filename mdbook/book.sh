@@ -9,8 +9,8 @@ cp ../text/*.md src/approved/
 
 append_rfc_to_summary () {
   local file="$1"
-  local title=$(head -n 3 $file | grep '#: ') # Grab the title from the contents of the file
-  local title=${title#\# } # Remove the "#: " prefix
+  local title=$(head -n 3 $file | grep '# ') # Grab the title from the contents of the file
+  local title=${title#\# } # Remove the "# " prefix
   local path=${file#./src/} # Relative path, without the src prefix (format required by mdbook)
   echo "- [$title]($path)" >> src/SUMMARY.md;
 }
