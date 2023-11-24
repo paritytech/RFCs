@@ -9,6 +9,9 @@ on:
 jobs:
   mdbook:
     runs-on: ubuntu-latest
+    permissions:
+      # For writing to gh-pages branch.
+      contents: write
     steps:
       - name: Checkout this repo
         uses: actions/checkout@v3
