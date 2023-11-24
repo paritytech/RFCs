@@ -48,10 +48,19 @@ jobs:
               */
               const patch = `--- /dev/null\n+++ b/patches/${rfcFile.filename}\n` + rfcFile.patch + "\n"
               require('fs').writeFileSync(`patches/${rfcFile.filename}.patch`, patch)
+
+              console.log("filename: " + rfcFile.filename)
+
+              require('fs').writeFileSync(`mdbook/src/proposed/${rfcFile.filename}`, `[(source)](${pr.url})\n\n`)
             }
 
         # Apply the patches (resulting in .md files on disk)
       - run: |
+          # for f in ./patches/text/*.md
+          # do
+          #   mv f ./patches/text/
+          # done;
+
           for f in ./patches/text/*.patch;
           do
             git apply $f
