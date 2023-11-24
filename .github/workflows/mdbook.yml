@@ -51,7 +51,10 @@ jobs:
 
               console.log("filename: " + rfcFile.filename)
 
-              require('fs').writeFileSync(`mdbook/src/proposed/${rfcFile.filename}`, `[(source)](${pr.url})\n\n`)
+              require('fs').writeFileSync(
+                `mdbook/src/proposed/${rfcFile.filename.replace('text/','')}`,
+                `[(source)](${pr.url})\n\n`
+              )
             }
 
         # Apply the patches (resulting in .md files on disk)
@@ -65,8 +68,12 @@ jobs:
           do
             git apply $f
           done;
-          mv patches/text/*.md mdbook/src/proposed
 
+          cd patches/text/
+          for f in ./*.md
+          do
+            cat $f >> "mdbook/src/proposed/$f"
+          done;
       - name: Setup mdBook binary
         uses: peaceiris/actions-mdbook@adeb05db28a0c0004681db83893d56c0388ea9ea # v1.2.0
         with:
