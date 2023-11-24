@@ -45,8 +45,6 @@ jobs:
               */
               const patch = `--- /dev/null\n+++ b/patches/${rfcFile.filename}\n` + rfcFile.patch + "\n"
               require('fs').writeFileSync(`patches/${rfcFile.filename}.patch`, patch)
-
-              require('fs').writeFileSync(`patches/${rfcFile.filename}.source.md`, "[(source)](${pr.url})\n")
             }
 
         # Apply the patches (resulting in .md files on disk)
