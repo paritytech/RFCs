@@ -30,7 +30,7 @@ do
 done
 
 # Add a section header, and start adding proposed RFCs.
-echo -e "\n---\n\n# Proposed\n\n" >> src/SUMMARY.md
+echo "\n---\n\n# Proposed\n\n" >> src/SUMMARY.md
 
 for f in ./src/proposed/*.md;
 do

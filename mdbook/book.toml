@@ -1,4 +1,7 @@
 [book]
-title = "RFCs book"
-description = "An online book of fellowship RFCs."
+title = "Polkadot Fellowship RFCs"
+description = "An online book of RFCs approved or proposed within the Polkadot Fellowship."
 src = "src"
+
+[build]
+create-missing = false
