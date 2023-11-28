@@ -1,4 +1,24 @@
+html {
+    font-family: "Unbounded", "Open Sans", sans-serif;
+}
+
 .rust {
+    --pink500: #E6007A;
+    --purple600: #442299;
+    --purple500: #552BBF;
+    --purple400: #6D3AEE;
+    --cyan700: #0094D4;
+    --cyan600: #00A6ED;
+    --cyan500: #00B2FF;
+    --green700: #48CC81;
+    --green600: #51E591;
+    --green500: #56F39A;
+    --lime700: #A9CC29;
+    --lime600: #BEE52E;
+    --lime500: #D3FF33;
+
+
+
     --bg: hsl(60, 9%, 87%);
     --fg: #262625;
 
