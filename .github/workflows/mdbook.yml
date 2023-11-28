@@ -88,7 +88,7 @@ jobs:
           mdbook-version: '0.4.35'
         # This will: 
         # - gather the proposed RFCs (constructed in the steps above).
-        # - gather the approved RFCs (they exists in this repo in text/ directory)
+        # - gather the approved RFCs (they exist in this repo in text/ directory)
         # - generate the mdbook out of it
       - name: Generate the mdbook
         run: mdbook/book.sh
