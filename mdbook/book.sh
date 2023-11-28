@@ -30,7 +30,7 @@ do
 done
 
 # Add a section header, and start adding proposed RFCs.
-echo "\n---\n\n# Proposed\n\n" >> src/SUMMARY.md
+echo -e "\n---\n\n# Proposed\n\n" >> src/SUMMARY.md
 
 for f in ./src/proposed/*.md;
 do
@@ -38,7 +38,7 @@ do
   append_rfc_to_summary "$f"
 done
 
-echo "Preview of the generated SUMMARY.md:\n"
+echo -e "Preview of the generated SUMMARY.md:\n"
 cat src/SUMMARY.md
 
 rm -rf ../book/
