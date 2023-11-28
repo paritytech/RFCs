@@ -7,4 +7,4 @@ detailing proposed changes to the technical implementation of the Polkadot netwo
 
 See more information and details about the proces of RFCs in the [GitHub repository](https://github.com/polkadot-fellows/RFCs/).
 
-<p><img width="2%" src="images/github-mark.svg" alt="GitHub logo" /><a href="https://github.com/polkadot-fellows/RFCs/">polkadot-fellows/RFCs</a></p>
+<p><img width="2%" src="images/github-mark.svg" alt="GitHub logo" />&nbsp;<a href="https://github.com/polkadot-fellows/RFCs/">polkadot-fellows/RFCs</a></p>

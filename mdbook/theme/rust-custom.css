@@ -17,16 +17,23 @@ html {
     --lime600: #BEE52E;
     --lime500: #D3FF33;
 
+    --purple700: #321D47;
+    --purple800: #28123E;
+    --purple900: #1C0533;
+
+    --purple300: #DAE0F2;
+    --purple200: #E6EAF6;
+    --purple100: #F3F5FB;
 
 
-    --bg: hsl(60, 9%, 87%);
+    --bg: var(--purple100);
     --fg: #262625;
 
-    --sidebar-bg: #3b2e2a;
+    --sidebar-bg: var(--purple800);
     --sidebar-fg: #c8c9db;
     --sidebar-non-existant: #505254;
-    --sidebar-active: #e69f67;
-    --sidebar-spacer: #45373a;
+    --sidebar-active: var(--pink500);
+    --sidebar-spacer: var(--purple700);
 
     --scrollbar: var(--sidebar-fg);
 
@@ -35,20 +42,20 @@ html {
 
     --links: #2b79a2;
 
-    --inline-code-color: #6e6b5e;
+    --inline-code-color: var(--lime700);
 
     --theme-popup-bg: #e1e1db;
     --theme-popup-border: #b38f6b;
-    --theme-hover: #99908a;
+    --theme-hover: var(--purple200);
 
     --quote-bg: hsl(60, 5%, 75%);
     --quote-border: hsl(60, 5%, 70%);
 
     --warning-border: #ff8e00;
 
-    --table-border-color: hsl(60, 9%, 82%);
-    --table-header-bg: #b3a497;
-    --table-alternate-bg: hsl(60, 9%, 84%);
+    --table-border-color: var(--purple200);
+    --table-header-bg: var(--purple300);
+    --table-alternate-bg: var(--purple200);
 
     --searchbar-border-color: #aaa;
     --searchbar-bg: #fafafa;
@@ -57,7 +64,7 @@ html {
     --searchresults-header-fg: #666;
     --searchresults-border-color: #888;
     --searchresults-li-bg: #dec2a2;
-    --search-mark-bg: #e69f67;
+    --search-mark-bg: var(--green500);
 
     --color-scheme: light;
 }
