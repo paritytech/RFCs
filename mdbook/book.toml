@@ -11,3 +11,8 @@ additional-css = ["theme/rust-custom.css"]
 # theme = "rust"
 default-theme = "rust"
 preferred-dark-theme = "rust"
+copy-fonts = true
+
+[output.html.font]
+enable = true
+woff = true
