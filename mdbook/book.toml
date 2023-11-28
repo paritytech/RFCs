@@ -5,3 +5,8 @@ src = "src"
 
 [build]
 create-missing = false
+
+[output.html]
+# theme = "rust"
+default-theme = "rust"
+preferred-dark-theme = "rust"
