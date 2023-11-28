@@ -1,3 +1,12 @@
+{{!--
+README:
+As instructed by the docs (https://rust-lang.github.io/mdBook/format/theme/index.html),
+this file is copied from the source repository and modified as need.
+
+This file was taken from here: https://github.com/rust-lang/mdBook/blob/208d5ea7abc19ca47b22032ba2a4a4046ffe0902/src/theme/index.hbs,
+and modified in one place to add Polkadot theme to the theme selection widget.
+--}}
+
 <!DOCTYPE HTML>
 <html lang="{{ language }}" class="{{ default_theme }}" dir="{{ text_direction }}">
     <head>
@@ -151,6 +160,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="polkadot">Polkadot</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>

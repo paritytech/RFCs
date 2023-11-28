@@ -1,8 +1,8 @@
-html {
+html.polkadot {
     font-family: "Unbounded", "Open Sans", sans-serif;
 }
 
-.rust {
+.polkadot {
     --pink500: #E6007A;
     --purple600: #442299;
     --purple500: #552BBF;
@@ -44,8 +44,8 @@ html {
 
     --inline-code-color: var(--lime700);
 
-    --theme-popup-bg: #e1e1db;
-    --theme-popup-border: #b38f6b;
+    --theme-popup-bg: var(--purple200);
+    --theme-popup-border: var(--purple300);
     --theme-hover: var(--purple200);
 
     --quote-bg: hsl(60, 5%, 75%);
