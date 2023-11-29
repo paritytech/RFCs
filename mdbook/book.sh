@@ -41,5 +41,5 @@ done
 echo -e "Preview of the generated SUMMARY.md:\n"
 cat src/SUMMARY.md
 
-rm -rf ../book/
-mdbook build --dest-dir ../book/
+rm -rf ./book/
+mdbook build --dest-dir ./book/
