@@ -11,6 +11,7 @@ additional-css = ["theme/polkadot.css"]
 default-theme = "polkadot"
 preferred-dark-theme = "polkadot"
 copy-fonts = true
+no-section-label = true
 
 [output.html.font]
 enable = true
