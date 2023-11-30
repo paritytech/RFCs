@@ -11,7 +11,15 @@ mkdir -p src/{approved,proposed}
 # https://rust-lang.github.io/mdBook/format/summary.html
 cat SUMMARY_preface.md > src/SUMMARY.md
 
-cp ../text/*.md src/approved/
+# Copy the approved RFCs markdown files, first adding a source link at the top.
+cd ../text/
+for f in *.md;
+do
+  [ -e "$f" ] || break
+  echo -e "[(source)](https://github.com/polkadot-fellows/RFCs/blob/main/text/$f)\n" > "../mdbook/src/approved/$f"
+  cat "$f" >> "../mdbook/src/approved/$f"
+done
+cd -
 
 # This will append links to all RFCs into the SUMMARY.md,
 # forming a sidebar of all contents.
