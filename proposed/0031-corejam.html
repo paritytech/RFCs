@@ -1,0 +1,743 @@
+
+<!DOCTYPE HTML>
+<html lang="en" class="polkadot" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>RFC-0031: CoreJam - Polkadot Fellowship RFCs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="An online book of RFCs approved or proposed within the Polkadot Fellowship.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/polkadot.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "polkadot" : "polkadot";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('polkadot')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Approved</li><li class="chapter-item expanded "><a href="../approved/0001-agile-coretime.html">RFC-1: Agile Coretime</a></li><li class="chapter-item expanded "><a href="../approved/0005-coretime-interface.html">RFC-5: Coretime Interface</a></li><li class="chapter-item expanded "><a href="../approved/0007-system-collator-selection.html">RFC-0007: System Collator Selection</a></li><li class="chapter-item expanded "><a href="../approved/0008-parachain-bootnodes-dht.html">RFC-0008: Store parachain bootnodes in relay chain DHT</a></li><li class="chapter-item expanded "><a href="../approved/0012-process-for-adding-new-collectives.html">RFC-0012: Process for Adding New System Collectives</a></li><li class="chapter-item expanded "><a href="../approved/0014-improve-locking-mechanism-for-parachains.html">RFC-0014: Improve locking mechanism for parachains</a></li><li class="chapter-item expanded "><a href="../approved/0022-adopt-encointer-runtime.html">RFC-0022: Adopt Encointer Runtime</a></li><li class="chapter-item expanded "><a href="../approved/0032-minimal-relay.html">RFC-0032: Minimal Relay</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Proposed</li><li class="chapter-item expanded "><a href="../proposed/0004-remove-unnecessary-allocator-usage.html">RFC-0004: Remove the host-side runtime memory allocator</a></li><li class="chapter-item expanded "><a href="../proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html">RFC-0006: Dynamic Pricing for Bulk Coretime Sales</a></li><li class="chapter-item expanded "><a href="../proposed/0009-improved-net-light-client-requests.html">RFC-0009: Improved light client requests networking protocol</a></li><li class="chapter-item expanded "><a href="../proposed/000x-assethub.html">RFC-0000: Lowering NFT Deposits on Polkadot and Kusama Asset Hubs</a></li><li class="chapter-item expanded "><a href="../proposed/0010-burn-coretime-revenue.html">RFC-0010: Burn Coretime Revenue</a></li><li class="chapter-item expanded "><a href="../proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html">RFC-0011: Add New Path to Account Creation on Asset Hubs</a></li><li class="chapter-item expanded "><a href="../proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html">RFC-0013: Prepare BlockBuilder and Core runtime APIs for MBMs</a></li><li class="chapter-item expanded "><a href="../proposed/0015-market-design-revisit.html">RFC-0015: Market Design Revisit</a></li><li class="chapter-item expanded "><a href="../proposed/0020-treasurer-track-confirmation-period-duration-modification.html">RFC-0020: Treasurer Track Confirmation Period Duration Modification</a></li><li class="chapter-item expanded "><a href="../proposed/0026-sassafras-consensus.html">RFC-0026: Sassafras Consensus Protocol</a></li><li class="chapter-item expanded "><a href="../proposed/0031-corejam.html" class="active">RFC-0031: CoreJam</a></li><li class="chapter-item expanded "><a href="../proposed/0034-xcm-absolute-location-account-derivation.html">RFC-34: XCM Absolute Location Account Derivation</a></li><li class="chapter-item expanded "><a href="../proposed/0035-conviction-voting-delegation-modifications.html"> # RFC-0035: Conviction Voting Delegation Modifications</a></li><li class="chapter-item expanded "><a href="../proposed/0042-extrinsics-state-version.html">RFC-0042: Add System version that replaces StateVersion on RuntimeVersion</a></li><li class="chapter-item expanded "><a href="../proposed/0043-storage-proof-size-hostfunction.html">RFC-0043: Introduce storage_proof_size Host Function for Improved Parachain Block Utilization</a></li><li class="chapter-item expanded "><a href="../proposed/0044-rent-based-registration.html">RFC-0044: Rent based registration model</a></li><li class="chapter-item expanded "><a href="../proposed/0046-metadata-for-offline-signers.html">RFC-0000: Metadata for offline signers</a></li><li class="chapter-item expanded "><a href="../proposed/0047-assignment-of-availability-chunks.html">RFC-0047: Assignment of availability chunks to validators</a></li><li class="chapter-item expanded "><a href="../proposed/0048-session-keys-runtime-api.html">RFC-0048: Generate ownership proof for SessionKeys</a></li><li class="chapter-item expanded "><a href="../proposed/0050-fellowship-salaries.html">RFC-0050: Fellowship Salaries</a></li><li class="chapter-item expanded "><a href="../proposed/0054-remove-heap-pages.html">RFC-0054: Remove the concept of "heap pages" from the client</a></li><li class="chapter-item expanded "><a href="../proposed/0056-one-transaction-per-notification.html">RFC-0056: Enforce only one transaction per notification</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="polkadot">Polkadot</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Polkadot Fellowship RFCs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p><a href="https://github.com/polkadot-fellows/RFCs/pull/31">(source)</a></p>
+<h1 id="rfc-0031-corejam"><a class="header" href="#rfc-0031-corejam">RFC-0031: CoreJam</a></h1>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td><strong>Start Date</strong></td><td>11 September 2023</td></tr>
+<tr><td><strong>Description</strong></td><td>Parallelised, decentralised, permissionless state-machine based on a multistage Collect-Refine-Join-Accumulate model.</td></tr>
+<tr><td><strong>Authors</strong></td><td>Gavin Wood, Robert Habermeier, Bastian Köcher, Alistair Stewart</td></tr>
+</tbody></table>
+</div>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>This is a proposal to fundamentally alter the workload done on the Polkadot Relay-chain, both in terms of that which is done &quot;on-chain&quot;, i.e. by all Relay Chain Validators (<em>Validators</em>) as well as that which is done &quot;in-core&quot;, i.e. distributed among subsets of the Validators (<em>Backing Groups</em>). The target is to create a model which closely matches the underlying technical architecture and is both generic and permissionlessly extensible.</p>
+<p>In the proposed model, code is stored on-chain with two entry-points. Workloads are collated and processed in-core (and thus parallelized) using one entry-point, whereas the refined outputs of this processing are gathered together and an on-chain state-machine progressed according to the other.</p>
+<p>While somewhat reminiscent of the Map-Reduce paradigm, a comprehensive analogy cannot be taken: the in-core processing code does not transform a set of inputs, but is rather used to refine entirely arbitrary input data collected by some third-party. Instead, and in accordance, we term it <em>Collect-Refine-Join-Accumulate</em>.</p>
+<h2 id="motivation"><a class="header" href="#motivation">Motivation</a></h2>
+<p>Polkadot was originally designed as a means of validating state transitions of Webassembly-defined state machines known as <em>Parachain Validation Functions</em>. These state machines were envisioned to be long-lived (of the order of years) and transitioning continuously, at the &quot;full capacity&quot; of modern single-threaded hardware held in consensus over the internet, and in isolation to any other such state machines.</p>
+<p>Having actually built Polkadot, it became clear that the flexibility of the machinery implementing it allowed for a more diverse set of usage patterns and models. Parathreads, which came to be known as <em>On-Demand Parachains</em> (ODP) is one such model. This was underlined by other proposals to allow for a more decentralised administration of how the underlying Polkadot Core resource is procured, in particular <em>Agile Coretime</em>.</p>
+<p>More recently, the idea of having small to medium size programs executing without its own surrounding blockchain using only Relay-chain resources has been discussed in detail primarily around the <em>Coreplay</em> proposal. It therefore seems short-sighted to assume other models could not exist for utilizing the Relay-chain's &quot;Core&quot; resource. Therefore in much the same way that Agile Coretime originally strived to provide the most general model of <em>procuring</em> Relay-chain's Core resource, it seems sensible to strive to find a similarly general model for <em>utilizing</em> this resource, one minimizing the difference between the valuable function of the Validators and the service offered by Polkadot.</p>
+<p>Beyond delivering additional value through the increased potential for use-cases that this flexibility allows, our motivation extends to gaining stability: a future-proof platform allowing teams to build on it without fear of high maintenance burden, continuous bitrot or a technological rug-pull at some later date. Secondly, we are motivated by reducing barriers for new teams, allowing the Polkadot platform to harness the power of the crowd which permissionless systems uniquely enable.</p>
+<p>Being extensible, the Relay-chain becomes far more open to experimentation within this paradigm than the serviceical Parachain Proof-of-Validity and Validation Function as is the case at present. Being permissionless opens Polkadot experimentation to individuals and teams beyond those core developers.</p>
+<h2 id="requirements"><a class="header" href="#requirements">Requirements</a></h2>
+<p>In order of importance:</p>
+<ol>
+<li>The proposal must be compatible, in principle, with the preexisting parachain model.</li>
+<li>The proposal must facilitate the implementation of Coreplay.</li>
+<li>The proposal must be compatible with Agile Coretime, as detailed in RFC#0001.</li>
+<li>Implementation of the proposal should need minimal changes to all production logic.</li>
+<li>Utilization of Coretime must be accessible.</li>
+<li>Utilization of Coretime must be permissionless.</li>
+<li>The nature of Coretime should closely match the nature of resources generated by Polkadot.</li>
+<li>Minimal opinionation should be introduced over the format, nature and usage of Coretime.</li>
+</ol>
+<h2 id="stakeholders"><a class="header" href="#stakeholders">Stakeholders</a></h2>
+<ol>
+<li>Anyone with exposure to the DOT token economy.</li>
+<li>Anyone wanting to create decentralised/unstoppable/resilient applications.</li>
+<li>Teams already building on Polkadot.</li>
+</ol>
+<h2 id="explanation"><a class="header" href="#explanation">Explanation</a></h2>
+<p><strong>CoreJam is a general model for utilization of Polkadot Cores. It is a mechanism by which Work Packages are communicated, authorized, computed and verified, and their results gathered, combined and accumulated into particular parts of the Relay-chain's state.</strong></p>
+<h3 id="terminology"><a class="header" href="#terminology">Terminology</a></h3>
+<p>Short forms of several common term are used here for brevity:</p>
+<ul>
+<li><em>RcBG</em>: Relay-chain Backing Group, a grouping of Relay-chain validators who act as the initial guarantors over the result of some computation done off-chain.</li>
+<li><em>RcBA</em>: Relay-chain Block Author, the author of some particular block on the Relay-chain.</li>
+</ul>
+<h3 id="from-old-to-new"><a class="header" href="#from-old-to-new">From Old to New</a></h3>
+<p>The current specification of the Polkadot protocol, and with in the Relay-chain operation, is designed in line with the overall requirements of and terminology in the Polkadot (1.0) whitepaper. It incorporates first-class concepts including <em>Proof-of-Validity</em> and <em>Parachain Validation Function</em>. This will no longer be considered canonical for the Polkadot protocol. To avoid confusion, this design will be known as the <em>Fixed-function Parachains Model</em>, or the <em>Parachains Model</em> for short.</p>
+<p>Existing functionality relied upon by parachains will continue to be provided as a special case under a more general and permissionless model which is detailed presently and known as <em>CoreJam</em>. Transition of Polkadot to be in line with the present proposal will necessarily imply some minor alterations of formats utilized by Cumulus, Smoldot and other light-client APIs (see the section on Compatibility). However, much of the underlying logic (in particular, consensus, disputes and availability) is retained, though its application is generalised. This proposal will only make note of the expectations regarding the changes, and presumes continuation of all other logic.</p>
+<p>As part of this model, we introduce a number of new and interrelated concepts: <em>Work Package</em>, <em>Service</em>, <em>Work Item</em>, <em>Work Output</em>, <em>Work Result</em>, <em>Work Report</em>, <em>Guarantee</em> and <em>Service Trie</em>.</p>
+<p>Focussing on continuity and reuse of existing logic, it is unsurprising that many of these concepts already analogues in the Parachains model, albeit ones with a less general definition. While this mapping can be helpful to quickly create an approximate understanding of the new concepts for those already familiar with Polkadot, care must be taken not to inadvertantly make incorrect presumptions over exact details of their relationships, constraints, timing, provisions and APIs. Nonetheless, they are provided here for whatever help they may be.</p>
+<div class="table-wrapper"><table><thead><tr><th>CoreJam model</th><th>Legacy model</th><th>Context</th></tr></thead><tbody>
+<tr><td><em>Core Chain</em></td><td>Relay-chain</td><td>Primary block-chain</td></tr>
+<tr><td><em>Work Package</em></td><td>Proof-of-Validity</td><td>Untrusted data provided to RcBG</td></tr>
+<tr><td><em>Work Item</em></td><td>Proof-of-Validity</td><td>State-transition inputs and witness</td></tr>
+<tr><td><em>Work Output</em></td><td>Candidate</td><td>State-transition consequence</td></tr>
+<tr><td><em>Work Report</em></td><td>Candidate</td><td>Target of attestation</td></tr>
+<tr><td><em>(Work Package) Attestation</em></td><td>Attestation</td><td>Output signed in attestation</td></tr>
+<tr><td><em>Reporting</em></td><td>Attestation</td><td>Placement of Attestation on-chain</td></tr>
+<tr><td><em>Integration</em></td><td>Inclusion</td><td>Irreversible transition of state</td></tr>
+<tr><td><em>Builder</em></td><td>Collator</td><td>Creator of data worthy of Attestation</td></tr>
+</tbody></table>
+</div>
+<p>Additionally, the <em>Service Trie</em> has no immediate analogue, but may be considered as the Relay-chain state used to track the code and head data of the parachains.</p>
+<h3 id="overview"><a class="header" href="#overview">Overview</a></h3>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>mod v0 {
+    const PROGRESS_WEIGHT_PER_PACKAGE: Weight = MAX_BLOCK_WEIGHT * 3 / 4;
+    type Service = u32;
+    type WorkPayload = Vec&lt;u8&gt;;
+    struct WorkItem {
+        service: Service,
+        payload: WorkPayload,
+    }
+    type MaxWorkItemsInPackage = ConstU32&lt;4&gt;;
+    type Authorization = Vec&lt;u8&gt;;
+    type HeaderHash = [u8; 32];
+    /// Just a Blake2-256 hash of an EncodedWorkPackage.
+    type WorkPackageHash = [u8; 32];
+    struct Context {
+        header_hash: HeaderHash,
+        state_root: Hash, // must be state root of block `header_hash`
+        beefy_root: Hash, // must be Beefy root of block `header_hash`
+        prerequisite: Option&lt;WorkPackageHash&gt;,
+    }
+    struct WorkPackage {
+        authorization: Authorization,
+        context: Context,
+        items: BoundedVec&lt;WorkItem, MaxWorkItemsInPackage&gt;,
+    }
+}
+type MaxWorkPackageSize = ConstU32&lt;5 * 1024 * 1024&gt;;
+struct EncodedWorkPackage {
+    version: u32,
+    encoded: BoundedVec&lt;u8, MaxWorkPackageSize&gt;,
+}
+impl TryFrom&lt;EncodedWorkPackage&gt; for v0::WorkPackage {
+    type Error = ();
+    fn try_from(e: EncodedWorkPackage) -&gt; Result&lt;Self, ()&gt; {
+        match e.version {
+            0 =&gt; Self::decode(&amp;mut &amp;e.encoded[..]).map_err(|_| ()),
+            _ =&gt; Err(()),
+        }
+    }
+}
+<span class="boring">}</span></code></pre></pre>
+<p>A <em>Work Package</em> is an <em>Authorization</em> together with a series of <em>Work Items</em> and a context, limited in plurality, versioned and with a maximum encoded size. The Context includes an optional reference to a Work Package (<code>WorkPackageHash</code>) which limits the relative order of the Work Package (see <strong>Work Package Ordering</strong>, later).</p>
+<p>(The number of prerequisites of a Work Package is limited to at most one. However, we cannot trivially control the number of dependents in the same way, nor would we necessarily wish to since it would open up a griefing vector for misbehaving Work Package Builders who interrupt a sequence by introducing their own Work Packages with a prerequisite which is within another's sequence.)</p>
+<p>Work Items are a pair where the first item, <code>service</code>, itself identifies a pairing of code and state known as a <em>Service</em>; and the second item, <code>payload</code>, is a block of data which, through the aforementioned code, mutates said state in some presumably useful way.</p>
+<p>A Service has certain similarities to an object in a decentralized object-oriented execution environment (or, indeed, a smart contract), with the main difference being a more exotic computation architecture available to it. Similar to smart contracts, a Service's state is stored on-chain and transitioned only using on-chain logic. Also similar to a smart contract, resources used by a Service are strictly and deterministically constrained (using dynamic metering). Finally, Services, like smart contracts, are able to hold funds and call into each other synchronously.</p>
+<p>However, unlike for smart contracts, the on-chain transition logic of a Service (known as the <em>Accumulate</em> function) cannot directly be interacted with by actors external to the consensus environment. Concretely, they cannot be transacted with. Aside from the aforementioned inter-service calling, all input data (and state progression) must come as the result of a Work Item. A Work Item is a blob of data meant for a particular Service and crafted by some source external to consensus. It may be thought of as akin to a transaction. The Work Item is first processed <em>in-core</em>, which is to say on one of many secure and isolated virtual decentralized processors, yielding a distillate known as a <em>Work Result</em>. It is this Work Result which is collated together with others of the same service and Accumulated into the Service on-chain.</p>
+<p>In short, a Service may be considered as a kind of smart contract albeit one whose transaction data is first preprocessed with cheap decentralized compute power.</p>
+<p>Though this process happens entirely in consensus, there are two main consensus environments at play, <em>in-core</em> and <em>on-chain</em>. We therefore partition the progress into two pairs of stages: Collect &amp; Refine and Join &amp; Accumulate.</p>
+<h3 id="processing-stages-of-a-work-package"><a class="header" href="#processing-stages-of-a-work-package">Processing stages of a Work Package</a></h3>
+<p>A Work Package has several stages of consensus computation associated with its processing, which happen as the system becomes more certain that it represents a correct and useful transition of its Service.</p>
+<p>While a Work Package is being built, the <em>Builder</em> must have access to the Relay-chain state in order to supply a specific <em>Context</em>. The Context dictates a certain <em>Scope</em> for the Work Package which is used by the Initial Validation to limit which Relay-chain blocks it may be processed on to a small sequence of a specific fork (which is yet to be built, presumably). We define the Relay-chain height at this point to be <code>T</code>.</p>
+<p>The first consensus computation to be done is the Work Package having its Authorization checked in-core, hosted by the Relay-chain Backing Group. If it is determined to be authorized, then the same environment hosts the Refinement of the Work Package into a series of Work Results. This concludes the bulk of the computation that the Work Package represents. We would assume that the Relay-chain's height at this point is shortly after the authoring time, <code>T+r</code> where <code>r</code> could be as low as zero.</p>
+<p>The second consensus computation happens on-chain at the behest of the Relay-chain Block Author of the time <code>T+r+i</code>, where <code>i</code> is generally zero or one, the time taken for the Work Results to be transported from within the Core to get to the gateway of being on-chain. The computation done essentially just ensures that the Work Package is still in scope and that the prerequisite it relies upon (if any) has been submitted ahead of it. This is called the on-chain <em>Reporting</em> (in the fixed-function parachains model, this is known as &quot;attestation&quot;) and initiates the <em>Availability Protocol</em> for this Work Package once Relay-chain Validators synchronize to the block. This protocol guarantees that the Work Package will be made available for as long as we allow disputes over its validity to be made.</p>
+<p>At some point later <code>T+r+i+a</code> (where <code>a</code> is the time to distribute the fragments of the Work Package and report their archival to the next Relay-chain Block Author) the Availability Protocol has concluded and the Relay-chain Block Author of the time brings this information on-chain in the form of a bitfield in which an entry flips from zero to one. At this point we can say that the Work Report's Package is <em>Available</em>.</p>
+<p>Finally, at some point later still <code>T+r+i+a+o</code>, the Results of the Work Package are aggregated into groups of Services, and then <em>Pruned</em> and <em>Accumulated</em> into the common state of the Relay-chain. This process is known as <em>Integration</em> (in the fixed-function parachains model, this is known as &quot;inclusion&quot;) and is irreversible within any given fork. Additional latency from being made <em>Available</em> to being <em>Integrated</em> (i.e. the <code>o</code> component) may be incurred due to ordering requirements, though it is expected to be zero in the variant of this proposal to be implemented initially (see <strong><a href="#work-package-ordering">Work Package Ordering</a></strong>, later).</p>
+<h3 id="collect-refine"><a class="header" href="#collect-refine">Collect-Refine</a></h3>
+<p>The first two stages of the CoreJam process are <em>Collect</em> and <em>Refine</em>. <em>Collect</em> refers to the collection and authorization of Work Packages (collections of items together with an authorization) to utilize a Polkadot Core. <em>Refine</em> refers to the performance of computation according to the Work Packages in order to yield <em>Work Results</em>. Finally, each Backing Group member attests to a Work Package yielding a series of Work Results and these Attestations form the basis for bringing the Results on-chain and integrating them into the Polkadot (and in particular the Service's) state which happens in the following stages.</p>
+<h4 id="collection-and-is_authorized"><a class="header" href="#collection-and-is_authorized">Collection and <code>is_authorized</code></a></h4>
+<p>Collection is the means of a Backing Group member attaining a Work Package which is authorized to be performed on their assigned Core at the current time. Authorization is a prerequisite for a Work Package to be included on-chain. Computation of Work Packages which are not Authorized is not rewarded. Incorrectly attesting that a Work Package is authorized is a disputable offence and can result in substantial punishment.</p>
+<p>On arrival of a Work Package, after the initial decoding, a first check is that the <code>context</code> field is valid. This must reference a header hash of a known block which may yet be finalized and the additional fields must correspond to the data of that block.</p>
+<p>Agile Coretime (see <a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0001-agile-coretime.md">RFC#0001</a>) prescribes two forms of Coretime sales: Instantaneous and Bulk. Sales of Instantaneous Coretime are no longer provided, leaving only Bulk Coretime.</p>
+<p>We introduce the concept of an <em>Authorizer</em> procedure, which is a piece of logic stored on-chain to which Bulk Coretime may be assigned. Assigning some Bulk Coretime to an Authorizer implies allowing any Work Package which passes that authorization process to utilize that Bulk Coretime in order to be submitted on-chain. It controls the circumstances under which RcBGs may be rewarded for evaluation and submission of Work Packages (and thus what Work Packages become valid to submit onto Polkadot). Authorization logic is entirely arbitrary and need not be restricted to authorizing a single collator, Work Package builder, parachain or even a single Service.</p>
+<p>An <em>Authorizer</em> is a parameterized procedure:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>type CodeHash = [u8; 32];
+type AuthParamSize = ConstU32&lt;1024&gt;;
+type AuthParam = BoundedVec&lt;u8, AuthParamSize&gt;;
+struct Authorizer {
+    code_hash: CodeHash,
+    param: AuthParam,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>The <code>code_hash</code> of the Authorizer is assumed to be the hash of some code accessible in the Relay-chain's Storage pallet. The procedure itself is called the <em>Authorization Procedure</em> (<code>AuthProcedure</code>) and is expressed in this code (which must be capable of in-core VM execution). Its entry-point prototype is:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn is_authorized(param: &amp;AuthParam, package: &amp;WorkPackage, core_index: CoreIndex) -&gt; bool;
+<span class="boring">}</span></code></pre></pre>
+<p>This function is executed in a metered VM and subject to a modest system-wide limitation on execution time. If it overruns this limit or panicks on some input, it is considered equivalent to returning <code>false</code>. While it is mostly stateless (e.g. isolated from any Relay-chain state) it is provided with the package's <code>context</code> field in order to give information about a recent Relay-chain block. This allows it to be provided with a concise proof over some recent Relay-chain state.</p>
+<p>A single <code>Authorizer</code> value is associated with the index of the Core at a particular Relay-chain block and limits in some way what Work Packages may be legally processed by that Core.</p>
+<p>Since encoded <code>Authorizer</code> values may be fairly large (up to 1,038 bytes here), they may not be a drop-in replacement for the <code>ParaId</code>/<code>TaskId</code> used at present in the Agile Coretime interface. Because of this, we provide a lookup mechanism allowing a much shorter <code>AuthId</code> to be used within the Coretime scheduling messaging. Conveniently, this is precisely the same datatype size (32-bit) as a <code>ParaId</code>/<code>TaskId</code>.</p>
+<p>There is an Authorizations Pallet which stores the association. Adding a new piece of code is permissionless but requires a deposit commensurate with its size.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>type AuthId = u32;
+type Authorizers = StorageMap&lt;AuthId, Authorizer&gt;;
+<span class="boring">}</span></code></pre></pre>
+<p>An <em>Authorization</em> is simply a blob which helps the Authorizer recognize a properly authorized Work Package. No constraints are placed on Authorizers over how they may interpret this blob. Expected authorization content includes signatures, Merkle-proofs and more exotic succinct zero-knowledge proofs.</p>
+<p><em>(Note: depending on future Relay-chain Coretime scheduling implementation concerns, a window of Relay-chain blocks).</em></p>
+<p>The need of validators to be rewarded for doing work they might reasonably expect to be useful competes with that of the Coretime procurers to be certain to get work done which is useful to them. In Polkadot 1.0, validators only get rewarded for PoVs (&quot;work packages&quot;) which do not panic or overrun. This ensures that validators are well-incentivized to ensure that their computation is useful for the assigned parachain. This incentive model works adequately where all PVF code is of high quality and collators are few and static.</p>
+<p>However with this proposal (and even the advent of on-demand parachains), validators have little ability to identify a high-quality Work Package builder and the permissionless design means a greater expectation of flawed code executing in-core. Because of this, we make a slightly modified approach: Work Packages must have a valid Authorization, i.e. the Coretime-assigned <code>is_authorized</code> returns <code>true</code> when provided with the Work Package. However, Validators get rewarded for <em>any</em> such authorized Work Package, even one which ultimately panics or overruns on its evaluation.</p>
+<p>This ensures that Validators do a strictly limited amount of work before knowing whether they will be rewarded and are able to discontinue and attempt other candidates earlier than would otherwise be the case. There is the possibility of wasting Coretime by processing Work Packages which result in error, but well-written authorization procedures can mitigate this risk by making a prior validation of the Work Items.</p>
+<h3 id="refine"><a class="header" href="#refine">Refine</a></h3>
+<p>The <code>refine</code> function is implemented as an entry-point inside a code blob which is stored on-chain and whose hash is associated with the Service.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>type ClassCodeHash = StorageMap&lt;ClassId, CodeHash&gt;;
+<span class="boring">}</span></code></pre></pre>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct PackageInfo {
+    package_hash: WorkPackageHash,
+    context: Context,
+    authorization: Authorization,
+    auth_id: Option&lt;AuthId&gt;,
+}
+type WorkOutputLen = ConstU32&lt;4_096&gt;;
+type WorkOutput = BoundedVec&lt;u8, WorkOutputLen&gt;;
+fn refine(
+    payload: WorkPayload,
+    package_info: PackageInfo,
+) -&gt; WorkOutput;
+<span class="boring">}</span></code></pre></pre>
+<p>Both <code>refine</code> and <code>is_authorized</code> are only ever executed in-core. Within this environment, we need to ensure that we can interrupt computation not long after some well-specified limit and deterministically determine when an invocation of the VM exhausts this limit. Since the exact point at which interruption of computation need not be deterministic, it is expected to be executed by a streaming JIT transpiler with a means of approximate and overshooting interruption coupled with deterministic metering.</p>
+<p>Several host functions (largely in line with the host functions available to Parachain Validation Function code) are supplied. One addition is:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Determine the preimage of `hash` utilizing the Relay-chain Storage pallet. This must
+/// always do the same thing for the same `context` regardless of the current state of the
+/// chain. This is achieved through the usage (by the host) of the specialized Storage
+/// pallet.
+///
+/// It returns `u32::max_value()` in the case that the preimage is unavailable. Otherwise
+/// it returns the length of the preimage and places the first bytes of the preimage into
+/// `buffer`, up to a maximum of `buffer_len`.
+fn lookup(hash: [u8; 32], buffer: *mut u8, buffer_len: u32) -&gt; u32;
+<span class="boring">}</span></code></pre></pre>
+<p>Other host functions will allow for the possibility of executing a WebAssembly payload (for example, a Parachain Validation Function) or instantiating and entering a subordinate RISCV VM (for example for Actor Progressions).</p>
+<p>When applying <code>refine</code> from the client code, we must allow for the possibility that the VM exits unexpectedly or does not end. Validators are always rewarded for computing properly authorized Work Packages, including those which include such broken Work Items. But they must be able to report their broken state into the Relay-chain in order to collect their reward. Thus we define a type <code>WorkResult</code>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>enum WorkError {
+    Timeout,
+    Panic,
+}
+struct WorkResult {
+    service: Service,
+    item_hash: [u8; 32],
+    result: Result&lt;WorkOutput, WorkError&gt;,
+    weight: Weight,
+}
+fn apply_refine(item: WorkItem) -&gt; WorkResult;
+<span class="boring">}</span></code></pre></pre>
+<p>The amount of weight used in executing the <code>refine</code> function is noted in the <code>WorkResult</code> value, and this is used later in order to help apportion on-chain weight (for the Join-Accumulate process) to the Services whose items appear in the Work Packages.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Secure refrence to a Work Package.
+struct WorkPackageSpec {
+    /// The hash of the SCALE encoded `EncodedWorkPackage`.
+    hash: WorkPackageHash,
+    /// The erasure root of the SCALE encoded `EncodedWorkPackage`.
+    root: ErasureRoot,
+    /// The length in bytes of SCALE encoded `EncodedWorkPackage`.
+    len: u32,
+}
+/// Execution report of a Work Package, mainly comprising the Results from the Refinement
+/// of its Work Items.
+struct WorkReport {
+    /// The specification of the underlying Work Package.
+    package_id: WorkPackageId,
+    /// The context of the underlying Work Package.
+    context: Context,
+    /// The Core index under which the Work Package was Refined to generate the Report.
+    core_index: CoreIndex,
+    /// The results of the evaluation of the Items in the underlying Work Package.
+    results: BoundedVec&lt;WorkResult, MaxWorkItemsInPackage&gt;,
+}
+/// Multiple signatures are consolidated into a single Attestation in a space-efficient
+/// manner using a `BitVec` to succinctly express which validators have attested.
+struct Attestation {
+    /// The Work Report which is being attested.
+    report: WorkReport,
+    /// Which validators from the group have a signature in `attestations`.
+    validators: BitVec,
+    /// The signatures of the RcBG members set out in `validators` whose message is the
+    /// hash of the `report`. The order of the signatures is the same order as the validators appear in `validators`.
+    attestations: Vec&lt;Signature&gt;,
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Each Relay-chain block, every Backing Group representing a Core which is assigned work provides a series of Work Results coherent with an authorized Work Package. Validators are rewarded when they take part in their Group and process such a Work Package. Thus, together with some information concerning their execution context, they sign a <em>Report</em> concerning the work done and the results of it. This is also known as a <em>Candidate</em>. This signed Report is called an <em>Attestation</em>, and is provided to the Relay-chain block author. If no such Attestation is provided (or if the Relay-chain block author refuses to introduce it for Reporting), then that Backing Group is not rewarded for that block.</p>
+<p>The process continues once the Attestations arrive at the Relay-chain Block Author.</p>
+<h3 id="join-accumulate"><a class="header" href="#join-accumulate">Join-Accumulate</a></h3>
+<p>Join-Accumulate is the second major stage of computation and is independent from Collect-Refine. Unlike with the computation in Collect-Refine which happens contemporaneously within one of many isolated cores, the consensus computation of Join-Accumulate is both entirely synchronous with all other computation of its stage and operates within (and has access to) the same shared state-machine.</p>
+<p>Being <em>on-chain</em> (rather than <em>in-core</em> as with Collect-Refine), information and computation done in the Join-Accumulate stage is carried out (initially) by the Block Author and the resultant block evaluated by all Validators and full-nodes. Because of this, and unlike in-core computation, it has full access to the Relay-chain's state.</p>
+<p>The Join-Accumulate stage may be seen as a synchronized counterpart to the parallelised Collect-Refine stage. It may be used to integrate the work done from the context of an isolated VM into a self-consistent singleton world model. In concrete terms this means ensuring that the independent work components, which cannot have been aware of each other during the Collect-Refine stage, do not conflict in some way. Less dramatically, this stage may be used to enforce ordering or provide a synchronisation point (e.g. for combining entropy in a sharded RNG). Finally, this stage may be a sensible place to manage asynchronous interactions between subcomponents of a Service or even different Services and oversee message queue transitions.</p>
+<h4 id="reporting-and-integration"><a class="header" href="#reporting-and-integration">Reporting and Integration</a></h4>
+<p>There are two main phases of on-chain logic before a Work Package's ramifications are irreversibly assimilated into the state of the (current fork of the) Relay-chain. The first is where the Work Package is <em>Reported</em> on-chain. This is proposed through an extrinsic introduced by the RcBA and implies the successful outcome of some <em>Initial Validation</em> (described next). This kicks-off an off-chain process of <em>Availability</em> which, if successful, culminates in a second extrinsic being introduced on-chain shortly afterwards specifying that the Availability requirements of the Work Report are met.</p>
+<p>Since this is an asynchronous process, there are no ordering guarantees on Work Reports' Availability requirements being fulfilled. There may or may not be provision for adding further delays at this point to ensure that Work Reports are processed according to strict ordering. See <em>Work Package Ordering</em>, later, for more discussion here.</p>
+<p>Once both Availability and any additional requirements are met (including ordering and dependencies, but possibly also including reevaluation of some of the Initial Validation checks), then the second phase is executed which is known as <em>Integration</em>. This is the irreversible application of Work Report consequences into the Service's State Trie and (via certain permissionless host functions) the wider state of the Relay-chain. Work Results are segregated into groups based on their Service, joined into a <code>Vec</code> and passed through the immutable Prune function and into the mutable Accumulate function.</p>
+<h4 id="initial-validation"><a class="header" href="#initial-validation">Initial Validation</a></h4>
+<p>There are a number of Initial Validation requirements which the RcBA must do in order to ensure no time is wasted on further, possibly costly, computation. Since the same tests are done on-chain, then for a Block Author to expect to make a valid block these tests must be done prior to actually placing the Attestations in the Relay-chain Block Body.</p>
+<p>Firstly, any given Work Report must have enough signatures in the Attestation to be considered for Reporting on-chain. Only one Work Report may be considered for Reporting from each RcBG per block.</p>
+<p>Secondly, any Work Reports introduced by the RcBA must be <em>Recent</em>, defined as having a <code>context.header_hash</code> which is an ancestor of the RcBA head and whose height is less than <code>RECENT_BLOCKS</code> from the block which the RcBA is now authoring.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>const RECENT_BLOCKS: u32 = 16;
+<span class="boring">}</span></code></pre></pre>
+<p>Thirdly, dependent elements of the Context (<code>context.state_root</code> and <code>context.beefy_root</code>) must correctly correspond to those on-chain for the block corresponding to the provided <code>context.header_hash</code>. For this to be possible, the Relay-chain is expected to track Recent state roots and beefy roots in a queue.</p>
+<p>Fourthly, the RcBA may not attempt to report multiple Work Reports for the same Work Package. Since Work Reports become inherently invalid once they are no longer <em>Recent</em>, then this check may be simplified to ensuring that there are no Work Reports of the same Work Package within any <em>Recent</em> blocks.</p>
+<p>Finally, the RcBA may not register Work Reports whose prerequisite is not itself Reported in <em>Recent</em> blocks.</p>
+<p>In order to ensure all of the above tests are honoured by the RcBA, a block which contains Work Reports which fail any of these tests shall panic on import. The Relay-chain's on-chain logic will thus include these checks in order to ensure that they are honoured by the RcBA. We therefore introduce the <em>Recent Reports</em> storage item, which retaining all Work Package hashes which were Reported in the <em>Recent</em> blocks:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>const MAX_CORES: u32 = 512;
+/// Must be ordered.
+type ReportSet = BoundedVec&lt;WorkPackageHash, ConstU32&lt;MAX_CORES&gt;&gt;;
+type RecentReports = StorageValue&lt;BoundedVec&lt;ReportSet, ConstU32&lt;RECENT_BLOCKS&gt;&gt;&gt;
+<span class="boring">}</span></code></pre></pre>
+<p>The RcBA must keep an up to date set of which Work Packages have already been Reported in order to avoid accidentally attempting to introduce a duplicate Work Package or one whose prerequisite has not been fulfilled. Since the currently authored block is considered <em>Recent</em>, Work Reports introduced earlier in the same block do satisfy the prerequisite of Work Packages introduced later.</p>
+<p>While it will generally be the case that RcBGs know precisely which Work Reports will have been introduced at the point that their Attestation arrives with the RcBA by keeping the head of the Relay-chain in sync, it will not always be possible. Therefore, RcBGs will never be punished for providing an Attestation which fails any of these tests; the Attestation will simply be kept until either:</p>
+<ol>
+<li>it stops being <em>Recent</em>;</li>
+<li>it becomes Reported on-chain; or</li>
+<li>some other Attestation of the same Work Package becomes Reported on-chain.</li>
+</ol>
+<h4 id="availability"><a class="header" href="#availability">Availability</a></h4>
+<p>Once the Work Report of a Work Package is Reported on-chain, the Work Package itself must be made <em>Available</em> through the off-chain Availability Protocol, which ensures that any dispute over the correctness of the Work Report can be easily objectively judged by all validators. Being off-chain this is not block-synchronized and any given Work Package may take one or more blocks to be made Available or may even fail.</p>
+<p>Only once a Work Report's Work Package is made Available the processing continue with the next steps of Joining and Accumulation. Ordering requirements of Work Packages may also affect this variable latency and this is discussed later in the section <strong>Work Package Ordering</strong>.</p>
+<h4 id="weight-provisioning"><a class="header" href="#weight-provisioning">Weight Provisioning</a></h4>
+<p>Join-Accumulate is, as the name suggests, comprised of two subordinate stages. Both stages involve executing code inside a VM on-chain. Thus code must be executed in a <em>metered</em> format, meaning it must be able to be executed in a sandboxed and deterministic fashion but also with a means of providing an upper limit on the amount of weight it may consume and a guarantee that this limit will never be breached.</p>
+<p>Practically speaking, we may allow a similar VM execution metering system similar to that for the <code>refine</code> execution, whereby we do not require a strictly deterministic means of interrupting, but do require deterministic metering and only approximate interruption. This would mean that full-nodes and Relay-chain validators could be made to execute some additional margin worth of computation without payment, though any attack could easily be mitigated by attaching a fixed cost (either economically or in weight terms) to an VM invocation.</p>
+<p>Each Service defines some requirements it has regarding the provision of on-chain weight. Since all on-chain weight requirements must be respected of all processed Work Packages, it is important that each Work Report does not imply using more weight than its fair portion of the total available, and in doing so provides enough weight to its constituent items to meet their requirements.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>struct WorkItemWeightRequirements {
+    prune: Weight,
+    accumulate: Weight,
+}
+type WeightRequirements = StorageMap&lt;Service, WorkItemWeightRequirements&gt;;
+<span class="boring">}</span></code></pre></pre>
+<p>Each Service has two weight requirements associated with it corresponding to the two pieces of permissionless on-chain Service logic and represent the amount of weight allotted for each Work Item of this service within in a Work Package assigned to a Core.</p>
+<p>The total amount of weight utilizable by each Work Package (<code>weight_per_package</code>) is specified as:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>weight_per_package = relay_block_weight * safety_margin / max_cores
+<span class="boring">}</span></code></pre></pre>
+<p><code>safety_margin</code> ensures that other Relay-chain system processes can happen and important transactions can be processed and is likely to be around 75%.</p>
+<p>A Work Report is only valid if all weight liabilities of all Work Items to be Accumulated fit within this limit:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>let total_weight_requirement = work_statement
+    .items
+    .map(|item| weight_requirements[item.service])
+    .sum(|requirements| requirements.prune + requirements.accumulate);
+total_weight_requirement &lt;= weight_per_package
+<span class="boring">}</span></code></pre></pre>
+<p>Because of this, Work Report builders must be aware of any upcoming alterations to <code>max_cores</code> and build Statements which are in accordance with it not at present but also in the near future when it may have changed.</p>
+<h3 id="accumulate"><a class="header" href="#accumulate">Accumulate</a></h3>
+<p>The next phase, which happens on-chain, is Accumulate. This governs the amalgamation of the Work Package Outputs calculated during the Refinement stage into the Relay-chain's overall state and in particular into the various Child Tries of the Services whose Items were refined. Crucially, since the Refinement happened in-core, and since all in-core logic must be disputable and therefore its inputs made <em>Available</em> for all future disputers, Accumulation of a Work Package may only take place <em>after</em> the Availability process for it has completed.</p>
+<p>The function signature to the <code>accumulate</code> entry-point in the Service's code blob is:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn accumulate(results: Vec&lt;(Authorization, Vec&lt;(ItemHash, WorkResult)&gt;)&gt;);
+type ItemHash = [u8; 32];
+<span class="boring">}</span></code></pre></pre>
+<p>The logic in <code>accumulate</code> may need to know how the various Work Items arrived into a processed Work Package. Since a Work Package could have multiple Work Items of the same Service, it makes sense to have a separate inner <code>Vec</code> for Work Items sharing the Authorization (by virtue of being in the same Work Package).</p>
+<p>Work Items are identified by their Blake2-256 hash, known at the <em>Item Hash</em> (<code>ItemHash</code>). We provide both the Authorization of the Package and the constituent Work Item Hashes and their Results in order to allow the <code>refine</code> logic to take appropriate action in the case that an invalid Work Item was submitted (i.e. one which caused its Refine operation to panic or time-out).</p>
+<p><em>(Note for later: We may wish to provide a more light-client friendly Work Item identifier than a simple hash; perhaps a Merkle root of equal-size segments.)</em></p>
+<p>There is an amount of weight which it is allowed to use before being forcibly terminated and any non-committed state changes lost. The lowest amount of weight provided to <code>accumulate</code> is defined as the number of <code>WorkResult</code> values passed in <code>results</code> to <code>accumulate</code> multiplied by the <code>accumulate</code> field of the Service's weight requirements.</p>
+<p>However, the actual amount of weight may be substantially more. Each Work Package is allotted a specific amount of weight for all on-chain activity (<code>weight_per_package</code> above) and has a weight liability defined by the weight requirements of all Work Items it contains (<code>total_weight_requirement</code> above). Any weight remaining after the liability (i.e. <code>weight_per_package - total_weight_requirement</code>) may be apportioned to the Services of Items within the Report on a pro-rata basis according to the amount of weight they utilized during <code>refine</code>. Any weight unutilized by Classes within one Package may be carried over to the next Package and utilized there.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Simple 32 bit &quot;result&quot; type. `u32::max_value()` down to `u32::max_value() - 255` is used to indicate an error. `0` up to `u32::max_value() - 256` are used to indicate success and a scalar value.
+pub type SimpleResult = u32;
+/// Returns `u32::max_value()` in case that `key` does not exist. Otherwise, the size of
+/// the storage entry is returned and a minimum of this value and `buffer_len` bytes are
+/// written into `buffer` from the storage value of `key`. If `buffer_len` is zero, this
+/// operation may be additionally optimized to avoid reading any value data.
+fn get_work_storage(key: &amp;[u8], buffer: *mut [u8], buffer_len: u32) -&gt; SimpleResult;
+fn checkpoint() -&gt; Weight;
+fn weight_remaining() -&gt; Weight;
+/// Returns `u32::max_value()` on failure, `0` on success.
+fn set_work_storage(key: &amp;[u8], value: &amp;[u8]) -&gt; SimpleResult;
+fn remove_work_storage(key: &amp;[u8]);
+/// Returns `u32::max_value()` on failure, `0` on success.
+fn set_validators(validator_keys: &amp;[ValidatorKey]) -&gt; SimpleResult;
+/// Returns `u32::max_value()` on failure, `0` on success.
+fn set_code(code: &amp;[u8]) -&gt; SimpleResult;
+/// Returns `u32::max_value()` on failure, `0` on success.
+fn assign_core(
+    core: CoreIndex,
+    begin: BlockNumber,
+    assignment: Vec&lt;(CoreAssignment, PartsOf57600)&gt;,
+    end_hint: Option&lt;BlockNumber&gt;,
+) -&gt; SimpleResult;
+/// Returns `u32::max_value()` in case that the operation failed or the transfer returned
+/// an error.
+/// Otherwise, the size of `Vec` returned by the `on_transfer` entry-point entry is
+/// returned and as much of the data from the `Vec` as possible is copied into the provided
+/// `buffer`.
+fn transfer(
+    destination: Service,
+    amount: u128,
+    memo: &amp;[u8],
+    weight: Weight,
+    buffer_len: u32,
+    buffer: *mut [u8],
+) -&gt; SimpleResult;
+<span class="boring">}</span></code></pre></pre>
+<p>Read-access to the entire Relay-chain state is allowed. No direct write access may be provided since <code>accumulate</code> is untrusted code. <code>set_work_storage</code> may fail if an insufficient deposit is held under the Service's account.</p>
+<p><code>set_validator</code>, <code>set_code</code> and <code>assign_core</code> are all privileged operations and may only be called by pre-authorized Services.</p>
+<p>Full access to a child trie specific to the Service is provided through the <code>work_storage</code> host functions. Since <code>accumulate</code> is permissionless and untrusted code, we must ensure that its child trie does not grow to degrade the Relay-chain's overall performance or place untenable requirements on the storage of full-nodes. To this goal, we require an account sovereign to the Service to be holding an amount of funds proportional to the overall storage footprint of its Child Trie. <code>set_work_storage</code> may return an error should the balance requirement not be met.</p>
+<p>Host functions are provided allowing any state changes to be committed at fail-safe checkpoints to provide resilience in case of weight overrun (or even buggy code which panics). The amount of weight remaining may also be queried without setting a checkpoint. <code>Weight</code> is expressed in a regular fashion for a solo-chain (i.e. one-dimensional).</p>
+<p>Simple transfers of data and balance between Services are possible by the <code>transfer</code> function. This is an entirely synchronous function which transfers the execution over to a <code>destination</code> Service as well as the provided <code>amount</code> into their account.</p>
+<p>A new VM is set up with code according to the Service's <code>accumulate</code> code blob, but with a secondary entry point whose prototype is:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>fn on_transfer(source: Service, amount: u128, memo: Vec&lt;u8&gt;, buffer_len: u32) -&gt; Result&lt;Vec&lt;u8&gt;, ()&gt;;
+<span class="boring">}</span></code></pre></pre>
+<p>During this execution, all host functions above may be used except <code>checkpoint()</code>. The operation may result in error in which case all changes to state are reverted, including the balance transfer. (Weight is still used.)</p>
+<p>Other host functions, including some to access Relay-chain hosted services such as the Balances and Storage Pallet may also be provided commensurate with this executing on-chain.</p>
+<p><em>(Note for discussion: Should we be considering light-client proof size at all here?)</em></p>
+<p>We can already imagine three kinds of Service: <em>Parachain Validation</em> (as per Polkadot 1.0), <em>Actor Progression</em> (as per Coreplay in a yet-to-be-proposed RFC) and Simple Ordering (placements of elements into a namespaced Merkle trie). Given how abstract the model is, one might reasonably expect many more.</p>
+<h3 id="work-package-ordering"><a class="header" href="#work-package-ordering">Work Package Ordering</a></h3>
+<p>At the point of Reporting of a Work Package (specifically, its Work Report) on-chain, it is trivial to ensure that the ordering respects the optional <code>prerequisite</code> field specified in the Work Package, since the RcBA need only avoid Registering any which do not have their prerequisite fulfilled recently.</p>
+<p>However, there is a variable delay between a Work Report first being introduced on-chain in the Reporting and its eventual Integration into the Service's State due to the asynchronous Availability Protocol. This means that requiring the order at the point of Reporting is insufficient for guaranteeing that order at the time of Accumulation. Furthermore, the Availability Protocol may or may not actually complete for any Work Package.</p>
+<p>Two alternatives present themselves: provide ordering only on a <em>best-effort</em> basis, whereby Work Reports respect the ordering requested in their Work Packages as much as possible, but it is not guaranteed. Work Reports may be Accumulated before, or even entirely without, their prerequisites. We refer to this <em>Soft-Ordering</em>. The alternative is to provide a guarantee that the Results of Work Packages will always be Accumulated no earlier than the Result of any prerequisite Work Package. As we are unable to alter the Availability Protocol, this is achieved through on-chain queuing and deferred Accumulation.</p>
+<p>Both are presented as reasonable approaches for this proposal, though the Soft-Ordering variant is expected to be part of any initial implementation since implementation is trivial.</p>
+<h4 id="soft-ordering-variant"><a class="header" href="#soft-ordering-variant">Soft-Ordering Variant</a></h4>
+<p>In this alternative, actual ordering is only guaranteed going <em>into</em> the Availability Protocol, not at the point of Accumulation.</p>
+<p>The (on-chain) repercussion of the Availability Protocol completing for the Work Package is that each Work Result becomes scheduled for Accumulation at the end of the Relay-chain Block Execution along with other Work Results from the same Service. The Ordering of Reporting is replicated here for all Work Results present. If the Availability Protocol delays the Accumulation of a prerequisite Work Result, then the dependent Work Result may be Accumulated in a block prior to that of its dependency. It is assumed that the <em>Accumulation</em> logic will be able to handle this gracefully.</p>
+<p>It is also possible (though unexpected in regular operation) that Work Packages never complete the Availability Protocol. Such Work Packages eventually time-out and are discarded from Relay-chain state.</p>
+<h4 id="hard-ordering-variant"><a class="header" href="#hard-ordering-variant">Hard-Ordering Variant</a></h4>
+<p>This alternative gives a guarantee that the order in which a Work Package's Items will be Accumulated will respect the stated prerequisite of that Work Package. It is more complex and relies on substantial off-chain logic to inform the on-chain logic about which Work Packages are Accumulatable.</p>
+<p>The (on-chain) repercussion of the Availability Protocol completing for the Work Package depends based on whether it has a prerequisite which is still pending Availability. Since we know that all prerequisite Work Packages must have entered the Availability Protocol due to the Initial Validation, if we are no longer tracking the Work Package and its Work Results on-chain we may safely assume that it is because we have Accumulated them and thus the Work Package is Available.</p>
+<p>Conversely, if the Availability process for the prerequisite Work Package has not yet concluded or has already failed, we ensure that we still explicitly retain a record of it for as long as is needed.</p>
+<p>Specifically, if Availability has not yet concluded, we append a hash of the Work Package to a <em>Queue of Available Dependents</em> keyyed by the prerequisite Work Package Hash. The bounding for this list may safely be quite large, and if it grows beyond the bound, the Work Results may be discarded. This could only happen if very many Work Packages are produced and processed with the same prerequisite at approximately the same point in time, and that prerequisite suffers delayed Availability yet the dependents do not: an unlikely eventuality.</p>
+<p>In the case that we are not retaining a record of the prerequisite Work Package and Work Results, we aggregate the Work Results ready for Accumulation. If there is a non-empty Queue of Available Dependents for this Work Package, we record the fact that this Work Package is <em>Now Accumulated</em> in a separate storage item (to circumvent a possibly expensive read/write). If there is not, then we do not record this and will effectively stop tracking the Work Package's Availability status on-chain.</p>
+<p>Finally, after all Availability notices have been processed, but before the Accumulation happens, the RcBA may, via an extrinsic, inform the chain of Work Packages which are prerequisites preventing available Work Packages from being Accumulated. This amounts to naming a Work Package which has both a Queue of Available Dependents and is Now Accumulated. This allows those Work Results to be dequeued and aggregated for Accumulation.</p>
+<p>If Availability suffers a time-out (and retrying is not an option), or if the prerequisite has suffered a time-out, then all dependent Work Packages must be discarded in a cascading manner, a potentially daunting proposition. In a manner similar to that above, the time-out itself is recorded in on-chain storage item which itself may only be removed after the latest time at which the newest possible prerequisites (given the Initial Validation) could become available. The RcBAs may then introduce extrinsics to remove these associated storage items in an iterative fashion without the Work Results becoming Accumulated.</p>
+<h4 id="discussion"><a class="header" href="#discussion">Discussion</a></h4>
+<p>An initial implementation of this proposal would almost certainly provide only the soft ordering, since it practically a waypoint to get to the hard ordering implementation.</p>
+<p>Initial Validation are made on-chain prior to the Availabilty Protocol begins for any given Work Package. This ensures that the Work Package is still in scope $-$ i.e. recent enough and on the proper fork. However, this does not ensure that the Work Package is still in scope at the point that the Work Results are actually Accumulated. It is as yet unclear whether this is especially problematic.</p>
+<p>The same scope limit could be placed also on Accumulation; in neither variant does it introduce much additional complexity. In both cases it would require the same course of action as of Availability timing out without the possibility of retry. However whereas in the soft-variant we would not expect to see very different dynamics since one such time-out has no repurcissions beyond preventing the Accumulation of those Work Results, in the hard-ordering variant, it could mean a substantially greater occurance of the cascading failure logic calling into question the real purpose of the scoping: is it to protect the Validators from having to deal with indefinitely valid Work Packages or is it to protect the Accumulation logic from having to deal with the Results of older Work Packages?</p>
+<h3 id="relay-chain-storage-pallet"><a class="header" href="#relay-chain-storage-pallet">Relay-chain Storage Pallet</a></h3>
+<p>There is a general need to be able to reference large, immutable and long-term data payloads both on-chain and in-core. This is both the case for fixed-function logic such as fetching the VM code for <code>refine</code> and <code>accumulate</code> as well as from within Work Packages themselves.</p>
+<p>Owing to the potential for forks and disputes to happen beyond the scope of initial validation, there are certain quite subtle requirements over what data held on-chain may be utilized in-core. Because of this, it makes sense to have a general solution which is known to be safe to use in all circumstances. We call this solution the <em>Storage Pallet</em>.</p>
+<p>The Storage Pallet provides a simple API, accessible to untrusted code through host functions &amp; extrinsics and to trusted Relay-chain code via a trait interface.</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>trait Storage {
+    /// Immutable function to attempt to determine the preimage for the given `hash`.
+    fn lookup(hash: &amp;[u8; 32]) -&gt; Option&lt;Vec&lt;u8&gt;&gt;;
+
+    /// Allow a particular preimage to be `provide`d.
+    /// Once provided, this will be available through `lookup` until
+    /// `unrequest` is called.
+    fn request(hash: &amp;[u8; 32], len: usize) -&gt; bool;
+    /// Remove request that some data be made available. If the data was never
+    /// available or the data will remain available due to another request,
+    /// then `false` is returned and `expunge` may be called immediately.
+    /// Otherwise, `true` is returned and `expunge` may be called in
+    /// 24 hours.
+    fn unrequest(hash: &amp;[u8; 32]) -&gt; bool;
+
+    // Functions used by implementations of untrusted functions; such as
+    // extrinsics or host functions.
+
+    /// Place a deposit in order to allow a particular preimage to be `provide`d.
+    /// Once provided, this will be available through `lookup` until
+    /// `unrequest_untrusted` is called.
+    fn request_untrusted(depositor: &amp;AccountId, hash: &amp;[u8; 32], len: usize);
+    /// Remove request that some data be made available. If the data was never
+    /// available or the data will remain available due to another request,
+    /// then `false` is returned and `expunge_untrusted` may be called immediately.
+    /// Otherwise, `true` is returned and `expunge_untrusted` may be called in
+    /// 24 hours.
+    fn unrequest_untrusted(depositor: &amp;AccountId, hash: &amp;[u8; 32]) -&gt; bool;
+
+    // Permissionless items utilizable directly by an extrinsic or task.
+
+    /// Provide the preimage of some requested hash. Returns `Some` if its hash
+    /// was requested; `None` otherwise.
+    ///
+    /// Usually utilized by an extrinsic and is free if `Some` is returned.
+    fn provide(preimage: &amp;[u8]) -&gt; Option&lt;[u8; 32]&gt;;
+    /// Potentially remove the preimage of `hash` from the chain when it was
+    /// unrequested using `unrequest`. `Ok` is returned iff the operation is
+    /// valid.
+    ///
+    /// Usually utilized by a task and is free if it returns `Ok`.
+    fn expunge(hash: &amp;[u8; 32]) -&gt; Result&lt;(), ()&gt;;
+    /// Return the deposit associated with the removal of the request by
+    /// `depositor` using `unrequest_untrusted`. Potentially
+    /// remove the preimage of `hash` from the chain also.  `Ok` is returned
+    /// iff the operation is valid.
+    ///
+    /// Usually utilized by a task and is free if it returns `Ok`.
+    fn expunge_untrusted(depositor: &amp;AccountId, hash: &amp;[u8; 32]) -&gt; Result&lt;(), ()&gt;;
+
+    /// Equivalent to `request` followed immediately by `provide`.
+    fn store(data: &amp;[u8]) -&gt; [u8; 32];
+}
+<span class="boring">}</span></code></pre></pre>
+<p>Internally, data is stored with a reference count so that two separate usages of <code>store</code> need not be concerned about the other.</p>
+<p>Every piece of data stored for an untrusted caller requires a sizeable deposit. When used by untrusted code via a host function, the <code>depositor</code> would be set to an account controlled by the executing code (e.g. the Service's sovereign account).</p>
+<p>Removing data happens in a two-phase procedure; first the data is unrequested, signalling that calling <code>lookup</code> on its hash may no longer work (it may still work if there are other
+requests active). 24 hours following this, the data is expunged with a second call which, actually removes the data from the chain assuming no other requests for it are active.</p>
+<p>Only once expunge is called successfuly is the deposit returned. If the data was never provided, or is additional requests are still active, then expunge may be called immediately after a successful unrequest.</p>
+<h3 id="notes-on-agile-coretime"><a class="header" href="#notes-on-agile-coretime">Notes on Agile Coretime</a></h3>
+<p>Crucially, a <em>Task</em> is no longer a first-class concept. Thus the Agile Coretime model, which in large part allows Coretime to be assigned to a Task Identifier from the Coretime chain, would need to be modified to avoid a hard dependency on this.</p>
+<p>In this proposal, we replace the concept of a Task with a more general ticketing system; Coretime is assigned to an <em>Authorizer</em> instead, a parameterized function. This would allow a succinct <em>Authorization</em> (i.e. a small blob of data) to be included in the Work Package which, when fed into the relevant Authorizer function could verify that some Work Package is indeed allowed to utilize that Core at (roughly) that time. A simple proof system would be a regular PKI signature. More complex proof systems could include more exotic cryptography (e.g. multisignatures or zk-SNARKs).</p>
+<p>In this model, we would expect any authorized Work Packages which panic or overrun to result in a punishment to the specific author by the logic of the Service.</p>
+<h3 id="notes-for-migrating-from-a-parachain-centric-model"><a class="header" href="#notes-for-migrating-from-a-parachain-centric-model">Notes for migrating from a Parachain-centric model</a></h3>
+<p>All Parachain-specific data held on the Relay-chain including the means of tracking the Head Data and Code would be held in the Parachains Service (Child) Trie. The Work Package would be essentially equivalent to the current PoV blob, though prefixed by the Service. <code>refine</code> would prove the validity of the parachain transition described in the PoV which is the Work Package. The Parachains Work Output would provide the basis for the input of what is currently termed the Paras Inherent. <code>accumulate</code> would identify and resolve any colliding transitions and manage message queue heads, much the same as the current hard-coded logic of the Relay-chain.</p>
+<p>We should consider utilizing the Storage Pallet for Parachain Code and store only a hash in the Parachains Service Trie.</p>
+<h3 id="notes-for-implementing-the-actor-progression-model"><a class="header" href="#notes-for-implementing-the-actor-progression-model">Notes for implementing the Actor Progression model</a></h3>
+<p>Actor code is stored in the Storage Pallet. Actor-specific data including code hash, VM memory hash and sequence number is stored in the Actor Service Trie under that Actor's identifier. The Work Package would include pre-transition VM memories of actors to be progressed whose hash matches the VM memory hash stored on-chain and any additional data required for execution by the actors (including, perhaps, swappable memory pages). The <code>refine</code> function would initiate the relevant VMs and make entries into those VMs in line with the Work Package's manifest. The Work Output would provide a vector of actor progressions made including their identifer, pre- and post-VM memory hashes and sequence numbers. The <code>accumulate</code> function would identify and resolve any conflicting progressions and update the Actor Service Trie with the progressed actors' new states. More detailed information is given in the Coreplay RFC.</p>
+<h3 id="ump-hrmp-and-work-output-bounding"><a class="header" href="#ump-hrmp-and-work-output-bounding">UMP, HRMP and Work Output bounding</a></h3>
+<p>At present, both HRMP (the stop-gap measure introduced in lieu of proper XCMP) and UMP, make substantial usage of the ability for parachains to include data in their PoV which will be interpreted on-chain by the Relay-chain. The current limit of UMP alone is 1MB. Even with the current amount of parachains, it is not possible for all parachains to be able to make use of these resources within the same block, and the difficult problem of apportioning resources in the case of contest is structurally unsolved and left for the RcBA to make an arbitrary selection.</p>
+<p>The present proposal brings soundness to this situation by limiting the amount of data which can arrive on the Relay-chain from each Work Item, and by extension from each Work Package. The specific limit proposed is 4KB per Work Item, which if we assume an average of two Work Items per Package and 250 cores, comes to a manageable 2MB and leaves plenty of headroom.</p>
+<p>However, this does mean that pre-existing usage of UMP and HRMP are impossible. In any case, UMP is removed entirely from the Service API.</p>
+<p>To make up for this change, all non-&quot;kernel&quot; Relay-chain functionality will exist within Services (parachains under CoreChains, or possibly even actors under CorePlay). This includes staking and governance functionality. The development and deployment of XCMP avoids the need to place any datagrams on the Relay-chain which are not themselves meant for interpretation by it. APIs are provided for the few operations remaining which the Relay-chain must provide (validator updates, code updates and core assignments) but may only be used by Services holding the appropriate privileges. Thus taken together, neither HRMP, UMP or DMP will exist.</p>
+<p>An initial and hybrid deployment of CoreJam could see the Work Output size limits temporarily increased for the Parachains Service to ensure existing use-cases do not suffer, but with a published schedule on reducing these to the eventual 4KB limits. This would imply the need for graceful handling by the RcBA should the aggregated Work Outputs be too large.</p>
+<h3 id="notes-on-implementation-order"><a class="header" href="#notes-on-implementation-order">Notes on Implementation Order</a></h3>
+<p>In order to ease the migration process from the current Polkadot on- and off-chain logic to this proposal, we can envision a partial implementation, or refactoring, which would facilitate the eventual proposal whilst remaining compatible with the pre-existing usage and avoid altering substantial code.</p>
+<p>We therefore envision an initial version of this proposal with minimal modifications to current code:</p>
+<ol>
+<li>Remain with Webassembly rather than RISC-V, both for Service logic and the subordinate environments which can be set up from Service logic. The introduction of Services is a permissioned action requiring governance intervention. Work Packages will otherwise execute as per the proposal. <em>Minor changes to the status quo.</em></li>
+<li>Attested Work Packages must finish running in time and not panic. Therefore <code>WorkResult</code> must have an <code>Infallible</code> error type. If an Attestation is posted for a Work Package which panics or times out, then this is a slashable offence. <em>No change to the status quo.</em></li>
+<li>There should be full generalization over Work Package contents, as per the proposal. Introduction of Authorizers, <code>refine</code>, <code>prune</code> and <code>accumulate</code>. <em>Additional code to the status quo.</em></li>
+</ol>
+<p>To optimize the present situation, a number of &quot;natively implemented&quot;, fixed-function registrations will be provided. The Service of index zero will be used to represent the Parachains Service and will have a &quot;native&quot; (i.e. within the Wasm runtime) implementation of <code>refine</code> and <code>accumulate</code>. Secondly, a fixed-function set of Auth IDs 9,999 and lower simply represent Authorizers which accept Work Packages which contain a single Work Item of the Parachains Service which pertain to progressing a parachain of ID equal to the Auth ID value.</p>
+<p>Later implementation steps would polish (1) to replace with RISC-V (with backwards compatibility) and polish (2) to support posting receipts of timed-out/failed Work Packages on-chain for RISC-V Services.</p>
+<p>A final transition may migrate the Parachains Service to become a regular permissionless Service module.</p>
+<h2 id="performance-ergonomics-and-compatibility"><a class="header" href="#performance-ergonomics-and-compatibility">Performance, Ergonomics and Compatibility</a></h2>
+<p>The present proposal is broadly compatible with the facilities of the Legacy Model pending the integration of a Service specific to Parachains. Unlike other Services, this is expected to be hard-coded into the Relay-chain runtime to maximize performance, compatibility and implementation speed.</p>
+<p>Certain changes to active interfaces will be needed. Firstly, changes will be needed for any software (such as <em>Cumulus</em> and <em>Smoldot</em>) relying on particular Relay-chain state trie keys (i.e. storage locations) used to track the code and head-data of parachains, so that they instead query the relevant key within the Parachains Service Child Trie.</p>
+<p>Secondly, software which currently provides Proofs-of-Validity to Relay-chain Validators, such as <em>Cumulus</em>, would need to be updated to use the new Work Item/Work Package format.</p>
+<h2 id="testing-security-and-privacy"><a class="header" href="#testing-security-and-privacy">Testing, Security and Privacy</a></h2>
+<p>Standard Polkadot testing and security auditing applies.</p>
+<p>The proposal introduces no new privacy concerns.</p>
+<h2 id="future-directions-and-related-material"><a class="header" href="#future-directions-and-related-material">Future Directions and Related Material</a></h2>
+<p>We expect to see several Services being built shortly after CorePlay is delivered.</p>
+<h2 id="drawbacks-alternatives-and-unknowns"><a class="header" href="#drawbacks-alternatives-and-unknowns">Drawbacks, Alternatives and Unknowns</a></h2>
+<p>Important considerations include:</p>
+<ol>
+<li>
+<p>In the case of composite Work Packages, allowing synchronous (and therefore causal) interactions between the Work Items. If this were to be the case, then some sort of synchronisation sentinel would be needed to ensure that should one subpackage result without the expected effects on its Service State (by virtue of the <code>accumulate</code> outcome for that subpackage), that the <code>accumulate</code> of any causally entangled subpackages takes appropriate account for this (i.e. by dropping it and not effecting any changes from it).</p>
+</li>
+<li>
+<p>Work Items may need some degree of coordination to be useful by the <code>accumulate</code> function of their Service. To a large extent this is outside of the scope of this proposal's computation model by design. Through the authorization framework we assert that it is the concern of the Service and not of the Relay-chain validators themselves. However we must ensure that certain requirements of the parachains use-case are practically fulfillable in <em>some</em> way. Within the legacy parachain model, PoVs:</p>
+<ol>
+<li>shouldn't be replayable;</li>
+<li>shouldn't require unbounded buffering in <code>accumulate</code> if things are submitted out-of-order;</li>
+<li>should be possible to evaluate for ordering by validators making a best-effort.</li>
+</ol>
+</li>
+</ol>
+<h2 id="prior-art-and-references"><a class="header" href="#prior-art-and-references">Prior Art and References</a></h2>
+<p>None.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../proposed/0026-sassafras-consensus.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../proposed/0034-xcm-absolute-location-account-derivation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../proposed/0026-sassafras-consensus.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../proposed/0034-xcm-absolute-location-account-derivation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
