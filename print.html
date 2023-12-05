@@ -181,6 +181,38 @@
 detailing proposed changes to the technical implementation of the Polkadot network.</p>
 <p><img width="2%" src="images/github-mark.svg" alt="GitHub logo" />&nbsp;<a href="https://github.com/polkadot-fellows/RFCs/">polkadot-fellows/RFCs</a></p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0001-agile-coretime.md">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="approved/0001-agile-coretime.html#rfc-1-agile-coretime">RFC-1: Agile Coretime</a>
+<ul>
+<li><a href="approved/0001-agile-coretime.html#summary">Summary</a></li>
+<li><a href="approved/0001-agile-coretime.html#motivation">Motivation</a>
+<ul>
+<li><a href="approved/0001-agile-coretime.html#present-system">Present System</a></li>
+<li><a href="approved/0001-agile-coretime.html#problems">Problems</a></li>
+</ul>
+</li>
+<li><a href="approved/0001-agile-coretime.html#requirements">Requirements</a></li>
+<li><a href="approved/0001-agile-coretime.html#stakeholders">Stakeholders</a></li>
+<li><a href="approved/0001-agile-coretime.html#explanation">Explanation</a>
+<ul>
+<li><a href="approved/0001-agile-coretime.html#overview">Overview</a></li>
+<li><a href="approved/0001-agile-coretime.html#detail">Detail</a></li>
+<li><a href="approved/0001-agile-coretime.html#specific-functions-of-the-coretime-chain">Specific functions of the Coretime-chain</a></li>
+<li><a href="approved/0001-agile-coretime.html#notes-on-the-instantaneous-coretime-market">Notes on the Instantaneous Coretime Market</a></li>
+<li><a href="approved/0001-agile-coretime.html#notes-on-economics">Notes on Economics</a></li>
+<li><a href="approved/0001-agile-coretime.html#notes-on-types">Notes on Types</a></li>
+<li><a href="approved/0001-agile-coretime.html#rollout">Rollout</a></li>
+</ul>
+</li>
+<li><a href="approved/0001-agile-coretime.html#performance-ergonomics-and-compatibility">Performance, Ergonomics and Compatibility</a></li>
+<li><a href="approved/0001-agile-coretime.html#testing-security-and-privacy">Testing, Security and Privacy</a></li>
+<li><a href="approved/0001-agile-coretime.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+<li><a href="approved/0001-agile-coretime.html#drawbacks-alternatives-and-unknowns">Drawbacks, Alternatives and Unknowns</a></li>
+<li><a href="approved/0001-agile-coretime.html#prior-art-and-references">Prior Art and References</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-1-agile-coretime"><a class="header" href="#rfc-1-agile-coretime">RFC-1: Agile Coretime</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>30 June 2023</td></tr>
@@ -680,6 +712,29 @@ InstaPoolHistory: (empty)
 <h2 id="prior-art-and-references"><a class="header" href="#prior-art-and-references">Prior Art and References</a></h2>
 <p>Robert Habermeier initially wrote on the subject of Polkadot blockspace-centric in the article <a href="https://www.rob.tech/polkadot-blockspace-over-blockchains/">Polkadot Blockspace over Blockchains</a>. While not going into details, the article served as an early reframing piece for moving beyond one-slot-per-chain models and building out secondary market infrastructure for resource allocation.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0005-coretime-interface.md">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="approved/0005-coretime-interface.html#rfc-5-coretime-interface">RFC-5: Coretime Interface</a>
+<ul>
+<li><a href="approved/0005-coretime-interface.html#summary">Summary</a></li>
+<li><a href="approved/0005-coretime-interface.html#motivation">Motivation</a></li>
+<li><a href="approved/0005-coretime-interface.html#requirements">Requirements</a></li>
+<li><a href="approved/0005-coretime-interface.html#stakeholders">Stakeholders</a></li>
+<li><a href="approved/0005-coretime-interface.html#explanation">Explanation</a>
+<ul>
+<li><a href="approved/0005-coretime-interface.html#ump-message-types">UMP Message Types</a></li>
+<li><a href="approved/0005-coretime-interface.html#dmp-message-types">DMP Message Types</a></li>
+<li><a href="approved/0005-coretime-interface.html#realistic-limits-of-the-usage">Realistic Limits of the Usage</a></li>
+</ul>
+</li>
+<li><a href="approved/0005-coretime-interface.html#performance-ergonomics-and-compatibility">Performance, Ergonomics and Compatibility</a></li>
+<li><a href="approved/0005-coretime-interface.html#testing-security-and-privacy">Testing, Security and Privacy</a></li>
+<li><a href="approved/0005-coretime-interface.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+<li><a href="approved/0005-coretime-interface.html#drawbacks-alternatives-and-unknowns">Drawbacks, Alternatives and Unknowns</a></li>
+<li><a href="approved/0005-coretime-interface.html#prior-art-and-references">Prior Art and References</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-5-coretime-interface"><a class="header" href="#rfc-5-coretime-interface">RFC-5: Coretime Interface</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>06 July 2023</td></tr>
@@ -798,6 +853,42 @@ assert_eq!(targets.iter().map(|x| x.1).sum(), 57600);
 <h2 id="prior-art-and-references-1"><a class="header" href="#prior-art-and-references-1">Prior Art and References</a></h2>
 <p>None.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0007-system-collator-selection.md">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="approved/0007-system-collator-selection.html#rfc-0007-system-collator-selection">RFC-0007: System Collator Selection</a>
+<ul>
+<li><a href="approved/0007-system-collator-selection.html#summary">Summary</a></li>
+<li><a href="approved/0007-system-collator-selection.html#motivation">Motivation</a>
+<ul>
+<li><a href="approved/0007-system-collator-selection.html#requirements">Requirements</a></li>
+</ul>
+</li>
+<li><a href="approved/0007-system-collator-selection.html#stakeholders">Stakeholders</a></li>
+<li><a href="approved/0007-system-collator-selection.html#explanation">Explanation</a>
+<ul>
+<li><a href="approved/0007-system-collator-selection.html#set-size">Set Size</a></li>
+</ul>
+</li>
+<li><a href="approved/0007-system-collator-selection.html#drawbacks">Drawbacks</a></li>
+<li><a href="approved/0007-system-collator-selection.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="approved/0007-system-collator-selection.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="approved/0007-system-collator-selection.html#performance">Performance</a></li>
+<li><a href="approved/0007-system-collator-selection.html#ergonomics">Ergonomics</a></li>
+<li><a href="approved/0007-system-collator-selection.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="approved/0007-system-collator-selection.html#prior-art-and-references">Prior Art and References</a>
+<ul>
+<li><a href="approved/0007-system-collator-selection.html#written-discussions">Written Discussions</a></li>
+<li><a href="approved/0007-system-collator-selection.html#prior-feedback-and-input-from">Prior Feedback and Input From</a></li>
+</ul>
+</li>
+<li><a href="approved/0007-system-collator-selection.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="approved/0007-system-collator-selection.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0007-system-collator-selection"><a class="header" href="#rfc-0007-system-collator-selection">RFC-0007: System Collator Selection</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>07 July 2023</td></tr>
@@ -929,6 +1020,34 @@ migration.</p>
 <p>There may exist in the future system chains for which this model of collator selection is not
 appropriate. These chains should be evaluated on a case-by-case basis.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0008-parachain-bootnodes-dht.md">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#rfc-0008-store-parachain-bootnodes-in-relay-chain-dht">RFC-0008: Store parachain bootnodes in relay chain DHT</a>
+<ul>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#summary">Summary</a></li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#motivation">Motivation</a></li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#stakeholders">Stakeholders</a></li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#explanation">Explanation</a>
+<ul>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#dht-provider-registration">DHT provider registration</a></li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#new-networking-protocol">New networking protocol</a></li>
+</ul>
+</li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#drawbacks">Drawbacks</a></li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#performance">Performance</a></li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#ergonomics">Ergonomics</a></li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="approved/0008-parachain-bootnodes-dht.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0008-store-parachain-bootnodes-in-relay-chain-dht"><a class="header" href="#rfc-0008-store-parachain-bootnodes-in-relay-chain-dht">RFC-0008: Store parachain bootnodes in relay chain DHT</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>2023-07-14</td></tr>
@@ -1017,6 +1136,26 @@ If this every becomes a problem, this value of 20 is an arbitrary constant that 
 <h2 id="future-directions-and-related-material-3"><a class="header" href="#future-directions-and-related-material-3">Future Directions and Related Material</a></h2>
 <p>It is possible that in the future a client could connect to a parachain without having to rely on a trusted parachain specification.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0012-process-for-adding-new-collectives.md">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#rfc-0012-process-for-adding-new-system-collectives">RFC-0012: Process for Adding New System Collectives</a>
+<ul>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#summary">Summary</a></li>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#motivation">Motivation</a></li>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#stakeholders">Stakeholders</a></li>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#explanation">Explanation</a>
+<ul>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#removing-collectives">Removing Collectives</a></li>
+</ul>
+</li>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#drawbacks">Drawbacks</a></li>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a></li>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="approved/0012-process-for-adding-new-collectives.html#unresolved-questions">Unresolved Questions</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0012-process-for-adding-new-system-collectives"><a class="header" href="#rfc-0012-process-for-adding-new-system-collectives">RFC-0012: Process for Adding New System Collectives</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>24 July 2023</td></tr>
@@ -1103,6 +1242,32 @@ ones.</p>
 <h2 id="unresolved-questions-2"><a class="header" href="#unresolved-questions-2">Unresolved Questions</a></h2>
 <p>None at this time.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0014-improve-locking-mechanism-for-parachains.md">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#rfc-0014-improve-locking-mechanism-for-parachains">RFC-0014: Improve locking mechanism for parachains</a>
+<ul>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#summary">Summary</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#motivation">Motivation</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#requirements">Requirements</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#stakeholders">Stakeholders</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#explanation">Explanation</a>
+<ul>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#status-quo">Status quo</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#proposed-changes">Proposed changes</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#migration">Migration</a></li>
+</ul>
+</li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#drawbacks">Drawbacks</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#performance">Performance</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#ergonomics">Ergonomics</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#compatibility">Compatibility</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="approved/0014-improve-locking-mechanism-for-parachains.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0014-improve-locking-mechanism-for-parachains"><a class="header" href="#rfc-0014-improve-locking-mechanism-for-parachains">RFC-0014: Improve locking mechanism for parachains</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>July 25, 2023</td></tr>
@@ -1215,6 +1380,23 @@ ones.</p>
 <sup class="footnote-reference"><a href="#5">5</a></sup>: https://github.com/paritytech/polkadot/blob/994af3de79af25544bf39644844cbe70a7b4d695/runtime/common/src/paras_registrar.rs#L333-L340</p>
 </div>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0022-adopt-encointer-runtime.md">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="approved/0022-adopt-encointer-runtime.html#rfc-0022-adopt-encointer-runtime">RFC-0022: Adopt Encointer Runtime</a>
+<ul>
+<li><a href="approved/0022-adopt-encointer-runtime.html#summary">Summary</a></li>
+<li><a href="approved/0022-adopt-encointer-runtime.html#motivation">Motivation</a></li>
+<li><a href="approved/0022-adopt-encointer-runtime.html#stakeholders">Stakeholders</a></li>
+<li><a href="approved/0022-adopt-encointer-runtime.html#explanation">Explanation</a></li>
+<li><a href="approved/0022-adopt-encointer-runtime.html#drawbacks">Drawbacks</a></li>
+<li><a href="approved/0022-adopt-encointer-runtime.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="approved/0022-adopt-encointer-runtime.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a></li>
+<li><a href="approved/0022-adopt-encointer-runtime.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="approved/0022-adopt-encointer-runtime.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="approved/0022-adopt-encointer-runtime.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0022-adopt-encointer-runtime"><a class="header" href="#rfc-0022-adopt-encointer-runtime">RFC-0022: Adopt Encointer Runtime</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>Aug 22nd 2023</td></tr>
@@ -1256,6 +1438,38 @@ ones.</p>
 <h2 id="future-directions-and-related-material-5"><a class="header" href="#future-directions-and-related-material-5">Future Directions and Related Material</a></h2>
 <p>More info on Encointer: <a href="https://encointer.org">encointer.org</a></p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0032-minimal-relay.md">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="approved/0032-minimal-relay.html#rfc-0032-minimal-relay">RFC-0032: Minimal Relay</a>
+<ul>
+<li><a href="approved/0032-minimal-relay.html#summary">Summary</a></li>
+<li><a href="approved/0032-minimal-relay.html#motivation">Motivation</a></li>
+<li><a href="approved/0032-minimal-relay.html#stakeholders">Stakeholders</a></li>
+<li><a href="approved/0032-minimal-relay.html#explanation">Explanation</a>
+<ul>
+<li><a href="approved/0032-minimal-relay.html#migrations">Migrations</a></li>
+<li><a href="approved/0032-minimal-relay.html#interfaces">Interfaces</a></li>
+<li><a href="approved/0032-minimal-relay.html#functional-architecture">Functional Architecture</a></li>
+<li><a href="approved/0032-minimal-relay.html#resource-allocation">Resource Allocation</a></li>
+<li><a href="approved/0032-minimal-relay.html#deployment">Deployment</a></li>
+<li><a href="approved/0032-minimal-relay.html#kusama">Kusama</a></li>
+</ul>
+</li>
+<li><a href="approved/0032-minimal-relay.html#drawbacks">Drawbacks</a></li>
+<li><a href="approved/0032-minimal-relay.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="approved/0032-minimal-relay.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="approved/0032-minimal-relay.html#performance">Performance</a></li>
+<li><a href="approved/0032-minimal-relay.html#ergonomics">Ergonomics</a></li>
+<li><a href="approved/0032-minimal-relay.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="approved/0032-minimal-relay.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="approved/0032-minimal-relay.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="approved/0032-minimal-relay.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0032-minimal-relay"><a class="header" href="#rfc-0032-minimal-relay">RFC-0032: Minimal Relay</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>20 September 2023</td></tr>
@@ -1465,6 +1679,26 @@ Chain</a>.</p>
 With Staking and Governance off the Relay Chain, this is not an unreasonable next step.</p>
 <p>With Identity on Polkadot, Kusama may opt to drop its People Chain.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/4">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#rfc-0004-remove-the-host-side-runtime-memory-allocator">RFC-0004: Remove the host-side runtime memory allocator</a>
+<ul>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#summary">Summary</a></li>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#motivation">Motivation</a></li>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#explanation">Explanation</a>
+<ul>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#new-host-functions">New host functions</a></li>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#other-changes">Other changes</a></li>
+</ul>
+</li>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#prior-art">Prior Art</a></li>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0004-remove-unnecessary-allocator-usage.html#future-possibilities">Future Possibilities</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0004-remove-the-host-side-runtime-memory-allocator"><a class="header" href="#rfc-0004-remove-the-host-side-runtime-memory-allocator">RFC-0004: Remove the host-side runtime memory allocator</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>2023-07-04</td></tr>
@@ -1709,6 +1943,34 @@ The following other host functions are similarly also considered deprecated:</p>
 <p>After this RFC, we can remove from the source code of the host the allocator altogether in a future version, by removing support for all the deprecated host functions.
 This would remove the possibility to synchronize older blocks, which is probably controversial and requires a some preparations that are out of scope of this RFC.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/6">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#rfc-0006-dynamic-pricing-for-bulk-coretime-sales">RFC-0006: Dynamic Pricing for Bulk Coretime Sales</a>
+<ul>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#summary">Summary</a></li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#motivation">Motivation</a>
+<ul>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#requirements">Requirements</a></li>
+</ul>
+</li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#explanation">Explanation</a>
+<ul>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#overview">Overview</a></li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#parameters">Parameters</a></li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#function">Function</a></li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#pseudo-code">Pseudo-code</a></li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#properties-of-the-curve">Properties of the Curve</a></li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#example-configurations">Example Configurations</a></li>
+</ul>
+</li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#future-possibilities">Future Possibilities</a></li>
+<li><a href="proposed/0006-dynamic-pricing-for-bulk-coretime-sales.html#references">References</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0006-dynamic-pricing-for-bulk-coretime-sales"><a class="header" href="#rfc-0006-dynamic-pricing-for-bulk-coretime-sales">RFC-0006: Dynamic Pricing for Bulk Coretime Sales</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>July 09, 2023</td></tr>
@@ -1850,6 +2112,29 @@ OLD_PRICE = 1000
 <li>[1] Polkadot forum post with visualizations: <a href="https://forum.polkadot.network/t/dynamic-pricing-for-bulk-coretime-sales/3359">Dynamic Pricing for Bulk Coretime Sales</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/9">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#rfc-0009-improved-light-client-requests-networking-protocol">RFC-0009: Improved light client requests networking protocol</a>
+<ul>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#summary">Summary</a></li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#motivation">Motivation</a></li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#explanation">Explanation</a></li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#performance">Performance</a></li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0009-improved-net-light-client-requests.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0009-improved-light-client-requests-networking-protocol"><a class="header" href="#rfc-0009-improved-light-client-requests-networking-protocol">RFC-0009: Improved light client requests networking protocol</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>2023-07-19</td></tr>
@@ -1951,6 +2236,28 @@ Also note that child tries aren't considered as descendants of the main trie whe
 <h2 id="future-directions-and-related-material-7"><a class="header" href="#future-directions-and-related-material-7">Future Directions and Related Material</a></h2>
 <p>The current networking protocol could be deprecated in a long time. Additionally, the current &quot;state requests&quot; protocol (used for warp syncing) could also be deprecated in favor of this one.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/45">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/000x-assethub.html#rfc-0000-lowering-nft-deposits-on-polkadot-and-kusama-asset-hubs">RFC-0000: Lowering NFT Deposits on Polkadot and Kusama Asset Hubs</a>
+<ul>
+<li><a href="proposed/000x-assethub.html#summary">Summary</a></li>
+<li><a href="proposed/000x-assethub.html#motivation">Motivation</a></li>
+<li><a href="proposed/000x-assethub.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/000x-assethub.html#explanation">Explanation</a></li>
+<li><a href="proposed/000x-assethub.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/000x-assethub.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/000x-assethub.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/000x-assethub.html#performance">Performance</a></li>
+<li><a href="proposed/000x-assethub.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/000x-assethub.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/000x-assethub.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/000x-assethub.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0000-lowering-nft-deposits-on-polkadot-and-kusama-asset-hubs"><a class="header" href="#rfc-0000-lowering-nft-deposits-on-polkadot-and-kusama-asset-hubs">RFC-0000: Lowering NFT Deposits on Polkadot and Kusama Asset Hubs</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>2 November 2023</td></tr>
@@ -2030,6 +2337,17 @@ To implement this, we need RFC#12 and the Parameters pallet from @xlc.
 <h2 id="future-directions-and-related-material-8"><a class="header" href="#future-directions-and-related-material-8">Future Directions and Related Material</a></h2>
 <p>If accepted, this RFC could pave the way for further discussions and proposals aimed at enhancing the inclusivity and accessibility of the Polkadot ecosystem. Future work could also explore having a weak governance origin for deposits as proposed by Oliver.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/10">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0010-burn-coretime-revenue.html#rfc-0010-burn-coretime-revenue">RFC-0010: Burn Coretime Revenue</a>
+<ul>
+<li><a href="proposed/0010-burn-coretime-revenue.html#summary">Summary</a></li>
+<li><a href="proposed/0010-burn-coretime-revenue.html#motivation">Motivation</a></li>
+<li><a href="proposed/0010-burn-coretime-revenue.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0010-burn-coretime-revenue.html#explanation">Explanation</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0010-burn-coretime-revenue"><a class="header" href="#rfc-0010-burn-coretime-revenue">RFC-0010: Burn Coretime Revenue</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>19.07.2023</td></tr>
@@ -2059,6 +2377,33 @@ To implement this, we need RFC#12 and the Parameters pallet from @xlc.
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/11">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#rfc-0011-add-new-path-to-account-creation-on-asset-hubs">RFC-0011: Add New Path to Account Creation on Asset Hubs</a>
+<ul>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#summary">Summary</a></li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#motivation">Motivation</a>
+<ul>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#requirements">Requirements</a></li>
+</ul>
+</li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#explanation">Explanation</a></li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#performance">Performance</a></li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0011-add-new-path-to-account-creation-on-asset-hubs.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0011-add-new-path-to-account-creation-on-asset-hubs"><a class="header" href="#rfc-0011-add-new-path-to-account-creation-on-asset-hubs">RFC-0011: Add New Path to Account Creation on Asset Hubs</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>19 July 2023</td></tr>
@@ -2196,6 +2541,35 @@ create destination accounts when needed.</p>
 <h2 id="future-directions-and-related-material-9"><a class="header" href="#future-directions-and-related-material-9">Future Directions and Related Material</a></h2>
 <p>Not applicable.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/13">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#rfc-0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms">RFC-0013: Prepare <code>BlockBuilder</code> and <code>Core</code> runtime APIs for MBMs</a>
+<ul>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#summary">Summary</a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#motivation">Motivation</a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#explanation">Explanation</a>
+<ul>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#coreinitialize_block"><code>Core::initialize_block</code></a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#blockbuilderlast_inherent"><code>BlockBuilder::last_inherent</code></a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#combined">Combined</a></li>
+</ul>
+</li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#performance">Performance</a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms"><a class="header" href="#rfc-0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms">RFC-0013: Prepare <code>BlockBuilder</code> and <code>Core</code> runtime APIs for MBMs</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>July 24, 2023</td></tr>
@@ -2287,6 +2661,26 @@ transactions</a></li>
 <p>The long-term future here is to move the block building logic into the runtime. Currently there is a tight dance between the block author and the runtime; the author has to call into different runtime functions in quick succession and exact order. Any misstep causes the built block to be invalid.<br />
 This can be unified and simplified by moving both parts of the logic into the runtime.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/17">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0015-market-design-revisit.html#rfc-0015-market-design-revisit">RFC-0015: Market Design Revisit</a>
+<ul>
+<li><a href="proposed/0015-market-design-revisit.html#summary">Summary</a></li>
+<li><a href="proposed/0015-market-design-revisit.html#motivation">Motivation</a></li>
+<li><a href="proposed/0015-market-design-revisit.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0015-market-design-revisit.html#explanation">Explanation</a>
+<ul>
+<li><a href="proposed/0015-market-design-revisit.html#bulk-markets">Bulk Markets</a></li>
+<li><a href="proposed/0015-market-design-revisit.html#benefits-of-this-system">Benefits of this system</a></li>
+<li><a href="proposed/0015-market-design-revisit.html#further-discussion-points">Further Discussion Points</a></li>
+</ul>
+</li>
+<li><a href="proposed/0015-market-design-revisit.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0015-market-design-revisit.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0015-market-design-revisit.html#unresolved-questions">Unresolved Questions</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0015-market-design-revisit"><a class="header" href="#rfc-0015-market-design-revisit">RFC-0015: Market Design Revisit</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>05.08.2023</td></tr>
@@ -2378,6 +2772,28 @@ This can be unified and simplified by moving both parts of the logic into the ru
 <h2 id="unresolved-questions-11"><a class="header" href="#unresolved-questions-11">Unresolved Questions</a></h2>
 <p>The technical feasability needs to be assessed.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/20">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#rfc-0020-treasurer-track-confirmation-period-duration-modification">RFC-0020: Treasurer Track Confirmation Period Duration Modification</a>
+<ul>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#summary">Summary</a></li>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#motivation">Motivation</a></li>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#explanation">Explanation</a></li>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#performance">Performance</a></li>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#ergonomics--compatibility">Ergonomics &amp; Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0020-treasurer-track-confirmation-period-duration-modification.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0020-treasurer-track-confirmation-period-duration-modification"><a class="header" href="#rfc-0020-treasurer-track-confirmation-period-duration-modification">RFC-0020: Treasurer Track Confirmation Period Duration Modification</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>August 10, 2023</td></tr>
@@ -2440,6 +2856,81 @@ This can be unified and simplified by moving both parts of the logic into the ru
 <h2 id="future-directions-and-related-material-11"><a class="header" href="#future-directions-and-related-material-11">Future Directions and Related Material</a></h2>
 <p>This RFC hopefully reminds the greater Polkadot community that it is possible to submit changes to the parameters of Polkadot OpenGov, and the greater protocol as a whole through the RFC process.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/26">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0026-sassafras-consensus.html#rfc-0026-sassafras-consensus-protocol">RFC-0026: Sassafras Consensus Protocol</a>
+<ul>
+<li><a href="proposed/0026-sassafras-consensus.html#abstract">Abstract</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#1-motivation">1. Motivation</a>
+<ul>
+<li><a href="proposed/0026-sassafras-consensus.html#11-relevance-to-implementors">1.1. Relevance to Implementors</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#12-supporting-sassafras-for-polkadot">1.2. Supporting Sassafras for Polkadot</a></li>
+</ul>
+</li>
+<li><a href="proposed/0026-sassafras-consensus.html#2-stakeholders">2. Stakeholders</a>
+<ul>
+<li><a href="proposed/0026-sassafras-consensus.html#21-developers-of-blockchains">2.1. Developers of Blockchains</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#22-contributors-to-the-polkadot-ecosystem">2.2. Contributors to the Polkadot Ecosystem</a></li>
+</ul>
+</li>
+<li><a href="proposed/0026-sassafras-consensus.html#3-notation-and-convention">3. Notation and Convention</a>
+<ul>
+<li><a href="proposed/0026-sassafras-consensus.html#31-data-structures-definitions-and-encoding">3.1. Data Structures Definitions and Encoding</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#32-pseudo-code">3.2. Pseudo-Code</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#33-incremental-introduction-of-types-and-functions">3.3. Incremental Introduction of Types and Functions</a></li>
+</ul>
+</li>
+<li><a href="proposed/0026-sassafras-consensus.html#4-protocol-introduction">4. Protocol Introduction</a>
+<ul>
+<li><a href="proposed/0026-sassafras-consensus.html#41-submission-of-candidate-tickets">4.1. Submission of Candidate Tickets</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#42-validation-of-candidate-tickets">4.2. Validation of Candidate Tickets</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#43-tickets-and-slots-binding">4.3. Tickets and Slots Binding</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#44-claim-of-ticket-ownership">4.4. Claim of Ticket Ownership</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#45-validation-of-ticket-ownership">4.5. Validation of Ticket Ownership</a></li>
+</ul>
+</li>
+<li><a href="proposed/0026-sassafras-consensus.html#5-bandersnatch-vrfs-cryptographic-primitives">5. Bandersnatch VRFs Cryptographic Primitives</a>
+<ul>
+<li><a href="proposed/0026-sassafras-consensus.html#51-vrf-input">5.1. VRF Input</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#52-vrf-output">5.2. VRF Output</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#53-vrf-signature-data">5.3. VRF Signature Data</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#54-vrf-signature">5.4. VRF Signature</a></li>
+</ul>
+</li>
+<li><a href="proposed/0026-sassafras-consensus.html#6-sassafras-protocol">6. Sassafras Protocol</a>
+<ul>
+<li><a href="proposed/0026-sassafras-consensus.html#61-epochs-first-block">6.1. Epoch's First Block</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#62-creation-and-submission-of-candidate-tickets">6.2. Creation and Submission of Candidate Tickets</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#63-validation-of-candidate-tickets">6.3. Validation of candidate tickets</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#64-ticket-slot-assignment">6.4. Ticket-Slot assignment</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#65-claim-of-ticket-ownership-during-block-production">6.5. Claim of ticket ownership during block production</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#66-validation-of-the-claim-during-block-verification">6.6. Validation of the claim during block verification</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#661-primary-claim-method-verification">6.6.1. Primary Claim Method Verification</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#67-randomness-accumulator">6.7. Randomness Accumulator</a></li>
+</ul>
+</li>
+<li><a href="proposed/0026-sassafras-consensus.html#7-drawbacks">7. Drawbacks</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#8-testing-security-and-privacy">8. Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#9-performance-ergonomics-and-compatibility">9. Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0026-sassafras-consensus.html#91-performance">9.1. Performance</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#92-ergonomics">9.2. Ergonomics</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#93-compatibility">9.3. Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0026-sassafras-consensus.html#10-prior-art-and-references">10. Prior Art and References</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#11-unresolved-questions">11. Unresolved Questions</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#12-future-directions-and-related-material">12. Future Directions and Related Material</a>
+<ul>
+<li><a href="proposed/0026-sassafras-consensus.html#121-interactions-with-the-runtime">12.1. Interactions with the Runtime</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#122-deployment-strategies">12.2. Deployment Strategies</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#123-zk-snark-srs-initialization-ceremony">12.3. ZK-SNARK SRS Initialization Ceremony.</a></li>
+<li><a href="proposed/0026-sassafras-consensus.html#124-anonymous-submission-of-tickets">12.4. Anonymous Submission of Tickets.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0026-sassafras-consensus-protocol"><a class="header" href="#rfc-0026-sassafras-consensus-protocol">RFC-0026: Sassafras Consensus Protocol</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>September 06, 2023</td></tr>
@@ -3330,6 +3821,41 @@ investigate the potential for incorporating Mixnet technology or other
 privacy-enhancing mechanisms to address this concern.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/31">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0031-corejam.html#rfc-0031-corejam">RFC-0031: CoreJam</a>
+<ul>
+<li><a href="proposed/0031-corejam.html#summary">Summary</a></li>
+<li><a href="proposed/0031-corejam.html#motivation">Motivation</a></li>
+<li><a href="proposed/0031-corejam.html#requirements">Requirements</a></li>
+<li><a href="proposed/0031-corejam.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0031-corejam.html#explanation">Explanation</a>
+<ul>
+<li><a href="proposed/0031-corejam.html#terminology">Terminology</a></li>
+<li><a href="proposed/0031-corejam.html#from-old-to-new">From Old to New</a></li>
+<li><a href="proposed/0031-corejam.html#overview">Overview</a></li>
+<li><a href="proposed/0031-corejam.html#processing-stages-of-a-work-package">Processing stages of a Work Package</a></li>
+<li><a href="proposed/0031-corejam.html#collect-refine">Collect-Refine</a></li>
+<li><a href="proposed/0031-corejam.html#refine">Refine</a></li>
+<li><a href="proposed/0031-corejam.html#join-accumulate">Join-Accumulate</a></li>
+<li><a href="proposed/0031-corejam.html#accumulate">Accumulate</a></li>
+<li><a href="proposed/0031-corejam.html#work-package-ordering">Work Package Ordering</a></li>
+<li><a href="proposed/0031-corejam.html#relay-chain-storage-pallet">Relay-chain Storage Pallet</a></li>
+<li><a href="proposed/0031-corejam.html#notes-on-agile-coretime">Notes on Agile Coretime</a></li>
+<li><a href="proposed/0031-corejam.html#notes-for-migrating-from-a-parachain-centric-model">Notes for migrating from a Parachain-centric model</a></li>
+<li><a href="proposed/0031-corejam.html#notes-for-implementing-the-actor-progression-model">Notes for implementing the Actor Progression model</a></li>
+<li><a href="proposed/0031-corejam.html#ump-hrmp-and-work-output-bounding">UMP, HRMP and Work Output bounding</a></li>
+<li><a href="proposed/0031-corejam.html#notes-on-implementation-order">Notes on Implementation Order</a></li>
+</ul>
+</li>
+<li><a href="proposed/0031-corejam.html#performance-ergonomics-and-compatibility">Performance, Ergonomics and Compatibility</a></li>
+<li><a href="proposed/0031-corejam.html#testing-security-and-privacy">Testing, Security and Privacy</a></li>
+<li><a href="proposed/0031-corejam.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+<li><a href="proposed/0031-corejam.html#drawbacks-alternatives-and-unknowns">Drawbacks, Alternatives and Unknowns</a></li>
+<li><a href="proposed/0031-corejam.html#prior-art-and-references">Prior Art and References</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0031-corejam"><a class="header" href="#rfc-0031-corejam">RFC-0031: CoreJam</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>11 September 2023</td></tr>
@@ -3845,6 +4371,28 @@ requests active). 24 hours following this, the data is expunged with a second ca
 <h2 id="prior-art-and-references-14"><a class="header" href="#prior-art-and-references-14">Prior Art and References</a></h2>
 <p>None.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/34">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#rfc-34-xcm-absolute-location-account-derivation">RFC-34: XCM Absolute Location Account Derivation</a>
+<ul>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#summary">Summary</a></li>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#motivation">Motivation</a></li>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#explanation">Explanation</a></li>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#performance">Performance</a></li>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0034-xcm-absolute-location-account-derivation.html#unresolved-questions">Unresolved Questions</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-34-xcm-absolute-location-account-derivation"><a class="header" href="#rfc-34-xcm-absolute-location-account-derivation">RFC-34: XCM Absolute Location Account Derivation</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>05 October 2023</td></tr>
@@ -4011,6 +4559,28 @@ impl&lt;Suffix: DescribeLocation&gt; DescribeLocation for DescribeFamily&lt;Suff
 <h2 id="unresolved-questions-13"><a class="header" href="#unresolved-questions-13">Unresolved Questions</a></h2>
 <p>Implementation details and overall code is still up to discussion, the proposal suggests code to base discussions on.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/35">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#rfc-0035-conviction-voting-delegation-modifications">RFC-0035: Conviction Voting Delegation Modifications</a>
+<ul>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#summary">Summary</a></li>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#motivation">Motivation</a></li>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#explanation">Explanation</a></li>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#performance">Performance</a></li>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#ergonomics--compatibility">Ergonomics &amp; Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0035-conviction-voting-delegation-modifications.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0035-conviction-voting-delegation-modifications"><a class="header" href="#rfc-0035-conviction-voting-delegation-modifications">RFC-0035: Conviction Voting Delegation Modifications</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>October 10, 2023</strong></td><td></td></tr>
@@ -4074,6 +4644,29 @@ impl&lt;Suffix: DescribeLocation&gt; DescribeLocation for DescribeFamily&lt;Suff
 <p>Additionally we would like to re-open the conversation about the potential for there to be free delegations. This was discussed by Dr Gavin Wood at Sub0 2022 and we feel like this would go a great way towards increasing the amount of network participants that are delegating: https://youtu.be/hSoSA6laK3Q?t=526</p>
 <p>Overall, we strongly feel that delegations are a great way to increase voter turnout, and the ideas presented in this RFC would hopefully help in that aspect.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/42">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0042-extrinsics-state-version.html#rfc-0042-add-system-version-that-replaces-stateversion-on-runtimeversion">RFC-0042: Add System version that replaces StateVersion on RuntimeVersion</a>
+<ul>
+<li><a href="proposed/0042-extrinsics-state-version.html#summary">Summary</a></li>
+<li><a href="proposed/0042-extrinsics-state-version.html#motivation">Motivation</a></li>
+<li><a href="proposed/0042-extrinsics-state-version.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0042-extrinsics-state-version.html#explanation">Explanation</a></li>
+<li><a href="proposed/0042-extrinsics-state-version.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0042-extrinsics-state-version.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0042-extrinsics-state-version.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0042-extrinsics-state-version.html#performance">Performance</a></li>
+<li><a href="proposed/0042-extrinsics-state-version.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0042-extrinsics-state-version.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0042-extrinsics-state-version.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0042-extrinsics-state-version.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0042-extrinsics-state-version.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0042-add-system-version-that-replaces-stateversion-on-runtimeversion"><a class="header" href="#rfc-0042-add-system-version-that-replaces-stateversion-on-runtimeversion">RFC-0042: Add System version that replaces StateVersion on RuntimeVersion</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>25th October 2023</td></tr>
@@ -4089,7 +4682,9 @@ under <code>RuntimeVersion</code>,
 we would like to propose adding <code>system_version</code> that can be used to derive both storage and extrinsic state version.</p>
 <h2 id="motivation-20"><a class="header" href="#motivation-20">Motivation</a></h2>
 <p>Since the extrinsic state version is always <code>StateVersion::V0</code>, deriving extrinsic root requires full extrinsic data.
-For <code>Subspace</code> project, we have an enshrined rollups called <code>Domain</code> with optimistic verification and Fraud proofs are
+This would be problematic when we need to verify the extrinsics root if the extrinsic sizes are bigger. This problem is
+further explored in https://github.com/polkadot-fellows/RFCs/issues/19</p>
+<p>For <code>Subspace</code> project, we have an enshrined rollups called <code>Domain</code> with optimistic verification and Fraud proofs are
 used to detect malicious behavior.
 One of the <code>Fraud proof</code> variant is to derive <code>Domain</code> block extrinsic root on <code>Subspace</code>'s consensus chain.
 Since <code>StateVersion::V0</code> requires full extrinsic data, we are forced to pass all the extrinsics through the Fraud proof.
@@ -4149,6 +4744,25 @@ is the correct way of introducing this change.</p>
 <h2 id="future-directions-and-related-material-14"><a class="header" href="#future-directions-and-related-material-14">Future Directions and Related Material</a></h2>
 <p>IMO, this change is pretty self-contained and there won't be any future work necessary. </p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/43">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0043-storage-proof-size-hostfunction.html#rfc-0043-introduce-storage_proof_size-host-function-for-improved-parachain-block-utilization">RFC-0043: Introduce <code>storage_proof_size</code> Host Function for Improved Parachain Block Utilization</a>
+<ul>
+<li><a href="proposed/0043-storage-proof-size-hostfunction.html#summary">Summary</a></li>
+<li><a href="proposed/0043-storage-proof-size-hostfunction.html#motivation">Motivation</a></li>
+<li><a href="proposed/0043-storage-proof-size-hostfunction.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0043-storage-proof-size-hostfunction.html#explanation">Explanation</a></li>
+<li><a href="proposed/0043-storage-proof-size-hostfunction.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0043-storage-proof-size-hostfunction.html#performance">Performance</a></li>
+<li><a href="proposed/0043-storage-proof-size-hostfunction.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0043-storage-proof-size-hostfunction.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0043-storage-proof-size-hostfunction.html#prior-art-and-references">Prior Art and References</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0043-introduce-storage_proof_size-host-function-for-improved-parachain-block-utilization"><a class="header" href="#rfc-0043-introduce-storage_proof_size-host-function-for-improved-parachain-block-utilization">RFC-0043: Introduce <code>storage_proof_size</code> Host Function for Improved Parachain Block Utilization</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>30 October 2023</td></tr>
@@ -4193,6 +4807,37 @@ is the correct way of introducing this change.</p>
 <li>Issue with discussion: <a href="https://github.com/paritytech/polkadot-sdk/issues/209#top">[FRAME core] Clawback PoV Weights For Dispatchables</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/44">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0044-rent-based-registration.html#rfc-0044-rent-based-registration-model">RFC-0044: Rent based registration model</a>
+<ul>
+<li><a href="proposed/0044-rent-based-registration.html#summary">Summary</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#motivation">Motivation</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#requirements">Requirements</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#explanation">Explanation</a>
+<ul>
+<li><a href="proposed/0044-rent-based-registration.html#registering-an-on-demand-parachain">Registering an on-demand parachain</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#on-demand-parachain-pruning">On-demand parachain pruning</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#ensuring-rent-is-paid">Ensuring rent is paid</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#on-demand-para-re-registration">On-demand para re-registration</a></li>
+</ul>
+</li>
+<li><a href="proposed/0044-rent-based-registration.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0044-rent-based-registration.html#performance">Performance</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0044-rent-based-registration.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0044-rent-based-registration.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0044-rent-based-registration-model"><a class="header" href="#rfc-0044-rent-based-registration-model">RFC-0044: Rent based registration model</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>6 November 2023</td></tr>
@@ -4351,6 +4996,51 @@ pub(super) type CheckedCodeHash&lt;T: Config&gt; =
 <p>As noted in <a href="https://github.com/paritytech/polkadot-sdk/issues/1796">this GitHub issue</a>, we want to raise the per-byte cost of on-chain data storage. However, a substantial increase in this cost would make it highly impractical for on-demand parachains to register on Polkadot.
 This RFC offers an alternative solution for on-demand parachains, ensuring that the per-byte cost increase doesn't overly burden the registration process.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/46">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#rfc-0000-metadata-for-offline-signers">RFC-0000: Metadata for offline signers</a>
+<ul>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#summary">Summary</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#motivation">Motivation</a>
+<ul>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#background">Background</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#solution-requirements">Solution requirements</a></li>
+</ul>
+</li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#explanation">Explanation</a>
+<ul>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#metadata-descriptor">Metadata descriptor</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#metadata-modularization">Metadata modularization</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#merging-protocol">Merging protocol</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#complete-binary-merkle-tree-construction-protocol">Complete Binary Merkle Tree construction protocol</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#digest">Digest</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#shortening">Shortening</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#transmission">Transmission</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#offline-verification">Offline verification</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#chain-verification">Chain verification</a></li>
+</ul>
+</li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#drawbacks">Drawbacks</a>
+<ul>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#increased-transaction-size">Increased transaction size</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#transition-overhead">Transition overhead</a></li>
+</ul>
+</li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#performance">Performance</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0046-metadata-for-offline-signers.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0000-metadata-for-offline-signers"><a class="header" href="#rfc-0000-metadata-for-offline-signers">RFC-0000: Metadata for offline signers</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>2023-10-31</td></tr>
@@ -4373,9 +5063,9 @@ This RFC offers an alternative solution for on-demand parachains, ensuring that 
 <p>As of now, there is no working solution for (1), as the whole metadata has to be passed to the device. On top of this, the solution for (2) heavily relies on a trusted party managing keys and ensuring metadata is indeed authentic: creating poorly decentralized points of potential failure.</p>
 <h3 id="solution-requirements"><a class="header" href="#solution-requirements">Solution requirements</a></h3>
 <h4 id="include-metadata-digest-into-signature"><a class="header" href="#include-metadata-digest-into-signature">Include metadata digest into signature</a></h4>
-<p>Some cryptographically strong digest of metadata MUST be included into signable blob. There SHALL NOT be storage overhead for this blob, nor computational overhead, on the node side; thus MUST be a constant within given runtime version, deterministically defined by metadata.</p>
+<p>Some cryptographically strong digest of metadata MAY be included into signable blob. There SHALL NOT be storage overhead for this blob, nor computational overhead, on the node side; thus MUST be a constant within given runtime version, deterministically defined by metadata.</p>
 <ul>
-<li>Metadata information that could be used in signable extrinsic decoding MUST be be included in digest;</li>
+<li>Metadata information that could be used in signable extrinsic decoding MAY be be included in digest, its inclusion MUST be indicated in signed extensions;</li>
 <li>Digest MUST be deterministic with respect to metadata;</li>
 <li>Digest MUST be cryptographically strong against pre-image, both first and second;</li>
 <li>Extra-metadata information necessary for extrinsic decoding and constant within runtime version MUST be included in digest;</li>
@@ -4422,14 +5112,21 @@ This RFC offers an alternative solution for on-demand parachains, ensuring that 
 <h3 id="shortening"><a class="header" href="#shortening">Shortening</a></h3>
 <p>For shortening, an attempt to decode transaction completely using provided metadata is performed with the same algorithm that would be used on the cold side. All chunks are associated with their leaf indices. An example of this protocol is proposed in <a href="https://github.com/Alzymologist/metadata-shortener">metadata-shortener</a> that is based on <a href="https://github.com/Alzymologist/substrate-parser">substrate-parser</a> decoding protocol; any decoding protocol could be used here as long as cold signer's design finds it appropriate for given security model.</p>
 <h3 id="transmission"><a class="header" href="#transmission">Transmission</a></h3>
-<p>Shortened metadata chunks MAY be trasmitted into cold device together with Merkle proof in its entirety or in parts, depending on memory capabilities of the cold device and it ability to reconstruct larger fraction of tree. This document does not specify the manner of transmission. The order of metadata chunks MAY be arbitrary, the only requirement is that indices of leaf nodes in Merkle tree corresponding to chunks MUST be communicated.</p>
+<p>Shortened metadata chunks MAY be trasmitted into cold device together with Merkle proof in its entirety or in parts, depending on memory capabilities of the cold device and it ability to reconstruct larger fraction of tree. This document does not specify the manner of transmission. The order of metadata chunks MAY be arbitrary, the only requirement is that indices of leaf nodes in Merkle tree corresponding to chunks MUST be communicated. Community MAY handle proof format standartization independently.</p>
 <h3 id="offline-verification"><a class="header" href="#offline-verification">Offline verification</a></h3>
 <p>The transmitted metadata chunks are hashed together with proof lemmas to obtain root that MAY be transmitted along with the rest of payload. Verification that the root transmitted with message matches with calculated root is optional; the transmitted root SHOULD NOT be used in signature, calculated root MUST be used; however, there is no mechanism to enforce this - it should be done during cold signers code audit.</p>
 <h3 id="chain-verification"><a class="header" href="#chain-verification">Chain verification</a></h3>
-<p>The root of metadata computed by cold device MUST be included into Signed Extensions; this way the transaction will pass as valid iff hash of metadata as seen by cold storage device is identical to consensus hash of metadata, ensuring fair signing protocol.</p>
+<p>The root of metadata computed by cold device MAY be included into Signed Extensions; this way the transaction will pass as valid iff hash of metadata as seen by cold storage device is identical to consensus hash of metadata, ensuring fair signing protocol.</p>
+<p>The Signed Extension representing metadata digest is a single byte representing both digest vaule inclusion and shortening protocol version; this MUST be included in Signed Extensions set. Depending on its value, a digest value is included as <code>additionalSigned</code> to signature computation according to following specification:</p>
+<div class="table-wrapper"><table><thead><tr><th>signed extension value</th><th>digest value</th><th>comment</th></tr></thead><tbody>
+<tr><td><code>0x00</code></td><td></td><td>digest is not included</td></tr>
+<tr><td><code>0x01</code></td><td>32-byte digest</td><td>this represents protocol version 1</td></tr>
+<tr><td><code>0x02</code> - <code>0xFF</code></td><td><em>reserved</em></td><td>reserved for future use</td></tr>
+</tbody></table>
+</div>
 <h2 id="drawbacks-18"><a class="header" href="#drawbacks-18">Drawbacks</a></h2>
 <h3 id="increased-transaction-size"><a class="header" href="#increased-transaction-size">Increased transaction size</a></h3>
-<p>Depending on implementation details, an extra byte may be needed to indicate whether the new version of metadata verification was used; this may be needed during transaction period, or the same byte may store the version of metadata hashing protocol</p>
+<p>A 1-byte increase in transaction size due to signed extension value. Digest is not included in transferred transaction, only in signing process.</p>
 <h3 id="transition-overhead"><a class="header" href="#transition-overhead">Transition overhead</a></h3>
 <p>Some slightly out of spec systems might experience breaking changes as new content of signed extensions is added. It is important to note, that there is no real overhead in processing time nor complexity, as the metadata checking mechanism is voluntary. The only drawbacks are expected for tools that do not implement MetadataV14 self-descripting features.</p>
 <h2 id="testing-security-and-privacy-18"><a class="header" href="#testing-security-and-privacy-18">Testing, Security, and Privacy</a></h2>
@@ -4453,6 +5150,39 @@ This RFC offers an alternative solution for on-demand parachains, ensuring that 
 <h2 id="future-directions-and-related-material-16"><a class="header" href="#future-directions-and-related-material-16">Future Directions and Related Material</a></h2>
 <p>Changes to code of all cold signers to implement this mechanism SHOULD be done when this is enabled; non-cold signers may perform extra metadata check for better security. Ultimately, signing anything without decoding it with verifiable metadata should become discouraged in all situations where a decision-making mechanism is involved (that is, outside of fully automated blind signers like trade bots or staking rewards payout tools).</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/47">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#rfc-0047-assignment-of-availability-chunks-to-validators">RFC-0047: Assignment of availability chunks to validators</a>
+<ul>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#summary">Summary</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#motivation">Motivation</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#explanation">Explanation</a>
+<ul>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#systematic-erasure-codes">Systematic erasure codes</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#availability-recovery-at-present">Availability recovery at present</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#availability-recovery-from-systematic-chunks">Availability recovery from systematic chunks</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#chunk-assignment-function">Chunk assignment function</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#network-protocol">Network protocol</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#upgrade-path">Upgrade path</a></li>
+</ul>
+</li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#performance">Performance</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+<li><a href="proposed/0047-assignment-of-availability-chunks.html#appendix-a">Appendix A</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0047-assignment-of-availability-chunks-to-validators"><a class="header" href="#rfc-0047-assignment-of-availability-chunks-to-validators">RFC-0047: Assignment of availability chunks to validators</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>03 November 2023</td></tr>
@@ -4490,13 +5220,8 @@ without running the resource-intensive and time-consuming reconstruction algorit
 	n_validators: usize,
 	chunks: Vec&lt;&amp;[u8]&gt;,
 ) -&gt; T {
-	let mut threshold = (n_validators - 1) / 3;
-	if !is_power_of_two(threshold) {
-		threshold = next_lower_power_of_2(threshold);
-	}
-
+	let threshold = systematic_threshold(n_validators);
 	let shard_len = chunks.iter().next().unwrap().len();
-
 	let mut systematic_bytes = Vec::with_capacity(shard_len * threshold);
 
 	for i in (0..shard_len).step_by(2) {
@@ -4507,6 +5232,15 @@ without running the resource-intensive and time-consuming reconstruction algorit
 	}
 
 	Decode::decode(&amp;mut &amp;systematic_bytes[..]).unwrap()
+}
+
+fn systematic_threshold(n_validators: usize) -&gt; usize {
+	let mut threshold = (n_validators - 1) / 3;
+	if !is_power_of_two(threshold) {
+		threshold = next_lower_power_of_2(threshold);
+	}
+
+	threshold
 }
 <span class="boring">}</span></code></pre></pre>
 <p>In a nutshell, it performs a column-wise concatenation with 2-byte chunks.
@@ -4537,17 +5271,20 @@ performance results.</p>
 should hold them, before falling back to recovering from regular chunks, as before.</p>
 <p>A re-encoding step is still needed for verifying the erasure root, so the erasure coding overhead cannot be completely
 brought down to 0.</p>
+<p>Not being able to retrieve even one systematic chunk would make systematic reconstruction impossible. Therefore, backers
+can be used as a backup to retrieve a couple of missing systematic chunks, before falling back to retrieving regular
+chunks.</p>
 <h3 id="chunk-assignment-function"><a class="header" href="#chunk-assignment-function">Chunk assignment function</a></h3>
 <h4 id="properties"><a class="header" href="#properties">Properties</a></h4>
 <p>The function that decides the chunk index for a validator should be parameterized by at least
-<code>(validator_index, relay_parent, core_index)</code>
+<code>(validator_index, block_number, core_index)</code>
 and have the following properties:</p>
 <ol>
 <li>deterministic</li>
 <li>relatively quick to compute and resource-efficient.</li>
 <li>when considering the other params besides <code>validator_index</code> as fixed, the function should describe a permutation
 of the chunk indices</li>
-<li>considering <code>relay_parent</code> as a fixed argument, the validators that map to the first N/3 chunk indices should
+<li>considering <code>block_number</code> as a fixed argument, the validators that map to the first N/3 chunk indices should
 have as little overlap as possible for different paras scheduled on that relay parent.</li>
 </ol>
 <p>In other words, we want a uniformly distributed, deterministic mapping from <code>ValidatorIndex</code> to <code>ChunkIndex</code> per block
@@ -4573,7 +5310,7 @@ or governance call.</p>
 }
 <span class="boring">}</span></code></pre></pre>
 <h3 id="network-protocol"><a class="header" href="#network-protocol">Network protocol</a></h3>
-<p>The request-response <code>/polkadot/req_chunk</code> protocol will be bumped to a new version (from v1 to v2).
+<p>The request-response <code>/req_chunk</code> protocol will be bumped to a new version (from v1 to v2).
 For v1, the request and response payloads are:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -4626,28 +5363,42 @@ it received the right chunk.
 In practice, this is desirable during availability-distribution and systematic chunk recovery. However, regular
 recovery may not check this index, which is particularly useful when participating in disputes that don't allow
 for easy access to the validator-&gt;chunk mapping. See <a href="proposed/0047-assignment-of-availability-chunks.html#appendix-a">Appendix A</a> for more details.</p>
+<p>In any case, the requester MUST verify the chunk's proof using the provided index.</p>
+<p>During availability-recovery, given that the requester may not know (if the mapping is not available) whether the received chunk corresponds to
+the requested validator index, it has to keep track of received chunk indices and ignore duplicates. Such duplicates
+should be considered the same as an invalid/garbage response (drop it and move on to the next validator - we can't
+punish via reputation changes, because we don't know which validator misbehaved).</p>
 <h3 id="upgrade-path"><a class="header" href="#upgrade-path">Upgrade path</a></h3>
 <h4 id="step-1-enabling-new-network-protocol"><a class="header" href="#step-1-enabling-new-network-protocol">Step 1: Enabling new network protocol</a></h4>
-<p>In the beginning, both <code>/polkadot/req_chunk/1</code> and <code>/polkadot/req_chunk/2</code> will be supported, until all validators and
-collators have upgraded to use the new version. V1 will be considered deprecated.
+<p>In the beginning, both <code>/req_chunk/1</code> and <code>/req_chunk/2</code> will be supported, until all validators and
+collators have upgraded to use the new version. V1 will be considered deprecated. During this step, the mapping will
+still be 1:1 (<code>ValidatorIndex</code> == <code>ChunkIndex</code>), regardless of protocol.
 Once all nodes are upgraded, a new release will be cut that removes the v1 protocol. Only once all nodes have upgraded
 to this version will step 2 commence.</p>
 <h4 id="step-2-enabling-the-new-validator-chunk-mapping"><a class="header" href="#step-2-enabling-the-new-validator-chunk-mapping">Step 2: Enabling the new validator-&gt;chunk mapping</a></h4>
 <p>Considering that the Validator-&gt;Chunk mapping is critical to para consensus, the change needs to be enacted atomically
-via governance, only after all validators have upgraded the node to a version that is aware of this mapping.
-It needs to be explicitly stated that after the runtime upgrade and governance enactment, validators that run older
-client versions that don't support this mapping will not be able to participate in parachain consensus.</p>
-<p>Additionally, an error will be logged when starting a validator with an older version, after the runtime was upgraded
-and the feature enabled.</p>
-<p>On the other hand, collators will not be required to upgrade, as regular chunk recovery will work as before, granted
-that version 1 of the networking protocol has been removed.  However, they are encouraged to upgrade in order to take
-advantage of the faster systematic recovery.</p>
+via governance, only after all validators have upgraded the node to a version that is aware of this mapping,
+functionality-wise.
+It needs to be explicitly stated that after the governance enactment, validators that run older client versions that
+don't support this mapping will not be able to participate in parachain consensus.</p>
+<p>Additionally, an error will be logged when starting a validator with an older version, after the feature was enabled.</p>
+<p>On the other hand, collators will not be required to upgrade in this step, as regular chunk recovery will work as before,
+granted that version 1 of the networking protocol has been removed. Note that collators only perform
+availability-recovery in rare, adversarial scenarios, so it is fine to not optimise for this case and let them upgrade
+at their own pace.</p>
+<p>To support enabling this feature via the runtime, we will use the <code>NodeFeatures</code> bitfield of the <code>HostConfiguration</code>
+struct (added in <code>https://github.com/paritytech/polkadot-sdk/pull/2177</code>). Adding and enabling a feature
+with this scheme does not require a runtime upgrade, but only a referendum that issues a
+<code>Configuration::set_node_feature</code> extrinsic. Once the feature is enabled and new configuration is live, the
+validator-&gt;chunk mapping ceases to be a 1:1 mapping and systematic recovery may begin.</p>
 <h2 id="drawbacks-19"><a class="header" href="#drawbacks-19">Drawbacks</a></h2>
 <ul>
 <li>Getting access to the <code>core_index</code> that used to be occupied by a candidate in some parts of the dispute protocol is
 very complicated (See <a href="proposed/0047-assignment-of-availability-chunks.html#appendix-a">appendix A</a>). This RFC assumes that availability-recovery processes initiated during
 disputes will only use regular recovery, as before. This is acceptable since disputes are rare occurrences in practice
-and is something that can be optimised later, if need be.</li>
+and is something that can be optimised later, if need be. Adding the <code>core_index</code> to the <code>CandidateReceipt</code> would
+mitigate this problem and will likely be needed in the future for CoreJam.
+<a href="https://forum.polkadot.network/t/pre-rfc-discussion-candidate-receipt-format-v2/3738">Related discussion about <code>CandidateReceipt</code></a></li>
 <li>It's a breaking change that requires all validators and collators to upgrade their node version.</li>
 </ul>
 <h2 id="testing-security-and-privacy-19"><a class="header" href="#testing-security-and-privacy-19">Testing, Security, and Privacy</a></h2>
@@ -4657,14 +5408,14 @@ This proposal doesn't affect security or privacy.</p>
 <h3 id="performance-15"><a class="header" href="#performance-15">Performance</a></h3>
 <p>This is a necessary data availability optimisation, as reed-solomon erasure coding has proven to be a top consumer of
 CPU time in polkadot as we scale up the parachain block size and number of availability cores.</p>
-<p>With this optimisation, preliminary performance results show that CPU time used for reed-solomon coding can be halved
-and total POV recovery time decrease by 80% for large POVs. See more
+<p>With this optimisation, preliminary performance results show that CPU time used for reed-solomon coding/decoding can be
+halved and total POV recovery time decrease by 80% for large POVs. See more
 <a href="https://github.com/paritytech/polkadot-sdk/issues/598#issuecomment-1792007099">here</a>.</p>
 <h3 id="ergonomics-13"><a class="header" href="#ergonomics-13">Ergonomics</a></h3>
 <p>Not applicable.</p>
 <h3 id="compatibility-13"><a class="header" href="#compatibility-13">Compatibility</a></h3>
 <p>This is a breaking change. See <a href="proposed/0047-assignment-of-availability-chunks.html#upgrade-path">upgrade path</a> section above.
-All validators need to have upgraded their node versions before the feature will be enabled via a runtime upgrade and
+All validators need to have upgraded their node versions before the feature will be enabled via a runtime upgrade
 governance call.</p>
 <h2 id="prior-art-and-references-21"><a class="header" href="#prior-art-and-references-21">Prior Art and References</a></h2>
 <p>See comments on the <a href="https://github.com/paritytech/polkadot-sdk/issues/598">tracking issue</a> and the
@@ -4716,6 +5467,29 @@ the reported core_index was indeed the one occupied by the candidate at the resp
 This information would be used in order to query the runtime API and retrieve the core index that the candidate was
 occupying. However, considering it's part of an unimported fork, the validator cannot call a runtime API on that block.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/48">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0048-session-keys-runtime-api.html#rfc-0048-generate-ownership-proof-for-sessionkeys">RFC-0048: Generate ownership proof for <code>SessionKeys</code></a>
+<ul>
+<li><a href="proposed/0048-session-keys-runtime-api.html#summary">Summary</a></li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#motivation">Motivation</a></li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#explanation">Explanation</a></li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0048-session-keys-runtime-api.html#performance">Performance</a></li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0048-session-keys-runtime-api.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0048-generate-ownership-proof-for-sessionkeys"><a class="header" href="#rfc-0048-generate-ownership-proof-for-sessionkeys">RFC-0048: Generate ownership proof for <code>SessionKeys</code></a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>13 November 2023</td></tr>
@@ -4795,6 +5569,34 @@ a runtime is enacted that contains these changes otherwise they will fail to gen
 <h2 id="future-directions-and-related-material-18"><a class="header" href="#future-directions-and-related-material-18">Future Directions and Related Material</a></h2>
 <p>Substrate implementation of the <a href="https://github.com/paritytech/polkadot-sdk/pull/1739">RFC</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/50">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0050-fellowship-salaries.html#rfc-0050-fellowship-salaries">RFC-0050: Fellowship Salaries</a>
+<ul>
+<li><a href="proposed/0050-fellowship-salaries.html#summary">Summary</a></li>
+<li><a href="proposed/0050-fellowship-salaries.html#motivation">Motivation</a></li>
+<li><a href="proposed/0050-fellowship-salaries.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0050-fellowship-salaries.html#explanation">Explanation</a>
+<ul>
+<li><a href="proposed/0050-fellowship-salaries.html#salary-asset">Salary Asset</a></li>
+<li><a href="proposed/0050-fellowship-salaries.html#projections">Projections</a></li>
+<li><a href="proposed/0050-fellowship-salaries.html#updates">Updates</a></li>
+</ul>
+</li>
+<li><a href="proposed/0050-fellowship-salaries.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0050-fellowship-salaries.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0050-fellowship-salaries.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0050-fellowship-salaries.html#performance">Performance</a></li>
+<li><a href="proposed/0050-fellowship-salaries.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0050-fellowship-salaries.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0050-fellowship-salaries.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0050-fellowship-salaries.html#unresolved-questions">Unresolved Questions</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0050-fellowship-salaries"><a class="header" href="#rfc-0050-fellowship-salaries">RFC-0050: Fellowship Salaries</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>15 November 2023</td></tr>
@@ -4903,6 +5705,29 @@ States</a></li>
 <h2 id="unresolved-questions-20"><a class="header" href="#unresolved-questions-20">Unresolved Questions</a></h2>
 <p>None at present.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/54">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0054-remove-heap-pages.html#rfc-0054-remove-the-concept-of-heap-pages-from-the-client">RFC-0054: Remove the concept of &quot;heap pages&quot; from the client</a>
+<ul>
+<li><a href="proposed/0054-remove-heap-pages.html#summary">Summary</a></li>
+<li><a href="proposed/0054-remove-heap-pages.html#motivation">Motivation</a></li>
+<li><a href="proposed/0054-remove-heap-pages.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0054-remove-heap-pages.html#explanation">Explanation</a></li>
+<li><a href="proposed/0054-remove-heap-pages.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0054-remove-heap-pages.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0054-remove-heap-pages.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0054-remove-heap-pages.html#performance">Performance</a></li>
+<li><a href="proposed/0054-remove-heap-pages.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0054-remove-heap-pages.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0054-remove-heap-pages.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0054-remove-heap-pages.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0054-remove-heap-pages.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0054-remove-the-concept-of-heap-pages-from-the-client"><a class="header" href="#rfc-0054-remove-the-concept-of-heap-pages-from-the-client">RFC-0054: Remove the concept of &quot;heap pages&quot; from the client</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>2023-11-24</td></tr>
@@ -4968,6 +5793,29 @@ The <code>:heappages</code> are a rather obscure feature, and it is not clear wh
 <h2 id="future-directions-and-related-material-19"><a class="header" href="#future-directions-and-related-material-19">Future Directions and Related Material</a></h2>
 <p>This RFC follows the same path as https://github.com/polkadot-fellows/RFCs/pull/4 by scoping everything related to memory allocations to the runtime.</p>
 <div style="break-before: page; page-break-before: always;"></div><p><a href="https://github.com/polkadot-fellows/RFCs/pull/56">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="proposed/0056-one-transaction-per-notification.html#rfc-0056-enforce-only-one-transaction-per-notification">RFC-0056: Enforce only one transaction per notification</a>
+<ul>
+<li><a href="proposed/0056-one-transaction-per-notification.html#summary">Summary</a></li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#motivation">Motivation</a></li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#stakeholders">Stakeholders</a></li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#explanation">Explanation</a></li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#drawbacks">Drawbacks</a></li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="proposed/0056-one-transaction-per-notification.html#performance">Performance</a></li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#ergonomics">Ergonomics</a></li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="proposed/0056-one-transaction-per-notification.html#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0056-enforce-only-one-transaction-per-notification"><a class="header" href="#rfc-0056-enforce-only-one-transaction-per-notification">RFC-0056: Enforce only one transaction per notification</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>2023-11-30</td></tr>

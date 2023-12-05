@@ -175,6 +175,51 @@
                 <div id="content" class="content">
                     <main>
                         <p><a href="https://github.com/polkadot-fellows/RFCs/pull/46">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#rfc-0000-metadata-for-offline-signers">RFC-0000: Metadata for offline signers</a>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#motivation">Motivation</a>
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#solution-requirements">Solution requirements</a></li>
+</ul>
+</li>
+<li><a href="#stakeholders">Stakeholders</a></li>
+<li><a href="#explanation">Explanation</a>
+<ul>
+<li><a href="#metadata-descriptor">Metadata descriptor</a></li>
+<li><a href="#metadata-modularization">Metadata modularization</a></li>
+<li><a href="#merging-protocol">Merging protocol</a></li>
+<li><a href="#complete-binary-merkle-tree-construction-protocol">Complete Binary Merkle Tree construction protocol</a></li>
+<li><a href="#digest">Digest</a></li>
+<li><a href="#shortening">Shortening</a></li>
+<li><a href="#transmission">Transmission</a></li>
+<li><a href="#offline-verification">Offline verification</a></li>
+<li><a href="#chain-verification">Chain verification</a></li>
+</ul>
+</li>
+<li><a href="#drawbacks">Drawbacks</a>
+<ul>
+<li><a href="#increased-transaction-size">Increased transaction size</a></li>
+<li><a href="#transition-overhead">Transition overhead</a></li>
+</ul>
+</li>
+<li><a href="#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="#performance">Performance</a></li>
+<li><a href="#ergonomics">Ergonomics</a></li>
+<li><a href="#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0000-metadata-for-offline-signers"><a class="header" href="#rfc-0000-metadata-for-offline-signers">RFC-0000: Metadata for offline signers</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>2023-10-31</td></tr>
@@ -197,9 +242,9 @@
 <p>As of now, there is no working solution for (1), as the whole metadata has to be passed to the device. On top of this, the solution for (2) heavily relies on a trusted party managing keys and ensuring metadata is indeed authentic: creating poorly decentralized points of potential failure.</p>
 <h3 id="solution-requirements"><a class="header" href="#solution-requirements">Solution requirements</a></h3>
 <h4 id="include-metadata-digest-into-signature"><a class="header" href="#include-metadata-digest-into-signature">Include metadata digest into signature</a></h4>
-<p>Some cryptographically strong digest of metadata MUST be included into signable blob. There SHALL NOT be storage overhead for this blob, nor computational overhead, on the node side; thus MUST be a constant within given runtime version, deterministically defined by metadata.</p>
+<p>Some cryptographically strong digest of metadata MAY be included into signable blob. There SHALL NOT be storage overhead for this blob, nor computational overhead, on the node side; thus MUST be a constant within given runtime version, deterministically defined by metadata.</p>
 <ul>
-<li>Metadata information that could be used in signable extrinsic decoding MUST be be included in digest;</li>
+<li>Metadata information that could be used in signable extrinsic decoding MAY be be included in digest, its inclusion MUST be indicated in signed extensions;</li>
 <li>Digest MUST be deterministic with respect to metadata;</li>
 <li>Digest MUST be cryptographically strong against pre-image, both first and second;</li>
 <li>Extra-metadata information necessary for extrinsic decoding and constant within runtime version MUST be included in digest;</li>
@@ -246,14 +291,21 @@
 <h3 id="shortening"><a class="header" href="#shortening">Shortening</a></h3>
 <p>For shortening, an attempt to decode transaction completely using provided metadata is performed with the same algorithm that would be used on the cold side. All chunks are associated with their leaf indices. An example of this protocol is proposed in <a href="https://github.com/Alzymologist/metadata-shortener">metadata-shortener</a> that is based on <a href="https://github.com/Alzymologist/substrate-parser">substrate-parser</a> decoding protocol; any decoding protocol could be used here as long as cold signer's design finds it appropriate for given security model.</p>
 <h3 id="transmission"><a class="header" href="#transmission">Transmission</a></h3>
-<p>Shortened metadata chunks MAY be trasmitted into cold device together with Merkle proof in its entirety or in parts, depending on memory capabilities of the cold device and it ability to reconstruct larger fraction of tree. This document does not specify the manner of transmission. The order of metadata chunks MAY be arbitrary, the only requirement is that indices of leaf nodes in Merkle tree corresponding to chunks MUST be communicated.</p>
+<p>Shortened metadata chunks MAY be trasmitted into cold device together with Merkle proof in its entirety or in parts, depending on memory capabilities of the cold device and it ability to reconstruct larger fraction of tree. This document does not specify the manner of transmission. The order of metadata chunks MAY be arbitrary, the only requirement is that indices of leaf nodes in Merkle tree corresponding to chunks MUST be communicated. Community MAY handle proof format standartization independently.</p>
 <h3 id="offline-verification"><a class="header" href="#offline-verification">Offline verification</a></h3>
 <p>The transmitted metadata chunks are hashed together with proof lemmas to obtain root that MAY be transmitted along with the rest of payload. Verification that the root transmitted with message matches with calculated root is optional; the transmitted root SHOULD NOT be used in signature, calculated root MUST be used; however, there is no mechanism to enforce this - it should be done during cold signers code audit.</p>
 <h3 id="chain-verification"><a class="header" href="#chain-verification">Chain verification</a></h3>
-<p>The root of metadata computed by cold device MUST be included into Signed Extensions; this way the transaction will pass as valid iff hash of metadata as seen by cold storage device is identical to consensus hash of metadata, ensuring fair signing protocol.</p>
+<p>The root of metadata computed by cold device MAY be included into Signed Extensions; this way the transaction will pass as valid iff hash of metadata as seen by cold storage device is identical to consensus hash of metadata, ensuring fair signing protocol.</p>
+<p>The Signed Extension representing metadata digest is a single byte representing both digest vaule inclusion and shortening protocol version; this MUST be included in Signed Extensions set. Depending on its value, a digest value is included as <code>additionalSigned</code> to signature computation according to following specification:</p>
+<div class="table-wrapper"><table><thead><tr><th>signed extension value</th><th>digest value</th><th>comment</th></tr></thead><tbody>
+<tr><td><code>0x00</code></td><td></td><td>digest is not included</td></tr>
+<tr><td><code>0x01</code></td><td>32-byte digest</td><td>this represents protocol version 1</td></tr>
+<tr><td><code>0x02</code> - <code>0xFF</code></td><td><em>reserved</em></td><td>reserved for future use</td></tr>
+</tbody></table>
+</div>
 <h2 id="drawbacks"><a class="header" href="#drawbacks">Drawbacks</a></h2>
 <h3 id="increased-transaction-size"><a class="header" href="#increased-transaction-size">Increased transaction size</a></h3>
-<p>Depending on implementation details, an extra byte may be needed to indicate whether the new version of metadata verification was used; this may be needed during transaction period, or the same byte may store the version of metadata hashing protocol</p>
+<p>A 1-byte increase in transaction size due to signed extension value. Digest is not included in transferred transaction, only in signing process.</p>
 <h3 id="transition-overhead"><a class="header" href="#transition-overhead">Transition overhead</a></h3>
 <p>Some slightly out of spec systems might experience breaking changes as new content of signed extensions is added. It is important to note, that there is no real overhead in processing time nor complexity, as the metadata checking mechanism is voluntary. The only drawbacks are expected for tools that do not implement MetadataV14 self-descripting features.</p>
 <h2 id="testing-security-and-privacy"><a class="header" href="#testing-security-and-privacy">Testing, Security, and Privacy</a></h2>

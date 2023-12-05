@@ -175,6 +175,81 @@
                 <div id="content" class="content">
                     <main>
                         <p><a href="https://github.com/polkadot-fellows/RFCs/pull/26">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#rfc-0026-sassafras-consensus-protocol">RFC-0026: Sassafras Consensus Protocol</a>
+<ul>
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#1-motivation">1. Motivation</a>
+<ul>
+<li><a href="#11-relevance-to-implementors">1.1. Relevance to Implementors</a></li>
+<li><a href="#12-supporting-sassafras-for-polkadot">1.2. Supporting Sassafras for Polkadot</a></li>
+</ul>
+</li>
+<li><a href="#2-stakeholders">2. Stakeholders</a>
+<ul>
+<li><a href="#21-developers-of-blockchains">2.1. Developers of Blockchains</a></li>
+<li><a href="#22-contributors-to-the-polkadot-ecosystem">2.2. Contributors to the Polkadot Ecosystem</a></li>
+</ul>
+</li>
+<li><a href="#3-notation-and-convention">3. Notation and Convention</a>
+<ul>
+<li><a href="#31-data-structures-definitions-and-encoding">3.1. Data Structures Definitions and Encoding</a></li>
+<li><a href="#32-pseudo-code">3.2. Pseudo-Code</a></li>
+<li><a href="#33-incremental-introduction-of-types-and-functions">3.3. Incremental Introduction of Types and Functions</a></li>
+</ul>
+</li>
+<li><a href="#4-protocol-introduction">4. Protocol Introduction</a>
+<ul>
+<li><a href="#41-submission-of-candidate-tickets">4.1. Submission of Candidate Tickets</a></li>
+<li><a href="#42-validation-of-candidate-tickets">4.2. Validation of Candidate Tickets</a></li>
+<li><a href="#43-tickets-and-slots-binding">4.3. Tickets and Slots Binding</a></li>
+<li><a href="#44-claim-of-ticket-ownership">4.4. Claim of Ticket Ownership</a></li>
+<li><a href="#45-validation-of-ticket-ownership">4.5. Validation of Ticket Ownership</a></li>
+</ul>
+</li>
+<li><a href="#5-bandersnatch-vrfs-cryptographic-primitives">5. Bandersnatch VRFs Cryptographic Primitives</a>
+<ul>
+<li><a href="#51-vrf-input">5.1. VRF Input</a></li>
+<li><a href="#52-vrf-output">5.2. VRF Output</a></li>
+<li><a href="#53-vrf-signature-data">5.3. VRF Signature Data</a></li>
+<li><a href="#54-vrf-signature">5.4. VRF Signature</a></li>
+</ul>
+</li>
+<li><a href="#6-sassafras-protocol">6. Sassafras Protocol</a>
+<ul>
+<li><a href="#61-epochs-first-block">6.1. Epoch's First Block</a></li>
+<li><a href="#62-creation-and-submission-of-candidate-tickets">6.2. Creation and Submission of Candidate Tickets</a></li>
+<li><a href="#63-validation-of-candidate-tickets">6.3. Validation of candidate tickets</a></li>
+<li><a href="#64-ticket-slot-assignment">6.4. Ticket-Slot assignment</a></li>
+<li><a href="#65-claim-of-ticket-ownership-during-block-production">6.5. Claim of ticket ownership during block production</a></li>
+<li><a href="#66-validation-of-the-claim-during-block-verification">6.6. Validation of the claim during block verification</a></li>
+<li><a href="#661-primary-claim-method-verification">6.6.1. Primary Claim Method Verification</a></li>
+<li><a href="#67-randomness-accumulator">6.7. Randomness Accumulator</a></li>
+</ul>
+</li>
+<li><a href="#7-drawbacks">7. Drawbacks</a></li>
+<li><a href="#8-testing-security-and-privacy">8. Testing, Security, and Privacy</a></li>
+<li><a href="#9-performance-ergonomics-and-compatibility">9. Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="#91-performance">9.1. Performance</a></li>
+<li><a href="#92-ergonomics">9.2. Ergonomics</a></li>
+<li><a href="#93-compatibility">9.3. Compatibility</a></li>
+</ul>
+</li>
+<li><a href="#10-prior-art-and-references">10. Prior Art and References</a></li>
+<li><a href="#11-unresolved-questions">11. Unresolved Questions</a></li>
+<li><a href="#12-future-directions-and-related-material">12. Future Directions and Related Material</a>
+<ul>
+<li><a href="#121-interactions-with-the-runtime">12.1. Interactions with the Runtime</a></li>
+<li><a href="#122-deployment-strategies">12.2. Deployment Strategies</a></li>
+<li><a href="#123-zk-snark-srs-initialization-ceremony">12.3. ZK-SNARK SRS Initialization Ceremony.</a></li>
+<li><a href="#124-anonymous-submission-of-tickets">12.4. Anonymous Submission of Tickets.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0026-sassafras-consensus-protocol"><a class="header" href="#rfc-0026-sassafras-consensus-protocol">RFC-0026: Sassafras Consensus Protocol</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>September 06, 2023</td></tr>

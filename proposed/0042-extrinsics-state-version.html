@@ -175,6 +175,29 @@
                 <div id="content" class="content">
                     <main>
                         <p><a href="https://github.com/polkadot-fellows/RFCs/pull/42">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#rfc-0042-add-system-version-that-replaces-stateversion-on-runtimeversion">RFC-0042: Add System version that replaces StateVersion on RuntimeVersion</a>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#stakeholders">Stakeholders</a></li>
+<li><a href="#explanation">Explanation</a></li>
+<li><a href="#drawbacks">Drawbacks</a></li>
+<li><a href="#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="#performance">Performance</a></li>
+<li><a href="#ergonomics">Ergonomics</a></li>
+<li><a href="#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0042-add-system-version-that-replaces-stateversion-on-runtimeversion"><a class="header" href="#rfc-0042-add-system-version-that-replaces-stateversion-on-runtimeversion">RFC-0042: Add System version that replaces StateVersion on RuntimeVersion</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>25th October 2023</td></tr>
@@ -190,7 +213,9 @@ under <code>RuntimeVersion</code>,
 we would like to propose adding <code>system_version</code> that can be used to derive both storage and extrinsic state version.</p>
 <h2 id="motivation"><a class="header" href="#motivation">Motivation</a></h2>
 <p>Since the extrinsic state version is always <code>StateVersion::V0</code>, deriving extrinsic root requires full extrinsic data.
-For <code>Subspace</code> project, we have an enshrined rollups called <code>Domain</code> with optimistic verification and Fraud proofs are
+This would be problematic when we need to verify the extrinsics root if the extrinsic sizes are bigger. This problem is
+further explored in https://github.com/polkadot-fellows/RFCs/issues/19</p>
+<p>For <code>Subspace</code> project, we have an enshrined rollups called <code>Domain</code> with optimistic verification and Fraud proofs are
 used to detect malicious behavior.
 One of the <code>Fraud proof</code> variant is to derive <code>Domain</code> block extrinsic root on <code>Subspace</code>'s consensus chain.
 Since <code>StateVersion::V0</code> requires full extrinsic data, we are forced to pass all the extrinsics through the Fraud proof.

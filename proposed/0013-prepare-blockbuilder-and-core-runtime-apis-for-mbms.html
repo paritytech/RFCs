@@ -175,6 +175,35 @@
                 <div id="content" class="content">
                     <main>
                         <p><a href="https://github.com/polkadot-fellows/RFCs/pull/13">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#rfc-0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms">RFC-0013: Prepare <code>BlockBuilder</code> and <code>Core</code> runtime APIs for MBMs</a>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#stakeholders">Stakeholders</a></li>
+<li><a href="#explanation">Explanation</a>
+<ul>
+<li><a href="#coreinitialize_block"><code>Core::initialize_block</code></a></li>
+<li><a href="#blockbuilderlast_inherent"><code>BlockBuilder::last_inherent</code></a></li>
+<li><a href="#combined">Combined</a></li>
+</ul>
+</li>
+<li><a href="#drawbacks">Drawbacks</a></li>
+<li><a href="#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="#performance">Performance</a></li>
+<li><a href="#ergonomics">Ergonomics</a></li>
+<li><a href="#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms"><a class="header" href="#rfc-0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms">RFC-0013: Prepare <code>BlockBuilder</code> and <code>Core</code> runtime APIs for MBMs</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>July 24, 2023</td></tr>

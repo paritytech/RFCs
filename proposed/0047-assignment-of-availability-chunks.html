@@ -175,6 +175,39 @@
                 <div id="content" class="content">
                     <main>
                         <p><a href="https://github.com/polkadot-fellows/RFCs/pull/47">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#rfc-0047-assignment-of-availability-chunks-to-validators">RFC-0047: Assignment of availability chunks to validators</a>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#stakeholders">Stakeholders</a></li>
+<li><a href="#explanation">Explanation</a>
+<ul>
+<li><a href="#systematic-erasure-codes">Systematic erasure codes</a></li>
+<li><a href="#availability-recovery-at-present">Availability recovery at present</a></li>
+<li><a href="#availability-recovery-from-systematic-chunks">Availability recovery from systematic chunks</a></li>
+<li><a href="#chunk-assignment-function">Chunk assignment function</a></li>
+<li><a href="#network-protocol">Network protocol</a></li>
+<li><a href="#upgrade-path">Upgrade path</a></li>
+</ul>
+</li>
+<li><a href="#drawbacks">Drawbacks</a></li>
+<li><a href="#testing-security-and-privacy">Testing, Security, and Privacy</a></li>
+<li><a href="#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="#performance">Performance</a></li>
+<li><a href="#ergonomics">Ergonomics</a></li>
+<li><a href="#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="#future-directions-and-related-material">Future Directions and Related Material</a></li>
+<li><a href="#appendix-a">Appendix A</a></li>
+</ul>
+</li>
+</ul>
 <h1 id="rfc-0047-assignment-of-availability-chunks-to-validators"><a class="header" href="#rfc-0047-assignment-of-availability-chunks-to-validators">RFC-0047: Assignment of availability chunks to validators</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>03 November 2023</td></tr>
@@ -212,13 +245,8 @@ without running the resource-intensive and time-consuming reconstruction algorit
 	n_validators: usize,
 	chunks: Vec&lt;&amp;[u8]&gt;,
 ) -&gt; T {
-	let mut threshold = (n_validators - 1) / 3;
-	if !is_power_of_two(threshold) {
-		threshold = next_lower_power_of_2(threshold);
-	}
-
+	let threshold = systematic_threshold(n_validators);
 	let shard_len = chunks.iter().next().unwrap().len();
-
 	let mut systematic_bytes = Vec::with_capacity(shard_len * threshold);
 
 	for i in (0..shard_len).step_by(2) {
@@ -229,6 +257,15 @@ without running the resource-intensive and time-consuming reconstruction algorit
 	}
 
 	Decode::decode(&amp;mut &amp;systematic_bytes[..]).unwrap()
+}
+
+fn systematic_threshold(n_validators: usize) -&gt; usize {
+	let mut threshold = (n_validators - 1) / 3;
+	if !is_power_of_two(threshold) {
+		threshold = next_lower_power_of_2(threshold);
+	}
+
+	threshold
 }
 <span class="boring">}</span></code></pre></pre>
 <p>In a nutshell, it performs a column-wise concatenation with 2-byte chunks.
@@ -259,17 +296,20 @@ performance results.</p>
 should hold them, before falling back to recovering from regular chunks, as before.</p>
 <p>A re-encoding step is still needed for verifying the erasure root, so the erasure coding overhead cannot be completely
 brought down to 0.</p>
+<p>Not being able to retrieve even one systematic chunk would make systematic reconstruction impossible. Therefore, backers
+can be used as a backup to retrieve a couple of missing systematic chunks, before falling back to retrieving regular
+chunks.</p>
 <h3 id="chunk-assignment-function"><a class="header" href="#chunk-assignment-function">Chunk assignment function</a></h3>
 <h4 id="properties"><a class="header" href="#properties">Properties</a></h4>
 <p>The function that decides the chunk index for a validator should be parameterized by at least
-<code>(validator_index, relay_parent, core_index)</code>
+<code>(validator_index, block_number, core_index)</code>
 and have the following properties:</p>
 <ol>
 <li>deterministic</li>
 <li>relatively quick to compute and resource-efficient.</li>
 <li>when considering the other params besides <code>validator_index</code> as fixed, the function should describe a permutation
 of the chunk indices</li>
-<li>considering <code>relay_parent</code> as a fixed argument, the validators that map to the first N/3 chunk indices should
+<li>considering <code>block_number</code> as a fixed argument, the validators that map to the first N/3 chunk indices should
 have as little overlap as possible for different paras scheduled on that relay parent.</li>
 </ol>
 <p>In other words, we want a uniformly distributed, deterministic mapping from <code>ValidatorIndex</code> to <code>ChunkIndex</code> per block
@@ -295,7 +335,7 @@ or governance call.</p>
 }
 <span class="boring">}</span></code></pre></pre>
 <h3 id="network-protocol"><a class="header" href="#network-protocol">Network protocol</a></h3>
-<p>The request-response <code>/polkadot/req_chunk</code> protocol will be bumped to a new version (from v1 to v2).
+<p>The request-response <code>/req_chunk</code> protocol will be bumped to a new version (from v1 to v2).
 For v1, the request and response payloads are:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -348,28 +388,42 @@ it received the right chunk.
 In practice, this is desirable during availability-distribution and systematic chunk recovery. However, regular
 recovery may not check this index, which is particularly useful when participating in disputes that don't allow
 for easy access to the validator-&gt;chunk mapping. See <a href="#appendix-a">Appendix A</a> for more details.</p>
+<p>In any case, the requester MUST verify the chunk's proof using the provided index.</p>
+<p>During availability-recovery, given that the requester may not know (if the mapping is not available) whether the received chunk corresponds to
+the requested validator index, it has to keep track of received chunk indices and ignore duplicates. Such duplicates
+should be considered the same as an invalid/garbage response (drop it and move on to the next validator - we can't
+punish via reputation changes, because we don't know which validator misbehaved).</p>
 <h3 id="upgrade-path"><a class="header" href="#upgrade-path">Upgrade path</a></h3>
 <h4 id="step-1-enabling-new-network-protocol"><a class="header" href="#step-1-enabling-new-network-protocol">Step 1: Enabling new network protocol</a></h4>
-<p>In the beginning, both <code>/polkadot/req_chunk/1</code> and <code>/polkadot/req_chunk/2</code> will be supported, until all validators and
-collators have upgraded to use the new version. V1 will be considered deprecated.
+<p>In the beginning, both <code>/req_chunk/1</code> and <code>/req_chunk/2</code> will be supported, until all validators and
+collators have upgraded to use the new version. V1 will be considered deprecated. During this step, the mapping will
+still be 1:1 (<code>ValidatorIndex</code> == <code>ChunkIndex</code>), regardless of protocol.
 Once all nodes are upgraded, a new release will be cut that removes the v1 protocol. Only once all nodes have upgraded
 to this version will step 2 commence.</p>
 <h4 id="step-2-enabling-the-new-validator-chunk-mapping"><a class="header" href="#step-2-enabling-the-new-validator-chunk-mapping">Step 2: Enabling the new validator-&gt;chunk mapping</a></h4>
 <p>Considering that the Validator-&gt;Chunk mapping is critical to para consensus, the change needs to be enacted atomically
-via governance, only after all validators have upgraded the node to a version that is aware of this mapping.
-It needs to be explicitly stated that after the runtime upgrade and governance enactment, validators that run older
-client versions that don't support this mapping will not be able to participate in parachain consensus.</p>
-<p>Additionally, an error will be logged when starting a validator with an older version, after the runtime was upgraded
-and the feature enabled.</p>
-<p>On the other hand, collators will not be required to upgrade, as regular chunk recovery will work as before, granted
-that version 1 of the networking protocol has been removed.  However, they are encouraged to upgrade in order to take
-advantage of the faster systematic recovery.</p>
+via governance, only after all validators have upgraded the node to a version that is aware of this mapping,
+functionality-wise.
+It needs to be explicitly stated that after the governance enactment, validators that run older client versions that
+don't support this mapping will not be able to participate in parachain consensus.</p>
+<p>Additionally, an error will be logged when starting a validator with an older version, after the feature was enabled.</p>
+<p>On the other hand, collators will not be required to upgrade in this step, as regular chunk recovery will work as before,
+granted that version 1 of the networking protocol has been removed. Note that collators only perform
+availability-recovery in rare, adversarial scenarios, so it is fine to not optimise for this case and let them upgrade
+at their own pace.</p>
+<p>To support enabling this feature via the runtime, we will use the <code>NodeFeatures</code> bitfield of the <code>HostConfiguration</code>
+struct (added in <code>https://github.com/paritytech/polkadot-sdk/pull/2177</code>). Adding and enabling a feature
+with this scheme does not require a runtime upgrade, but only a referendum that issues a
+<code>Configuration::set_node_feature</code> extrinsic. Once the feature is enabled and new configuration is live, the
+validator-&gt;chunk mapping ceases to be a 1:1 mapping and systematic recovery may begin.</p>
 <h2 id="drawbacks"><a class="header" href="#drawbacks">Drawbacks</a></h2>
 <ul>
 <li>Getting access to the <code>core_index</code> that used to be occupied by a candidate in some parts of the dispute protocol is
 very complicated (See <a href="#appendix-a">appendix A</a>). This RFC assumes that availability-recovery processes initiated during
 disputes will only use regular recovery, as before. This is acceptable since disputes are rare occurrences in practice
-and is something that can be optimised later, if need be.</li>
+and is something that can be optimised later, if need be. Adding the <code>core_index</code> to the <code>CandidateReceipt</code> would
+mitigate this problem and will likely be needed in the future for CoreJam.
+<a href="https://forum.polkadot.network/t/pre-rfc-discussion-candidate-receipt-format-v2/3738">Related discussion about <code>CandidateReceipt</code></a></li>
 <li>It's a breaking change that requires all validators and collators to upgrade their node version.</li>
 </ul>
 <h2 id="testing-security-and-privacy"><a class="header" href="#testing-security-and-privacy">Testing, Security, and Privacy</a></h2>
@@ -379,14 +433,14 @@ This proposal doesn't affect security or privacy.</p>
 <h3 id="performance"><a class="header" href="#performance">Performance</a></h3>
 <p>This is a necessary data availability optimisation, as reed-solomon erasure coding has proven to be a top consumer of
 CPU time in polkadot as we scale up the parachain block size and number of availability cores.</p>
-<p>With this optimisation, preliminary performance results show that CPU time used for reed-solomon coding can be halved
-and total POV recovery time decrease by 80% for large POVs. See more
+<p>With this optimisation, preliminary performance results show that CPU time used for reed-solomon coding/decoding can be
+halved and total POV recovery time decrease by 80% for large POVs. See more
 <a href="https://github.com/paritytech/polkadot-sdk/issues/598#issuecomment-1792007099">here</a>.</p>
 <h3 id="ergonomics"><a class="header" href="#ergonomics">Ergonomics</a></h3>
 <p>Not applicable.</p>
 <h3 id="compatibility"><a class="header" href="#compatibility">Compatibility</a></h3>
 <p>This is a breaking change. See <a href="#upgrade-path">upgrade path</a> section above.
-All validators need to have upgraded their node versions before the feature will be enabled via a runtime upgrade and
+All validators need to have upgraded their node versions before the feature will be enabled via a runtime upgrade
 governance call.</p>
 <h2 id="prior-art-and-references"><a class="header" href="#prior-art-and-references">Prior Art and References</a></h2>
 <p>See comments on the <a href="https://github.com/paritytech/polkadot-sdk/issues/598">tracking issue</a> and the
