@@ -21,7 +21,7 @@ module.exports = async ({github, context}) => {
         if (!filename.endsWith(".md")) continue;
         const text = "**Table of Contents**\n\n<\!-- toc -->\n"
           + fs.readFileSync(dirPath + filename)
-        // Source link is already there (with a link to PR, created previously). So we append here.
+        // Source link is already there (with a link to PR). So we append here.
         fs.appendFileSync(`mdbook/src/${status}/${filename}`, text)
       }
     }
