@@ -21,7 +21,7 @@ module.exports = async ({github, context}) => {
     const appendRfcToSummary = (file) => {
         const text = fs.readFileSync(file)
         const title = text.toString().split(/\n/)
-            .find(line => line.startsWith("# "))
+            .find(line => line.startsWith("# ") || line.startsWith(" # "))
             .replace("# ", "")
         // Relative path, without the src prefix (format required by mdbook)
         const relativePath = file.replace("mdbook/src/", "")
