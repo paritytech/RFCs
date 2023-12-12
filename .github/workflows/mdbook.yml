@@ -23,7 +23,7 @@ jobs:
         with:
           script: |
             const script = require('.github/download-rfc-prs.js')
-            console.log(await script({github, context}))
+            await script({github, context})
 
         # Create the proposed RFC markdown files from the patches gather in the step above.
       - run: |
@@ -46,6 +46,12 @@ jobs:
             done;
             cd -
           done;
+      - name: Build the mdbook SUMMARY.md
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const script = require('.github/build-mdbook-summary.js')
+            await script({github, context})
       - name: Setup mdBook binary
         uses: peaceiris/actions-mdbook@adeb05db28a0c0004681db83893d56c0388ea9ea # v1.2.0
         with:
