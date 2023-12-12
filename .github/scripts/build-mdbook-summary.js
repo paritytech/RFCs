@@ -5,9 +5,10 @@
  */
 
 const fs = require('fs');
+const summaryPath = "mdbook/src/SUMMARY.md"
 
 module.exports = async ({github, context}) => {
-    fs.copyFileSync("mdbook/SUMMARY_preface.md", "mdbook/src/SUMMARY.md") // Starting point.
+    fs.writeFileSync(summaryPath, "# Summary\n\n[Introduction](introduction.md)\n") // Starting point.
 
     const appendRfcsToSummary = (dirPath) => {
       for (const filename of fs.readdirSync(dirPath)) {
@@ -19,18 +20,19 @@ module.exports = async ({github, context}) => {
             .replace("# ", "")
         // Relative path, without the src prefix (format required by mdbook)
         const relativePath = filePath.replace("mdbook/src/", "")
-        fs.appendFileSync("mdbook/src/SUMMARY.md", `- [${title}](${relativePath})\n`)
+        fs.appendFileSync(summaryPath, `- [${title}](${relativePath})\n`)
       }
     }
 
+    fs.appendFileSync(summaryPath, "\n---\n\n# Approved\n\n")
     appendRfcsToSummary("mdbook/src/approved/")
 
-    fs.appendFileSync("mdbook/src/SUMMARY.md", "\n---\n\n# Newly Proposed\n\n")
+    fs.appendFileSync(summaryPath, "\n---\n\n# Newly Proposed\n\n")
     appendRfcsToSummary("mdbook/src/new/")
 
-    fs.appendFileSync("mdbook/src/SUMMARY.md", "\n---\n\n# Proposed\n\n")
+    fs.appendFileSync(summaryPath, "\n---\n\n# Proposed\n\n")
     appendRfcsToSummary("mdbook/src/proposed/")
 
-    fs.appendFileSync("mdbook/src/SUMMARY.md", "\n---\n\n# Stale\n\n")
+    fs.appendFileSync(summaryPath, "\n---\n\n# Stale\n\n")
     appendRfcsToSummary("mdbook/src/stale/")
 }
