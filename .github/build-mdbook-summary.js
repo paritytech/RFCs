@@ -18,36 +18,28 @@ module.exports = async ({github, context}) => {
         fs.writeFileSync(`mdbook/src/approved/${file}`, text)
     }
 
-    const appendRfcToSummary = (file) => {
-        const text = fs.readFileSync(file)
+    const appendRfcsToSummary = (dirPath) => {
+      for (const filename of fs.readdirSync(dirPath)) {
+        if (!filename.endsWith(".md")) continue;
+        const filePath = dirPath + filename
+        const text = fs.readFileSync(filePath)
         const title = text.toString().split(/\n/)
             .find(line => line.startsWith("# ") || line.startsWith(" # "))
             .replace("# ", "")
         // Relative path, without the src prefix (format required by mdbook)
-        const relativePath = file.replace("mdbook/src/", "")
+        const relativePath = filePath.replace("mdbook/src/", "")
         fs.appendFileSync("mdbook/src/SUMMARY.md", `- [${title}](${relativePath})\n`)
+      }
     }
 
-    for (const file of fs.readdirSync("mdbook/src/approved/")) {
-        if (!file.endsWith(".md")) continue;
-        appendRfcToSummary("mdbook/src/approved/" + file)
-    }
+    appendRfcsToSummary("mdbook/src/approved/")
 
     fs.appendFileSync("mdbook/src/SUMMARY.md", "\n---\n\n# Newly Proposed\n\n")
-    for (const file of fs.readdirSync("mdbook/src/new/")) {
-        if (!file.endsWith(".md")) continue;
-        appendRfcToSummary("mdbook/src/new/" + file)
-    }
+    appendRfcsToSummary("mdbook/src/new/")
 
     fs.appendFileSync("mdbook/src/SUMMARY.md", "\n---\n\n# Proposed\n\n")
-    for (const file of fs.readdirSync("mdbook/src/proposed/")) {
-        if (!file.endsWith(".md")) continue;
-        appendRfcToSummary("mdbook/src/proposed/" + file)
-    }
+    appendRfcsToSummary("mdbook/src/proposed/")
 
     fs.appendFileSync("mdbook/src/SUMMARY.md", "\n---\n\n# Stale\n\n")
-    for (const file of fs.readdirSync("mdbook/src/stale/")) {
-        if (!file.endsWith(".md")) continue;
-        appendRfcToSummary("mdbook/src/stale/" + file)
-    }
+    appendRfcsToSummary("mdbook/src/stale/")
 }
