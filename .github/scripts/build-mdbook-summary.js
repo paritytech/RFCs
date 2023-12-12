@@ -9,15 +9,6 @@ const fs = require('fs');
 module.exports = async ({github, context}) => {
     fs.copyFileSync("mdbook/SUMMARY_preface.md", "mdbook/src/SUMMARY.md") // Starting point.
 
-    // Copy the approved (already-merged) RFCs markdown files, first adding a source link at the top and a TOC.
-    for (const file of fs.readdirSync("text/")) {
-        if (!file.endsWith(".md")) continue;
-        const text = `[(source)](https://github.com/polkadot-fellows/RFCs/blob/main/text/${file})\n`
-          + "**Table of Contents**\n\n<\!-- toc -->\n"
-          + fs.readFileSync(`text/${file}`)
-        fs.writeFileSync(`mdbook/src/approved/${file}`, text)
-    }
-
     const appendRfcsToSummary = (dirPath) => {
       for (const filename of fs.readdirSync(dirPath)) {
         if (!filename.endsWith(".md")) continue;
