@@ -45,6 +45,7 @@ module.exports = async ({github, context}) => {
       );
       if (addedMarkdownFiles.length !== 1) continue;
       const [rfcFile] = addedMarkdownFiles;
+      console.log(JSON.stringify(rfcFile))
 
       const isNew = new Date(pr.created_at) > dateDaysBefore(NEW_RFC_PERIOD_DAYS)
       const isStale = new Date(pr.updated_at) < dateDaysBefore(STALE_RFC_PERIOD_DAYS)
