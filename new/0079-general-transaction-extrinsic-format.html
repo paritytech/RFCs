@@ -4,7 +4,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>RFC-0042: Add System version that replaces StateVersion on RuntimeVersion - Polkadot Fellowship RFCs</title>
+        <title>RFC-0079: General transactions in extrinsic format - Polkadot Fellowship RFCs</title>
 
 
         <!-- Custom HTML head -->
@@ -90,7 +90,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Newly Proposed</li><li class="chapter-item expanded "><a href="../new/0079-general-transaction-extrinsic-format.html">RFC-0079: General transactions in extrinsic format</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Proposed</li><li class="chapter-item expanded "><a href="../proposed/0004-remove-unnecessary-allocator-usage.html">RFC-0004: Remove the host-side runtime memory allocator</a></li><li class="chapter-item expanded "><a href="../proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html">RFC-0013: Prepare Core runtime API for MBMs</a></li><li class="chapter-item expanded "><a href="../proposed/0045-nft-deposits-asset-hub.html">RFC-0045: Lowering NFT Deposits on Asset Hub</a></li><li class="chapter-item expanded "><a href="../proposed/0046-metadata-for-offline-signers.html">RFC-0046: Metadata for Offline Signers</a></li><li class="chapter-item expanded "><a href="../proposed/0066-add-smartcontracts-to-assethub.html">RFC-0066: Add EVM+ink! Contracts Pallets to Asset Hub for Polkadot</a></li><li class="chapter-item expanded "><a href="../proposed/0070-x-track-kusamanetwork.html">RFC-0070: X Track for @kusamanetwork</a></li><li class="chapter-item expanded "><a href="../proposed/0073-referedum-deposit-track.html">RFC-0073: Decision Deposit Referendum Track</a></li><li class="chapter-item expanded "><a href="../proposed/0074-stateful-multisig-pallet.html">RFC-0074: Stateful Multisig Pallet</a></li><li class="chapter-item expanded "><a href="../proposed/0076-increase-max-length-of-identity-raw-data-values.html">RFC-0076: Increase maximum length of identity raw data values from 32 bytes</a></li><li class="chapter-item expanded "><a href="../proposed/0077-increase-max-length-of-identity-pgp-fingerprint-value.html">RFC-0077: Increase maximum length of identity PGP fingerprint values from 20 bytes</a></li><li class="chapter-item expanded "><a href="../proposed/0078-merkleized-metadata.html">RFC-0078: Merkleized Metadata</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Approved</li><li class="chapter-item expanded "><a href="../approved/0001-agile-coretime.html">RFC-1: Agile Coretime</a></li><li class="chapter-item expanded "><a href="../approved/0005-coretime-interface.html">RFC-5: Coretime Interface</a></li><li class="chapter-item expanded "><a href="../approved/0007-system-collator-selection.html">RFC-0007: System Collator Selection</a></li><li class="chapter-item expanded "><a href="../approved/0008-parachain-bootnodes-dht.html">RFC-0008: Store parachain bootnodes in relay chain DHT</a></li><li class="chapter-item expanded "><a href="../approved/0012-process-for-adding-new-collectives.html">RFC-0012: Process for Adding New System Collectives</a></li><li class="chapter-item expanded "><a href="../approved/0014-improve-locking-mechanism-for-parachains.html">RFC-0014: Improve locking mechanism for parachains</a></li><li class="chapter-item expanded "><a href="../approved/0022-adopt-encointer-runtime.html">RFC-0022: Adopt Encointer Runtime</a></li><li class="chapter-item expanded "><a href="../approved/0032-minimal-relay.html">RFC-0032: Minimal Relay</a></li><li class="chapter-item expanded "><a href="../approved/0042-extrinsics-state-version.html" class="active">RFC-0042: Add System version that replaces StateVersion on RuntimeVersion</a></li><li class="chapter-item expanded "><a href="../approved/0043-storage-proof-size-hostfunction.html">RFC-0043: Introduce storage_proof_size Host Function for Improved Parachain Block Utilization</a></li><li class="chapter-item expanded "><a href="../approved/0047-assignment-of-availability-chunks.html">RFC-0047: Assignment of availability chunks to validators</a></li><li class="chapter-item expanded "><a href="../approved/0050-fellowship-salaries.html">RFC-0050: Fellowship Salaries</a></li><li class="chapter-item expanded "><a href="../approved/0056-one-transaction-per-notification.html">RFC-0056: Enforce only one transaction per notification</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Stale</li><li class="chapter-item expanded "><a href="../stale/0006-dynamic-pricing-for-bulk-coretime-sales.html">RFC-0006: Dynamic Pricing for Bulk Coretime Sales</a></li><li class="chapter-item expanded "><a href="../stale/0009-improved-net-light-client-requests.html">RFC-0009: Improved light client requests networking protocol</a></li><li class="chapter-item expanded "><a href="../stale/0015-market-design-revisit.html">RFC-0015: Market Design Revisit</a></li><li class="chapter-item expanded "><a href="../stale/0020-treasurer-track-confirmation-period-duration-modification.html">RFC-0020: Treasurer Track Confirmation Period Duration Modification</a></li><li class="chapter-item expanded "><a href="../stale/0026-sassafras-consensus.html">RFC-0026: Sassafras Consensus Protocol</a></li><li class="chapter-item expanded "><a href="../stale/0034-xcm-absolute-location-account-derivation.html">RFC-34: XCM Absolute Location Account Derivation</a></li><li class="chapter-item expanded "><a href="../stale/0035-conviction-voting-delegation-modifications.html"> RFC-0035: Conviction Voting Delegation Modifications</a></li><li class="chapter-item expanded "><a href="../stale/0044-rent-based-registration.html">RFC-0044: Rent based registration model</a></li><li class="chapter-item expanded "><a href="../stale/0048-session-keys-runtime-api.html">RFC-0048: Generate ownership proof for SessionKeys</a></li><li class="chapter-item expanded "><a href="../stale/0054-remove-heap-pages.html">RFC-0054: Remove the concept of "heap pages" from the client</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Newly Proposed</li><li class="chapter-item expanded "><a href="../new/0079-general-transaction-extrinsic-format.html" class="active">RFC-0079: General transactions in extrinsic format</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Proposed</li><li class="chapter-item expanded "><a href="../proposed/0004-remove-unnecessary-allocator-usage.html">RFC-0004: Remove the host-side runtime memory allocator</a></li><li class="chapter-item expanded "><a href="../proposed/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html">RFC-0013: Prepare Core runtime API for MBMs</a></li><li class="chapter-item expanded "><a href="../proposed/0045-nft-deposits-asset-hub.html">RFC-0045: Lowering NFT Deposits on Asset Hub</a></li><li class="chapter-item expanded "><a href="../proposed/0046-metadata-for-offline-signers.html">RFC-0046: Metadata for Offline Signers</a></li><li class="chapter-item expanded "><a href="../proposed/0066-add-smartcontracts-to-assethub.html">RFC-0066: Add EVM+ink! Contracts Pallets to Asset Hub for Polkadot</a></li><li class="chapter-item expanded "><a href="../proposed/0070-x-track-kusamanetwork.html">RFC-0070: X Track for @kusamanetwork</a></li><li class="chapter-item expanded "><a href="../proposed/0073-referedum-deposit-track.html">RFC-0073: Decision Deposit Referendum Track</a></li><li class="chapter-item expanded "><a href="../proposed/0074-stateful-multisig-pallet.html">RFC-0074: Stateful Multisig Pallet</a></li><li class="chapter-item expanded "><a href="../proposed/0076-increase-max-length-of-identity-raw-data-values.html">RFC-0076: Increase maximum length of identity raw data values from 32 bytes</a></li><li class="chapter-item expanded "><a href="../proposed/0077-increase-max-length-of-identity-pgp-fingerprint-value.html">RFC-0077: Increase maximum length of identity PGP fingerprint values from 20 bytes</a></li><li class="chapter-item expanded "><a href="../proposed/0078-merkleized-metadata.html">RFC-0078: Merkleized Metadata</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Approved</li><li class="chapter-item expanded "><a href="../approved/0001-agile-coretime.html">RFC-1: Agile Coretime</a></li><li class="chapter-item expanded "><a href="../approved/0005-coretime-interface.html">RFC-5: Coretime Interface</a></li><li class="chapter-item expanded "><a href="../approved/0007-system-collator-selection.html">RFC-0007: System Collator Selection</a></li><li class="chapter-item expanded "><a href="../approved/0008-parachain-bootnodes-dht.html">RFC-0008: Store parachain bootnodes in relay chain DHT</a></li><li class="chapter-item expanded "><a href="../approved/0012-process-for-adding-new-collectives.html">RFC-0012: Process for Adding New System Collectives</a></li><li class="chapter-item expanded "><a href="../approved/0014-improve-locking-mechanism-for-parachains.html">RFC-0014: Improve locking mechanism for parachains</a></li><li class="chapter-item expanded "><a href="../approved/0022-adopt-encointer-runtime.html">RFC-0022: Adopt Encointer Runtime</a></li><li class="chapter-item expanded "><a href="../approved/0032-minimal-relay.html">RFC-0032: Minimal Relay</a></li><li class="chapter-item expanded "><a href="../approved/0042-extrinsics-state-version.html">RFC-0042: Add System version that replaces StateVersion on RuntimeVersion</a></li><li class="chapter-item expanded "><a href="../approved/0043-storage-proof-size-hostfunction.html">RFC-0043: Introduce storage_proof_size Host Function for Improved Parachain Block Utilization</a></li><li class="chapter-item expanded "><a href="../approved/0047-assignment-of-availability-chunks.html">RFC-0047: Assignment of availability chunks to validators</a></li><li class="chapter-item expanded "><a href="../approved/0050-fellowship-salaries.html">RFC-0050: Fellowship Salaries</a></li><li class="chapter-item expanded "><a href="../approved/0056-one-transaction-per-notification.html">RFC-0056: Enforce only one transaction per notification</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Stale</li><li class="chapter-item expanded "><a href="../stale/0006-dynamic-pricing-for-bulk-coretime-sales.html">RFC-0006: Dynamic Pricing for Bulk Coretime Sales</a></li><li class="chapter-item expanded "><a href="../stale/0009-improved-net-light-client-requests.html">RFC-0009: Improved light client requests networking protocol</a></li><li class="chapter-item expanded "><a href="../stale/0015-market-design-revisit.html">RFC-0015: Market Design Revisit</a></li><li class="chapter-item expanded "><a href="../stale/0020-treasurer-track-confirmation-period-duration-modification.html">RFC-0020: Treasurer Track Confirmation Period Duration Modification</a></li><li class="chapter-item expanded "><a href="../stale/0026-sassafras-consensus.html">RFC-0026: Sassafras Consensus Protocol</a></li><li class="chapter-item expanded "><a href="../stale/0034-xcm-absolute-location-account-derivation.html">RFC-34: XCM Absolute Location Account Derivation</a></li><li class="chapter-item expanded "><a href="../stale/0035-conviction-voting-delegation-modifications.html"> RFC-0035: Conviction Voting Delegation Modifications</a></li><li class="chapter-item expanded "><a href="../stale/0044-rent-based-registration.html">RFC-0044: Rent based registration model</a></li><li class="chapter-item expanded "><a href="../stale/0048-session-keys-runtime-api.html">RFC-0048: Generate ownership proof for SessionKeys</a></li><li class="chapter-item expanded "><a href="../stale/0054-remove-heap-pages.html">RFC-0054: Remove the concept of "heap pages" from the client</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -174,10 +174,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p><a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0042-extrinsics-state-version.md">(source)</a></p>
+                        <p><a href="https://github.com/polkadot-fellows/RFCs/pull/84">(source)</a></p>
 <p><strong>Table of Contents</strong></p>
 <ul>
-<li><a href="#rfc-0042-add-system-version-that-replaces-stateversion-on-runtimeversion">RFC-0042: Add System version that replaces StateVersion on RuntimeVersion</a>
+<li><a href="#rfc-0079-general-transactions-in-extrinsic-format">RFC-0079: General transactions in extrinsic format</a>
 <ul>
 <li><a href="#summary">Summary</a></li>
 <li><a href="#motivation">Motivation</a></li>
@@ -198,92 +198,52 @@
 </ul>
 </li>
 </ul>
-<h1 id="rfc-0042-add-system-version-that-replaces-stateversion-on-runtimeversion"><a class="header" href="#rfc-0042-add-system-version-that-replaces-stateversion-on-runtimeversion">RFC-0042: Add System version that replaces StateVersion on RuntimeVersion</a></h1>
+<h1 id="rfc-0079-general-transactions-in-extrinsic-format"><a class="header" href="#rfc-0079-general-transactions-in-extrinsic-format">RFC-0079: General transactions in extrinsic format</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
-<tr><td><strong>Start Date</strong></td><td>25th October 2023</td></tr>
-<tr><td><strong>Description</strong></td><td>Add System Version and remove State Version</td></tr>
-<tr><td><strong>Authors</strong></td><td>Vedhavyas Singareddi</td></tr>
+<tr><td><strong>Start Date</strong></td><td>12 March 2024</td></tr>
+<tr><td><strong>Description</strong></td><td>Support more extrinsic types by updating the extrinsic format</td></tr>
+<tr><td><strong>Authors</strong></td><td>George Pisaltu</td></tr>
 </tbody></table>
 </div>
 <h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
-<p>At the moment, we have <code>system_version</code> field on <code>RuntimeVersion</code> that derives which state version is used for the
-Storage.
-We have a use case where we want extrinsics root is derived using <code>StateVersion::V1</code>. Without defining a new field
-under <code>RuntimeVersion</code>,
-we would like to propose adding <code>system_version</code> that can be used to derive both storage and extrinsic state version.</p>
+<p>This RFC proposes the expansion of the extrinsic type identifier from the current most significant bit of the first byte of the encoded extrinsic to the two most significant bits of the first byte of the encoded extrinsic.</p>
 <h2 id="motivation"><a class="header" href="#motivation">Motivation</a></h2>
-<p>Since the extrinsic state version is always <code>StateVersion::V0</code>, deriving extrinsic root requires full extrinsic data.
-This would be problematic when we need to verify the extrinsics root if the extrinsic sizes are bigger. This problem is
-further explored in https://github.com/polkadot-fellows/RFCs/issues/19</p>
-<p>For <code>Subspace</code> project, we have an enshrined rollups called <code>Domain</code> with optimistic verification and Fraud proofs are
-used to detect malicious behavior.
-One of the <code>Fraud proof</code> variant is to derive <code>Domain</code> block extrinsic root on <code>Subspace</code>'s consensus chain.
-Since <code>StateVersion::V0</code> requires full extrinsic data, we are forced to pass all the extrinsics through the Fraud proof.
-One of the main challenge here is some extrinsics could be big enough that this variant of Fraud proof may not be
-included in the Consensus block due to Block's weight restriction.
-If the extrinsic root is derived using <code>StateVersion::V1</code>, then we do not need to pass the full extrinsic data but
-rather at maximum, 32 byte of extrinsic data.</p>
+<p>In order to support transactions that use different authorization schemes than currently exist, a new extrinsic type must be introduced alongside the current signed and unsigned types. Currently, an encoded extrinsic's first byte indicate the type of extrinsic using the most significant bit - <code>0</code> for unsigned, <code>1</code> for signed - and the 7 following bits indicate the extrinsic format version, which has been equal to <code>4</code> for a long time.</p>
+<p>By taking one bit from the extrinsic format version encoding, we can support 2 additional extrinsic types while also having a minimal impact on our capability to extend and change the extrinsic format in the future.</p>
 <h2 id="stakeholders"><a class="header" href="#stakeholders">Stakeholders</a></h2>
-<ul>
-<li>Technical Fellowship, in its role of maintaining system runtimes.</li>
-</ul>
+<p>Runtime users.</p>
 <h2 id="explanation"><a class="header" href="#explanation">Explanation</a></h2>
-<p>In order to use project specific StateVersion for extrinsic roots, we proposed
-an <a href="https://github.com/paritytech/polkadot-sdk/pull/1691">implementation</a> that introduced
-parameter to <code>frame_system::Config</code> but that unfortunately did not feel correct.
-So we would like to <a href="https://github.com/paritytech/polkadot-sdk/pull/1968">propose</a> adding this change to
-the <code>RuntimeVersion</code>
-object. The system version, if introduced, will be used to derive both storage and extrinsic state version.
-If system version is <code>0</code>, then both Storage and Extrinsic State version would use V0.
-If system version is <code>1</code>, then Storage State version would use V1 and Extrinsic State version would use V0.
-If system version is <code>2</code>, then both Storage and Extrinsic State version would use V1.</p>
-<p>If implemented, the new <code>RuntimeVersion</code> definition would look something similar to</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>/// Runtime version (Rococo).
-#[sp_version::runtime_version]
-pub const VERSION: RuntimeVersion = RuntimeVersion {
-		spec_name: create_runtime_str!(&quot;rococo&quot;),
-		impl_name: create_runtime_str!(&quot;parity-rococo-v2.0&quot;),
-		authoring_version: 0,
-		spec_version: 10020,
-		impl_version: 0,
-		apis: RUNTIME_API_VERSIONS,
-		transaction_version: 22,
-		system_version: 1,
-	};
-<span class="boring">}</span></code></pre></pre>
+<p>An extrinsic is currently encoded as one byte to identify the extrinsic type and version. This RFC aims to change the interpretation of this byte regarding the reserved bits for the extrinsic type and version. In the following explanation, bits represented using <code>T</code> make up the extrinsic type and bits represented using <code>V</code> make up the extrinsic version.</p>
+<p>Currently, the bit allocation within the leading encoded byte is <code>0bTVVV_VVVV</code>. In practice in the Polkadot ecosystem, the leading byte would be <code>0bT000_0100</code> as the version has been equal to <code>4</code> for a long time.</p>
+<p>This RFC proposes for the bit allocation to change to <code>0bTTVV_VVVV</code>.</p>
 <h2 id="drawbacks"><a class="header" href="#drawbacks">Drawbacks</a></h2>
-<p>There should be no drawbacks as it would replace <code>state_version</code> with same behavior but documentation should be updated
-so that chains know which <code>system_version</code> to use.</p>
+<p>This change would reduce the maximum possible transaction version from the current <code>127</code> to <code>63</code>. In order to bypass the new, lower limit, the extrinsic format would have to change again.</p>
 <h2 id="testing-security-and-privacy"><a class="header" href="#testing-security-and-privacy">Testing, Security, and Privacy</a></h2>
-<p>AFAIK, should not have any impact on the security or privacy.</p>
+<p>There is no impact on testing, security or privacy.</p>
 <h2 id="performance-ergonomics-and-compatibility"><a class="header" href="#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a></h2>
-<p>These changes should be compatible for existing chains if they use <code>state_version</code> value for <code>system_verision</code>.</p>
+<p>This change would allow Polkadot to support new types of transactions, with the specific &quot;general&quot; transaction type in mind at the time of writing this proposal.</p>
 <h3 id="performance"><a class="header" href="#performance">Performance</a></h3>
-<p>I do not believe there is any performance hit with this change.</p>
+<p>There is no performance impact.</p>
 <h3 id="ergonomics"><a class="header" href="#ergonomics">Ergonomics</a></h3>
-<p>This does not break any exposed Apis.</p>
+<p>The impact to developers and end-users is minimal as it would just be a bitmask update on their part for parsing the extrinsic type along with the version.</p>
 <h3 id="compatibility"><a class="header" href="#compatibility">Compatibility</a></h3>
-<p>This change should not break any compatibility.</p>
+<p>This change breaks backwards compatiblity because any transaction that is neither signed nor unsigned, but a new transaction type, would be interpreted as having a future extrinsic format version.</p>
 <h2 id="prior-art-and-references"><a class="header" href="#prior-art-and-references">Prior Art and References</a></h2>
-<p>We <a href="https://github.com/paritytech/polkadot-sdk/pull/1691">proposed</a> introducing a similar change by introducing a
-parameter to <code>frame_system::Config</code> but did not feel that
-is the correct way of introducing this change.</p>
+<p>The original design was originally proposed in the <a href="https://github.com/paritytech/polkadot-sdk/pull/2280"><code>TransactionExtension</code> PR</a>, which is also the motivation behind this effort.</p>
 <h2 id="unresolved-questions"><a class="header" href="#unresolved-questions">Unresolved Questions</a></h2>
-<p>I do not have any specific questions about this change at the moment.</p>
+<p>None.</p>
 <h2 id="future-directions-and-related-material"><a class="header" href="#future-directions-and-related-material">Future Directions and Related Material</a></h2>
-<p>IMO, this change is pretty self-contained and there won't be any future work necessary. </p>
+<p>Following this change, the &quot;general&quot; transaction type will be introduced as part of the <a href="https://github.com/paritytech/polkadot-sdk/issues/2415">Extrinsic Horizon</a> effort, which will shape future work.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../approved/0032-minimal-relay.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../introduction.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../approved/0043-storage-proof-size-hostfunction.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../proposed/0004-remove-unnecessary-allocator-usage.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -293,11 +253,11 @@ is the correct way of introducing this change.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../approved/0032-minimal-relay.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../introduction.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../approved/0043-storage-proof-size-hostfunction.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../proposed/0004-remove-unnecessary-allocator-usage.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
