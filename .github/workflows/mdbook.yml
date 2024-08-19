@@ -30,6 +30,8 @@ jobs:
           script: |
             const script = require('.github/scripts/build-mdbook-summary.js')
             await script({github, context})
+      - name: Preview the summary
+        run: cat mdbook/src/SUMMARY.md
       - name: Setup mdBook binary
         uses: peaceiris/actions-mdbook@adeb05db28a0c0004681db83893d56c0388ea9ea # v1.2.0
         with:
