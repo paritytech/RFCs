@@ -45,8 +45,8 @@ jobs:
           rm -rf ./book/
           mdbook build --dest-dir ./book/
 
-      # - name: Deploy to github pages
-      #   uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3.9.3
-      #   with:
-      #     publish_dir: ./mdbook/book
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to github pages
+        uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3.9.3
+        with:
+          publish_dir: ./mdbook/book
+          github_token: ${{ secrets.GITHUB_TOKEN }}
