@@ -225,22 +225,21 @@
 <h2 id="explanation"><a class="header" href="#explanation">Explanation</a></h2>
 <h3 id="changes-to-extrinsic-authorization"><a class="header" href="#changes-to-extrinsic-authorization">Changes to extrinsic authorization</a></h3>
 <p>The introduction of <code>General</code> transactions allows the authorization of any and all origins through
-extensions. This means that, with the appropriate extension, <code>General</code> transactions are capable of
-replicating the same behavior present day v4 <code>Signed</code> transactions. Specifically for Polkadot
-chains, an example implementation for such an extension is
+extensions. This means that, with the appropriate extension, <code>General</code> transactions can replicate
+the same behavior present-day v4 <code>Signed</code> transactions. Specifically for Polkadot chains, an example
+implementation for such an extension is
 <a href="https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/verify-signature"><code>VerifySignature</code></a>,
 introduced in the Transaction Extension
 <a href="https://github.com/paritytech/polkadot-sdk/pull/3685">PR3685</a>. Other extensions can be inserted
 into the extension pipeline to authorize different custom origins. Therefore, a <code>Signed</code> extrinsic
-variant is redundant to a <code>General</code> one strictly in terms of functionality available to users and
-would eventually need to be deprecated and removed.</p>
+variant is redundant to a <code>General</code> one strictly in terms of user functionality and could eventually
+be deprecated and removed.</p>
 <h3 id="encoding-format-for-version-5"><a class="header" href="#encoding-format-for-version-5">Encoding format for version 5</a></h3>
-<p>As with version 4, the encoded v5 extrinsics will still be an array of SCALE encoded bytes, starting
-with the encoded length of the following bytes. The leading byte will determine the version and type
-of extrinsic, as specified by
-<a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0084-general-transaction-extrinsic-format.md">RFC84</a>,
-with the addition that the <code>Signed</code> variant will not be supported for v5 extrinsics, for reasons
-mentioned above.</p>
+<p>As with version 4, the encoded extrinsic v5 is a SCALE encoded vector of bytes (<code>u8</code>), therefore
+starting with the encoded length of the following bytes in compact format. The leading byte after
+the length determines the version and type of extrinsic, as specified by
+<a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0084-general-transaction-extrinsic-format.md">RFC84</a>.
+For reasons mentioned above, this RFC removes the <code>Signed</code> variant for v5 extrinsics.</p>
 <p>NOTE: For <code>Bare</code> extrinsics, the following bytes will just be the encoded call and nothing else.</p>
 <p>For <code>General</code> transactions, as stated in
 <a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0099-transaction-extension-version.md">RFC99</a>,
@@ -257,20 +256,26 @@ by third parties.</p>
 <li><code>General</code> transactions: <code>(extrinsic_encoded_len, , 0b0100_0101, extension_version_byte, extension, call)</code></li>
 </ul>
 <h3 id="signatures-on-polkadot-in-general-transactions"><a class="header" href="#signatures-on-polkadot-in-general-transactions">Signatures on Polkadot in General transactions</a></h3>
+<p>In order to run a transaction with a signed origin in extrinsic version 5, a user must create the
+transaction with an instance of at least one extension responsible for authorizing <code>Signed</code> origins
+with a provided signature. Alternatively, if users want to use some other origin, they should create
+the transaction with this particular extension disabled.</p>
 <p>As stated before, <a href="https://github.com/paritytech/polkadot-sdk/pull/3685">PR3685</a> comes with a
 Transaction Extension which replicates the current <code>Signed</code> transactions in v5 extrinsics, namely
 <a href="https://github.com/paritytech/polkadot-sdk/tree/master/substrate/frame/verify-signature"><code>VerifySignature</code></a>.
-This extension leverages the new inherited implication functionality introduced in
+I will use this extension as an example on how to replicate current <code>Signed</code> transaction
+functionality in the new v5 extrinsic format, though the runtime logic is not constrained to this
+particular implementation.</p>
+<p>This extension leverages the new inherited implication functionality introduced in
 <code>TransactionExtension</code> and creates a payload to be signed using the data of all extensions after
-itself in the extension pipeline. In order to run a transaction with a signed origin, a user must
-create the transaction with an instance of the extension which provides a signature. Alternatively,
-if users want to use some other origin, they should create the transaction with this particular
-extension disabled. More on this behavior in the extension documentation. This extension can be
-configured to accept a <code>MultiSignature</code>, which makes it compatible with all signature types
-currently used in Polkadot.</p>
-<p>To generate the payload to be signed:</p>
+itself in the extension pipeline. This extension can be configured to accept a <code>MultiSignature</code>,
+which makes it compatible with all signature types currently used in Polkadot.</p>
+<p>In the context of using and extension such as <code>VerifySignature</code> to replicate current <code>Signed</code>
+transaction functionality, the steps to generate the payload to be signed are:</p>
 <ol>
-<li>The extension version byte, call, extension and extension implicit should be encoded;</li>
+<li>The extension version byte, call, extension and extension implicit should be encoded (by
+&quot;extension&quot; and its implicit we mean only the data associated with extensions that follow this
+one in the composite extension type);</li>
 <li>The result of the encoding should then be hashed using the <code>BLAKE2_256</code> hasher;</li>
 <li>The result of the hash should then be signed with the signature type specified in the extension definition.</li>
 </ol>
@@ -316,14 +321,7 @@ support version 5 and to remove version 4 in the future.</p>
 Horizon</a> and
 <a href="https://github.com/polkadot-fellows/RFCs/blob/main/text/0099-transaction-extension-version.md">RFC99</a>.</p>
 <h2 id="unresolved-questions"><a class="header" href="#unresolved-questions">Unresolved Questions</a></h2>
-<p>There is no clear way to expose two different extrinsic versions in the current metadata framework.
-A non-exhaustive list of options discussed so far:</p>
-<ol>
-<li>Change the <code>ExtrinsicMetadata</code> trait to specify a list of versions instead of a single version.</li>
-<li>Use the custom fields in the metadata to specify the details of the version 5.</li>
-<li>Create a new trait similar to <code>ExtrinsicMetadata</code>, but for future versions of the extrinsic
-format and add it to the metadata.</li>
-</ol>
+<p>None.</p>
 <h2 id="future-directions-and-related-material"><a class="header" href="#future-directions-and-related-material">Future Directions and Related Material</a></h2>
 <p>Following this change, extrinsic version 5 will be introduced as part of the <a href="https://github.com/paritytech/polkadot-sdk/issues/2415">Extrinsic
 Horizon</a> effort, which will shape future
