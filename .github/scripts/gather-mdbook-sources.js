@@ -10,7 +10,7 @@ const NEW_RFC_PERIOD_DAYS = 7
 
 // The amount of days that an RFC is considered "stale".
 // Counted from the last update on a PR.
-const STALE_RFC_PERIOD_DAYS = 30
+const STALE_RFC_PERIOD_DAYS = 180
 
 const dateDaysBefore = (daysBefore) => {
   const result = new Date()
