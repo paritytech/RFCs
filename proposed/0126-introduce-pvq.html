@@ -343,14 +343,14 @@ mod extensions_impl {
     }
 
     #[extensions_impl::extension_struct_impl]
-    impl extension_core::ExtensionCore&lt;ExtensionConfig&gt; for Extensions {
+    impl extension_core::ExtensionCore&lt;ExtensionsConfig&gt; for Extensions {
         fn has_extension(id: u64) -&gt; bool {
             matches!(id, 0 | 1)
         }
     }
 
     #[extensions_impl::extension_struct_impl]
-    impl extension_fungibles::ExtensionFungibles&lt;ExtensionConfig&gt; for Extensions {
+    impl extension_fungibles::ExtensionFungibles&lt;ExtensionsConfig&gt; for Extensions {
         fn total_supply(asset: u32) -&gt; u64 {
             200
         }
@@ -366,7 +366,7 @@ mod extensions_impl {
 <ul>
 <li><code>program</code>: The PVQ main binary which is a trimmed standard PolkaVM binary.</li>
 <li><code>args</code>: The PVQ query data.</li>
-<li><code>ref_time_limit</code>: Weight limit that the PolkaVM program can consume.</li>
+<li><code>ref_time_limit</code>: The maximum ref_time that a single query should consume. The overall resource limit is enforced by Runtime config and RPC rate limiting, which is out of the scope. Since the proof size doesn't really matter in the context of runtime API, it's one-dimensional.</li>
 </ul>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -404,8 +404,7 @@ As discussed in <a href="https://graypaper.com/">Equation A.39 in the Gray Paper
 </ul>
 <h4 id="host-calls"><a class="header" href="#host-calls">Host Calls</a></h4>
 <ul>
-<li>
-<p><code>extension_call</code>: A unified entry point that routes queries to various extensions. It accepts two parameters:</p>
+<li><code>extension_call</code>: A unified entry point that routes queries to various extensions. It accepts two parameters:
 <ol>
 <li><code>extension_id</code>
 An <code>u64</code> value for selecting which extension to query, split across two 32-bit registers: lower 32 bits in <code>a0</code> and upper 32 bits in <code>a1</code></li>
@@ -415,8 +414,17 @@ The returned results are stored in registers <code>a0</code> (pointer) and <code
 The host call also has the ability to filter call data requests based on their source of invocation (e.g., Runtime, Extrinsics, RuntimeAPI, or XCM).</li>
 </ol>
 </li>
-<li>
-<p><code>return_ty</code>: Returns the type of a specific view function in a specific extension for type assertion. It accepts two parameters:</p>
+</ul>
+<p><strong>Example Rust Implementation using PolkaVM SDK</strong>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[polkavm_derive::polkavm_import]
+extern &quot;C&quot; {
+    fn extension_call(extension_id:u64, call_ptr:u32, call_len: u32) -&gt; (u32, u32);
+}
+<span class="boring">}</span></code></pre></pre>
+<ul>
+<li><code>return_ty</code>: Returns the type of a specific view function in a specific extension for type assertion. It accepts two parameters:
 <ol>
 <li><code>extension_id</code>
 An <code>u64</code> value for selecting which extension to query, split across two 32-bit registers: lower 32 bits in <code>a0</code> and upper 32 bits in <code>a1</code></li>
@@ -426,6 +434,14 @@ The returned results are stored in register <code>a0</code> (pointer) and <code>
 </ol>
 </li>
 </ul>
+<p><strong>Example Rust Implementation in PolkaVM SDK</strong>:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>#[polkavm_derive::polkavm_import]
+extern &quot;C&quot; {
+    fn return_ty(extension_id:u64, query_index:u32) -&gt; (u32, u32);
+}
+<span class="boring">}</span></code></pre></pre>
 <h3 id="runtimeapi-integration"><a class="header" href="#runtimeapi-integration">RuntimeAPI Integration</a></h3>
 <p>The runtime API for off-chain query usage includes two methods:</p>
 <ul>
@@ -476,7 +492,7 @@ enum PvqError {
   info: QueryResponseInfo,
 }
 <span class="boring">}</span></code></pre></pre>
-<p>Report to a given destination the results of an PVQ. After query, a <code>QueryResponse</code> message of type <code>PvqResult</code> will be sent to the described destination.</p>
+<p>Report to a given destination the results of a PVQ. After query, a <code>QueryResponse</code> message of type <code>PvqResult</code> will be sent to the described destination.</p>
 <p>Operands:</p>
 <ul>
 <li>
@@ -570,7 +586,7 @@ The PVQ does't conflict with them, which can take advantage of these Pallet View
 <li>The metadata of the PVQ extensions can be integrated into <code>frame-metadata</code>'s <code>CustomMetadata</code> field, but the trade-offs (i.e. compatibility between versions) need examination.</li>
 </ul>
 <h2 id="future-directions-and-related-material"><a class="header" href="#future-directions-and-related-material">Future Directions and Related Material</a></h2>
-<p>The implementation work including:</p>
+<p>The implementation work includes:</p>
 <h3 id="pvq-reference-implementation"><a class="header" href="#pvq-reference-implementation">PVQ Reference Implementation</a></h3>
 <p>PVQ Extension Macros, PVQ Executor, RuntimeAPI Integration are implemented in standalone crate.</p>
 <p>XCM integration is implemented in <code>polkadot-sdk</code> repository.</p>
