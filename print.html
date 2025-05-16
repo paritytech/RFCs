@@ -193,6 +193,7 @@ detailing proposed changes to the technical implementation of the Polkadot netwo
 <li><a href="new/0000-pre-elves_soft.html#availability-voting">Availability voting</a></li>
 <li><a href="new/0000-pre-elves_soft.html#fork-choice">Fork choice</a></li>
 <li><a href="new/0000-pre-elves_soft.html#elves">Elves</a></li>
+<li><a href="new/0000-pre-elves_soft.html#fast-prunning">Fast prunning</a></li>
 </ul>
 </li>
 <li><a href="new/0000-pre-elves_soft.html#concerns-drawbacks-testing-security-and-privacy">Concerns: Drawbacks, Testing, Security, and Privacy</a></li>
@@ -205,6 +206,7 @@ detailing proposed changes to the technical implementation of the Polkadot netwo
 <li><a href="new/0000-pre-elves_soft.html#unresolved-questions">Unresolved Questions</a></li>
 <li><a href="new/0000-pre-elves_soft.html#future-directions-and-related-material">Future Directions and Related Material</a>
 <ul>
+<li><a href="new/0000-pre-elves_soft.html#sassafras">Sassafras</a></li>
 <li><a href="new/0000-pre-elves_soft.html#thresahold-randomness">Thresahold randomness</a></li>
 <li><a href="new/0000-pre-elves_soft.html#avoid-wall-clock-time">Avoid wall clock time</a></li>
 <li><a href="new/0000-pre-elves_soft.html#partial-relay-chain-blocks">Partial relay chain blocks</a></li>
@@ -238,14 +240,22 @@ detailing proposed changes to the technical implementation of the Polkadot netwo
 <h3 id="fork-choice"><a class="header" href="#fork-choice">Fork choice</a></h3>
 <p>We require relay chain block producers build upon forks preferred by <code>2 f + 1</code> validators.  In other words, a relay chain block with parent <code>p</code> must contain availability bitfield votes from <code>2 f + 1</code> validators with <code>relay_parent = p</code> and <code>preferred_fork</code> set.  It follows our preferred fork votes override other fork choice priorities.</p>
 <p>A relay chain block producer could lack this <code>2 f + 1</code> threshold for a prespective parent block <code>p</code>, in which case they must build upon the parent of <code>p</code> instead.  We know availability votes simply being slow would cause this somtimes, in which case adding slightly more delay could save the relay chain slot Alternatively though, two distinct relay chain blocks in the same slot could each wind up prefered by <code>f+1</code> validators, in which case we must abandond the slot entirely.</p>
-<p>It's critical that honest validators carefully time when they judge their preferences.  In babe, this adds complexity:  We always prefer a primary slot over a secondary slot, so the validators should delay preferring a secondary slot, giving the primary slot enough time.  We prefer the primary slot with smallest VRF as well, so we need some delay even once we recieve a primary.</p>
 <h3 id="elves"><a class="header" href="#elves">Elves</a></h3>
-<p>We launch the approvals process aka (machine) elves for a relay chain block <code>p</code> once <code>2 f + 1</code> validators prefer that block, aka <code>2 f + 1</code> validators provide availability votes with <code>relay_parent = p</code> and <code>preferred_fork</code> set.  We could optionally delay this further until we have some valid decendent of <code>p</code>.</p>
+<p>We only launch the approvals process aka (machine) elves for a relay chain block <code>p</code> once <code>2 f + 1</code> validators prefer that block, aka <code>2 f + 1</code> validators provide availability votes with <code>relay_parent = p</code> and <code>preferred_fork</code> set.  We could optionally delay this further until we have some valid decendent of <code>p</code>.</p>
+<h3 id="fast-prunning"><a class="header" href="#fast-prunning">Fast prunning</a></h3>
+<p>In fact, this new fork choice logic creates more short relay chain forks than exist currently:  If the validators split their votes, then we create a new fork in a later slot.  We no longer need to process every fork now though.</p>
+<p>Instead, availability votes from honest validators must express the correct preferred fork, which requires validators carefully time when they judge and announce their preference flags.  In babe, we need primary slots to be preferred over secondary slots, so the validators need logic that delays sending availability votes for a secondary slot, giving the primary slot enough time.  We also prefer the primary slot with smallest VRF as well, so we need some delay even once we recieve a primary.</p>
+<p>We suggest roughly this approach:</p>
+<p>First, download only relay chain block headers, from which we determine our tentative preferred fork.</p>
+<p>Second, we download and import only our currently tentatively preferred fork.  We download our availability chunks as soon as we import a currently tentatively preferred relay chain block.  We've no particular target for availability chunks other than simply some delay timer.  In babe, we add some extra delay here for secondary slots, like perhaps 2 seconds minus the actual execution time, so that a fast secondary slot cannot beat a primary slot.</p>
+<p>We somtimes obtain an even more preferable header during import, chunk distribution, and delays for our first tentatively preferred fork.  Also, the first could simply turn out invalid.  In either case, we loop to repeat this second step on our new tentative preferred fork.  We repeat this process until an import succeeds and its timers run out, without receiving any more preferable header.  Actual equivocations cannot be preferable over one another, so all this loops terminates reasonably quickly. </p>
+<p>Next, we broadcast our availability vote with its <code>relay_parent</code> set to our tentatively preferred fork, and with its <code>preferred_fork</code> set.</p>
+<p>Finally, if <code>2 f + 1</code> other validators have a different preference from us, then we download and import their preferred relay chain block, fetch chunks for it, and provide availability votes with <code>preferred_fork</code> zero.  It's possible this occurs earlier than our preference finishes, in which case we probably still send out our preference, if only for forensic evidence. </p>
 <h2 id="concerns-drawbacks-testing-security-and-privacy"><a class="header" href="#concerns-drawbacks-testing-security-and-privacy">Concerns: Drawbacks, Testing, Security, and Privacy</a></h2>
 <p>Adds subtle timing constraints, which could entrench existing performanceg obstacles.  We might explore variations that ignore wall clock time.</p>
 <p>We've always known relay chain equivocations break the ELVES threat model.  We originally envisioned ELVES having fallback pathways, but these were complex and demanded unused code paths, which cannot realistically be debugged.  Although complex, the early soft concensus scheme feels less complex overall.  We know timing sucks to optimise a distributed system, but at least doing so use everyday code paths.</p>
 <h2 id="performance-ergonomics-and-compatibility"><a class="header" href="#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a></h2>
-<p>We expect early soft concensus introduce back pressure that radically alters performance.  We no longer run approvals checks upon all forks.  As primary slots occur once every other slot in expectation, one might expect a 30% reduction in CPU load, but this depends upon diverse factors.</p>
+<p>We expect early soft concensus introduce back pressure that radically alters performance.  We no longer run approvals checks upon all forks.  As primary slots occur once every other slot in expectation, one might expect a 25% reduction in CPU load, but this depends upon diverse factors.</p>
 <p>We apply back pressure by dropping some whole relay chain blocks though, so this shall increase the expected parachain blocktime somewhat, but how much depens upon future optimisation work.</p>
 <h3 id="compatibility"><a class="header" href="#compatibility">Compatibility</a></h3>
 <p>Major upgrade</p>
@@ -254,6 +264,7 @@ detailing proposed changes to the technical implementation of the Polkadot netwo
 <h2 id="unresolved-questions"><a class="header" href="#unresolved-questions">Unresolved Questions</a></h2>
 <p>Provide specific questions to discuss and address before the RFC is voted on by the Fellowship. This should include, for example, alternatives to aspects of the proposed design where the appropriate trade-off to make is unclear.</p>
 <h2 id="future-directions-and-related-material"><a class="header" href="#future-directions-and-related-material">Future Directions and Related Material</a></h2>
+<h3 id="sassafras"><a class="header" href="#sassafras">Sassafras</a></h3>
 <p>Arguably, a sassafras RC like JAM could avoid <code>preferred_fork</code> flag, by only releasing availability votes for at most one sassafras equivocation.  We wanted availability for babe forks, but sassafras has only equivocations, so those block can simply be dropped.</p>
 <p>In principle, a sassafras equivocation could still enter the valid chain, assuming 2/3rd of validators provide availability votes for the same equivocations. If JAM lacks the <code>preferred_fork</code> flag then enactment proceeds slower in this case, but this should almost never occur.</p>
 <h3 id="thresahold-randomness"><a class="header" href="#thresahold-randomness">Thresahold randomness</a></h3>
