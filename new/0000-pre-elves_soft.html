@@ -213,7 +213,7 @@
 <h1 id="rfc-0000-pre-elves-soft-concensus"><a class="header" href="#rfc-0000-pre-elves-soft-concensus">RFC-0000: Pre-ELVES soft concensus</a></h1>
 <div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
 <tr><td><strong>Start Date</strong></td><td>Date of initial proposal</td></tr>
-<tr><td><strong>Description</strong></td><td>Provide and exploit a soft concensus before launching approval checks</td></tr>
+<tr><td><strong>Description</strong></td><td>Provide and exploit a soft consensus before launching approval checks</td></tr>
 <tr><td><strong>Authors</strong></td><td>Jeff Burdges, Alistair Stewart</td></tr>
 </tbody></table>
 </div>
@@ -257,7 +257,7 @@
 <h2 id="prior-art-and-references"><a class="header" href="#prior-art-and-references">Prior Art and References</a></h2>
 <p>...</p>
 <h2 id="unresolved-questions"><a class="header" href="#unresolved-questions">Unresolved Questions</a></h2>
-<p>Provide specific questions to discuss and address before the RFC is voted on by the Fellowship. This should include, for example, alternatives to aspects of the proposed design where the appropriate trade-off to make is unclear.</p>
+<p>We halt the chain when less than 2/3 of validators are online.  We consider this reasonable since governance now runs on a parachain, ELVES would not secure, and nothing can be finalized anyways.  We could perhaps add some &quot;recovery mode&quot; where the relay chain embeds entire system parachain blocks, but doing so might not warrant the effort required.</p>
 <h2 id="future-directions-and-related-material"><a class="header" href="#future-directions-and-related-material">Future Directions and Related Material</a></h2>
 <h3 id="sassafras"><a class="header" href="#sassafras">Sassafras</a></h3>
 <p>Arguably, a sassafras RC like JAM could avoid <code>preferred_fork</code> flag, by only releasing availability votes for at most one sassafras equivocation.  We wanted availability for babe forks, but sassafras has only equivocations, so those block can simply be dropped.</p>
@@ -266,7 +266,7 @@
 <p>We think threshold randomness could reduce the tranche zero approcha checker assigments by roughly 40%, meaning a fixed 15 vs the expected 25 in the elves paper (30 in production now).</p>
 <p>We do know threshold VRF based schemes that address relay chain equivocations directly, by using as input the relay chain block hash.  We have many more options with early soft concensus though.  TODO  In particular, we only know two post-quantum approaches to elves, and the bandwidth efficent one needs early soft concensus.</p>
 <h3 id="mid-strenght-concensus"><a class="header" href="#mid-strenght-concensus">Mid-strenght concensus</a></h3>
-<p>In this RFC, we only require that each relay chain block contain preference votes for its parent from 2/3rds of validators.  We could enforce the opposite direction too:  Around y&gt;2 seconds after a validator V has seen preference votes for a chain head X from 2/3rd of validators, the V begins rejecting any relay chain block that does not build upon X.  This is tricky because the y&gt;2 second delay must be long enough so that most honest nodes learn both X and its preference votes.  This strengthens MEV defenses that assume some honest nodes.</p>
+<p>In this RFC, we only require that each relay chain block contain preference votes for its parent from 2/3rds of validators.  We could enforce the opposite direction too:  Around y&gt;2 seconds after a validator V has seen preference votes for a chain head X from 2/3rd of validators, the V begins rejecting any relay chain block that does not build upon X.  This is tricky because the y&gt;2 second delay must be long enough so that most honest nodes learn both X and its preference votes.  In this, we might treat <code>preferred_fork</code> votes as evidence for finality of the parent of the vote's <code>relay_parent</code>.  This strengthens MEV defenses that assume some honest nodes.</p>
 <h3 id="avoid-wall-clock-time"><a class="header" href="#avoid-wall-clock-time">Avoid wall clock time</a></h3>
 <p>We know <a href="https://hackmd.io/@jR1jzpMyTnOUh4BzdHCZBA/rJDmGmtpJx">parachains could baset heir slots upon relay chain slots</a>, instaed of wall clock time (RFC ToDo).  After this happens, we could avoid or minimize wall clock timing in the relay chain too, so that relay chain slots could've a floating duration based upon workload.</p>
 <h3 id="partial-relay-chain-blocks"><a class="header" href="#partial-relay-chain-blocks">Partial relay chain blocks</a></h3>
