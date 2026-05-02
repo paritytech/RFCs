@@ -1,0 +1,433 @@
+
+<!DOCTYPE HTML>
+<html lang="en" class="polkadot" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>RFC-0104: Stale Nomination Reward Curve - Polkadot Fellowship RFCs</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="An online book of RFCs approved or proposed within the Polkadot Fellowship.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/polkadot.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "polkadot" : "polkadot";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('polkadot')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../introduction.html">Introduction</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Newly Proposed</li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Proposed</li><li class="chapter-item expanded "><a href="../proposed/0000-pq_accounts.html">RFC-0000: Hybrid post-quantum accounts (DRAFT)</a></li><li class="chapter-item expanded "><a href="../proposed/0000-rewards.html">RFC-0000: Validator Rewards</a></li><li class="chapter-item expanded "><a href="../proposed/0104-stale-nomination-reward-curve.html" class="active">RFC-0104: Stale Nomination Reward Curve</a></li><li class="chapter-item expanded "><a href="../proposed/0154-multi-slot-aura.html">RFC-0154: AURA Multi-Slot Collation </a></li><li class="chapter-item expanded "><a href="../proposed/0158-storage-proof-size-v2.html">RFC-0158: Storage Proof Size Host Function Version 2</a></li><li class="chapter-item expanded "><a href="../proposed/0159-spend-canceller-track.html">RFC-0000: Spend Canceller Track</a></li><li class="chapter-item expanded "><a href="../proposed/0160-pub-sub-mechanism.html">RFC-0160: PubSub Mechanism</a></li><li class="chapter-item expanded "><a href="../proposed/0161-discussion-phase-for-opengov-referenda.html">RFC-0161: Discussion Period for OpenGov Referenda</a></li><li class="chapter-item expanded "><a href="../proposed/0162-antitrust-omnibus.html">RFC-0162: The Ecosystem Anti-Trust & Market Structure Omnibus</a></li><li class="chapter-item expanded "><a href="../proposed/0164-aura-allow-anyone-to-author-blocks.html">RFC-0164: Aura: Allow anyone to produce blocks after a downtime</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Approved</li><li class="chapter-item expanded "><a href="../approved/0001-agile-coretime.html">RFC-1: Agile Coretime</a></li><li class="chapter-item expanded "><a href="../approved/0005-coretime-interface.html">RFC-5: Coretime Interface</a></li><li class="chapter-item expanded "><a href="../approved/0007-system-collator-selection.html">RFC-0007: System Collator Selection</a></li><li class="chapter-item expanded "><a href="../approved/0008-parachain-bootnodes-dht.html">RFC-0008: Store parachain bootnodes in relay chain DHT</a></li><li class="chapter-item expanded "><a href="../approved/0010-burn-coretime-revenue.html">RFC-0010: Burn Coretime Revenue</a></li><li class="chapter-item expanded "><a href="../approved/0012-process-for-adding-new-collectives.html">RFC-0012: Process for Adding New System Collectives</a></li><li class="chapter-item expanded "><a href="../approved/0013-prepare-blockbuilder-and-core-runtime-apis-for-mbms.html">RFC-0013: Prepare Core runtime API for MBMs</a></li><li class="chapter-item expanded "><a href="../approved/0014-improve-locking-mechanism-for-parachains.html">RFC-0014: Improve locking mechanism for parachains</a></li><li class="chapter-item expanded "><a href="../approved/0022-adopt-encointer-runtime.html">RFC-0022: Adopt Encointer Runtime</a></li><li class="chapter-item expanded "><a href="../approved/0026-sassafras-consensus.html">RFC-0026: Sassafras Consensus Protocol</a></li><li class="chapter-item expanded "><a href="../approved/0032-minimal-relay.html">RFC-0032: Minimal Relay</a></li><li class="chapter-item expanded "><a href="../approved/0042-extrinsics-state-version.html">RFC-0042: Add System version that replaces StateVersion on RuntimeVersion</a></li><li class="chapter-item expanded "><a href="../approved/0043-storage-proof-size-hostfunction.html">RFC-0043: Introduce storage_proof_size Host Function for Improved Parachain Block Utilization</a></li><li class="chapter-item expanded "><a href="../approved/0045-nft-deposits-asset-hub.html">RFC-0045: Lowering NFT Deposits on Asset Hub</a></li><li class="chapter-item expanded "><a href="../approved/0047-assignment-of-availability-chunks.html">RFC-0047: Assignment of availability chunks to validators</a></li><li class="chapter-item expanded "><a href="../approved/0048-session-keys-runtime-api.html">RFC-0048: Generate ownership proof for SessionKeys</a></li><li class="chapter-item expanded "><a href="../approved/0050-fellowship-salaries.html">RFC-0050: Fellowship Salaries</a></li><li class="chapter-item expanded "><a href="../approved/0056-one-transaction-per-notification.html">RFC-0056: Enforce only one transaction per notification</a></li><li class="chapter-item expanded "><a href="../approved/0059-nodes-capabilities-discovery.html">RFC-0059: Add a discovery mechanism for nodes based on their capabilities</a></li><li class="chapter-item expanded "><a href="../approved/0078-merkleized-metadata.html">RFC-0078: Merkleized Metadata</a></li><li class="chapter-item expanded "><a href="../approved/0084-general-transaction-extrinsic-format.html">RFC-0084: General transactions in extrinsic format</a></li><li class="chapter-item expanded "><a href="../approved/0091-dht-record-creation-time.html">RFC-0091: DHT Authority discovery record creation time</a></li><li class="chapter-item expanded "><a href="../approved/0097-unbonding_queue.html">RFC-0097: Unbonding Queue</a></li><li class="chapter-item expanded "><a href="../approved/0099-transaction-extension-version.html">RFC-0099: Introduce a transaction extension version</a></li><li class="chapter-item expanded "><a href="../approved/0101-xcm-transact-remove-max-weight-param.html">RFC-0101: XCM Transact remove require_weight_at_most parameter</a></li><li class="chapter-item expanded "><a href="../approved/0108-xcm-remove-testnet-ids.html">RFC-0108: Remove XCM testnet NetworkIds</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Stale</li><li class="chapter-item expanded "><a href="../stale/0000-pre-elves_soft.html">RFC-0000: Pre-ELVES soft concensus</a></li><li class="chapter-item expanded "><a href="../stale/0004-remove-unnecessary-allocator-usage.html">RFC-0004: Remove the host-side runtime memory allocator</a></li><li class="chapter-item expanded "><a href="../stale/0074-stateful-multisig-pallet.html">RFC-0074: Stateful Multisig Pallet</a></li><li class="chapter-item expanded "><a href="../stale/0102-offchain-parachain-runtime-upgrades.html">RFC-0000: Feature Name Here</a></li><li class="chapter-item expanded "><a href="../stale/0106-xcm-remove-fees-mode.html">RFC-0106: Remove XCM fees mode</a></li><li class="chapter-item expanded "><a href="../stale/0111-pure-proxy-replication.html">RFC-0111: Pure Proxy Replication</a></li><li class="chapter-item expanded "><a href="../stale/0112-compress-state-response-message-in-state-sync.html">RFC-0112: Compress the State Response Message in State Sync</a></li><li class="chapter-item expanded "><a href="../stale/0117-unbrick-collective.html">RFC-0117: The Unbrick Collective</a></li><li class="chapter-item expanded "><a href="../stale/0124-extrinsic-version-5.html">RFC-0124: Extrinsic version 5</a></li><li class="chapter-item expanded "><a href="../stale/0138-invulnerable-collator-election.html">RFC-0138: Election mechanism for invulnerable collators on system chains</a></li><li class="chapter-item expanded "><a href="../stale/xxxx-improve-the-security-of-proof-of-possession.html">RFC-XXXX: Adding customized mandatory context to proof of possession statement</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="polkadot">Polkadot</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Polkadot Fellowship RFCs</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p><a href="https://github.com/polkadot-fellows/RFCs/pull/104">(source)</a></p>
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#rfc-0104-stale-nomination-reward-curve">RFC-0104: Stale Nomination Reward Curve</a>
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#stakeholders">Stakeholders</a></li>
+<li><a href="#explanation">Explanation</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#behavior-in-the-election">Behavior in the Election</a></li>
+<li><a href="#the-decay-curve">The Decay Curve</a></li>
+<li><a href="#what-resets-the-counter">What Resets the Counter</a></li>
+<li><a href="#interaction-with-nomination-pools">Interaction with Nomination Pools</a></li>
+<li><a href="#reward-treatment">Reward Treatment</a></li>
+<li><a href="#migration">Migration</a></li>
+<li><a href="#secondary-effect-recurring-ecosystem-engagement">Secondary Effect: Recurring Ecosystem Engagement</a></li>
+</ul>
+</li>
+<li><a href="#drawbacks">Drawbacks</a></li>
+<li><a href="#testing-security-and-privacy">Testing, Security, and Privacy</a>
+<ul>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#privacy">Privacy</a></li>
+</ul>
+</li>
+<li><a href="#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a>
+<ul>
+<li><a href="#performance">Performance</a></li>
+<li><a href="#ergonomics">Ergonomics</a></li>
+<li><a href="#compatibility">Compatibility</a></li>
+</ul>
+</li>
+<li><a href="#prior-art-and-references">Prior Art and References</a></li>
+<li><a href="#unresolved-questions">Unresolved Questions</a></li>
+<li><a href="#future-directions-and-related-material">Future Directions and Related Material</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="rfc-0104-stale-nomination-reward-curve"><a class="header" href="#rfc-0104-stale-nomination-reward-curve">RFC-0104: Stale Nomination Reward Curve</a></h1>
+<div class="table-wrapper"><table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td><strong>Start Date</strong></td><td>10 July 2024</td></tr>
+<tr><td><strong>Description</strong></td><td>Introduce a decaying reward curve for stale nominations in staking.</td></tr>
+<tr><td><strong>Authors</strong></td><td>Shawn Tabrizi</td></tr>
+</tbody></table>
+</div>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>This is a proposal to reduce the impact of stale nominations in the Polkadot staking system. With this proposal, nominators are incentivized to update or renew their selected validators once per time period. Nominators that do not update or renew their selected validators would be considered stale, and a decaying multiplier would be applied to their nominations, reducing the weight of their nomination and rewards.</p>
+<h2 id="motivation"><a class="header" href="#motivation">Motivation</a></h2>
+<p>One of Polkadot's primary utilities is providing a high quality security layer for applications built on top of it. To achieve this, Polkadot runs a Nominated Proof-of-Stake (NPoS) system, allowing nominators to vote on who they think are the best validators for Polkadot.</p>
+<p>This system functions best when nominators and validators are active participants in the network. Nominators should consistently evaluate the quality and preferences of validators, and adjust their nominations accordingly.</p>
+<p>Unfortunately, many Polkadot nominators do not play an active role in the NPoS system. For many, they set their nominations once, and then seldom look back at them.</p>
+<p>This can lead to many negative behaviors:</p>
+<ul>
+<li>Incumbents who received early nominations effectively achieve tenure, regardless of ongoing performance.</li>
+<li>Validator quality and performance can decrease without recourse, since the votes that elected them remain in place even if the original nominators no longer endorse the validator's behavior.</li>
+<li>The active validator set drifts away from being optimal for Polkadot.</li>
+<li>New validators have a much harder time entering the active set, since they must compete against accumulated, unmaintained stake from years past.</li>
+<li>Validators are able to &quot;sneakily&quot; increase their commission once they have a stable nomination base, knowing that most of their nominators will not react.</li>
+</ul>
+<p>The proposal aims to address these problems by tying nomination influence to nominator engagement: a nomination represents an <em>ongoing</em> choice, not a one-time action.</p>
+<h2 id="stakeholders"><a class="header" href="#stakeholders">Stakeholders</a></h2>
+<p>Primary stakeholders are:</p>
+<ul>
+<li><strong>Nominators</strong>: Directly affected. Active nominators are unaffected; passive nominators see reduced influence and rewards over time.</li>
+<li><strong>Validators</strong>: Indirectly affected. Validators who maintain quality and reasonable commission retain support; those that coast on stale stake lose ground and may eventually drop out of the active set.</li>
+<li><strong>Nomination pools and pool members</strong>: Pools nominate on behalf of their members, so the freshness counter applies at the pool level. Pool operators must keep nominations refreshed; pool members are exposed to the pool's freshness through their share of pool rewards.</li>
+<li><strong>Wallet, dashboard, and staking UI developers</strong>: Will need to surface staleness information to users and provide a clear path for re-nominating.</li>
+</ul>
+<h2 id="explanation"><a class="header" href="#explanation">Explanation</a></h2>
+<h3 id="overview"><a class="header" href="#overview">Overview</a></h3>
+<p>Each nomination has an associated <em>freshness</em>, defined as the number of eras since the nominator last submitted a <code>nominate</code> extrinsic. A configurable, monotonically non-increasing function <code>f(staleness) ∈ [Floor, 1]</code> produces a multiplier that is applied to the nominator's effective stake when the election snapshot is taken.</p>
+<p>The multiplier is applied <strong>only at the election input stage</strong>, by scaling the nominator's <code>voter_weight</code>. All downstream behavior is unchanged: validator selection by Phragmen/PJR, the per-validator stake snapshot, and the per-nominator reward share computed from that snapshot.</p>
+<p>A stale nominator therefore contributes a smaller share of a validator's total backing, takes a proportionally smaller share of that validator's era reward, and the remainder flows to the validator's other (non-stale) nominators. No reward is burned, no logic is added to the reward path, and no change is made to inflation or the reward curve.</p>
+<h3 id="behavior-in-the-election"><a class="header" href="#behavior-in-the-election">Behavior in the Election</a></h3>
+<p>The runtime exposes the per-nomination <code>submitted_in</code> field (the era in which the nominator most recently called <code>nominate</code>). When the election snapshot is taken, each voter's weight is computed as:</p>
+<pre><code>effective_weight = bonded_balance × f(current_era - submitted_in)
+</code></pre>
+<p>Voters whose <code>effective_weight</code> evaluates to zero are excluded from the snapshot entirely (matching the existing behavior for voters with zero active balance).</p>
+<p>This has the following emergent properties:</p>
+<ul>
+<li>A validator backed entirely by stale nominators will see its total backing collapse to its own self-bond. Unless that self-bond is large enough to compete on its own merit, the validator falls out of the active set. <strong>Stale-only validators get evicted automatically; no separate mechanism is required.</strong></li>
+<li>A validator backed by a mix of fresh and stale nominators retains its fresh nominators' full weight, and the stale ones contribute proportionally less. The validator may still be elected, but with smaller backing.</li>
+<li>A new or improving validator competes against fresh stake, not against a calcified historical vote.</li>
+</ul>
+<h4 id="voter-iteration-order-voterlist--bags-list"><a class="header" href="#voter-iteration-order-voterlist--bags-list">Voter Iteration Order (<code>VoterList</code> / bags-list)</a></h4>
+<p>The staleness multiplier is applied to the value emitted into the snapshot, <strong>not</strong> to the score by which the <code>VoterList</code> (typically <code>pallet-bags-list</code>) orders voters. The bags-list continues to rank voters by their bonded weight, and stale voters are not re-bagged when they cross a staleness threshold.</p>
+<p>The consequence: a heavily-stale voter still occupies the position in iteration order that their bonded balance entitles them to, even though the value they contribute to the snapshot is reduced or zero. In edge cases where the snapshot is bounded by voter count and that bound is binding, a stale voter could in principle take a snapshot slot that a fresher, lower-bonded voter further down the list would have made better use of.</p>
+<p>This is an accepted tradeoff. The alternatives are re-bagging voters as they age across thresholds, or using an alternative <code>VoterList</code> keyed on staleness-adjusted weight. Both would impose per-era maintenance work on every nominator near a threshold, for a benefit that materializes only when the voter-count bound is the binding constraint. Voter-count bounds are rarely binding in practice, and runtimes that find this assumption no longer holds may revisit by supplying a custom <code>VoterList</code>.</p>
+<h3 id="the-decay-curve"><a class="header" href="#the-decay-curve">The Decay Curve</a></h3>
+<p>The curve is supplied by the runtime via a configurable trait:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>/// Computes the multiplier applied to a nominator's voter weight, given the
+/// number of eras since that nominator last (re)affirmed their nomination.
+pub trait NominationStalenessCurve {
+    fn multiplier(eras_since_last_nomination: EraIndex) -&gt; Perbill;
+}
+<span class="boring">}</span></code></pre></pre>
+<p>A default piecewise-linear implementation, parameterized by three constants, is provided:</p>
+<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+</span><span class="boring">fn main() {
+</span>pub struct LinearStalenessCurve&lt;GracePeriod, DecayPeriod, Floor&gt;(...);
+<span class="boring">}</span></code></pre></pre>
+<div class="table-wrapper"><table><thead><tr><th>Parameter</th><th>Meaning</th><th>Default</th></tr></thead><tbody>
+<tr><td><code>GracePeriod</code></td><td>Eras after a <code>nominate</code> call during which the multiplier is exactly <code>1</code>.</td><td><code>28</code> eras (≈ 1 month)</td></tr>
+<tr><td><code>DecayPeriod</code></td><td>Eras over which the multiplier decays linearly from <code>1</code> to <code>Floor</code>, immediately following the grace period.</td><td><code>140</code> eras (≈ 5 months)</td></tr>
+<tr><td><code>Floor</code></td><td>Lower bound on the multiplier.</td><td><code>Perbill::zero()</code></td></tr>
+</tbody></table>
+</div>
+<p>With these defaults, a nomination is at full weight for one month, decays linearly over the following five months, and is fully decayed at six months total. A nominator who calls <code>nominate</code> at least once a month never experiences any reduction.</p>
+<p>The piecewise-linear formula:</p>
+<pre><code>f(s) = 1                                                if s ≤ GracePeriod
+f(s) = 1 - (s - GracePeriod) / DecayPeriod × (1 - Floor)   if GracePeriod &lt; s &lt; GracePeriod + DecayPeriod
+f(s) = Floor                                            if s ≥ GracePeriod + DecayPeriod
+</code></pre>
+<p>The trait shape lets a runtime swap in any other curve (exponential, stepped, tighter or looser parameters) without further changes to the staking pallet.</p>
+<h3 id="what-resets-the-counter"><a class="header" href="#what-resets-the-counter">What Resets the Counter</a></h3>
+<p>Only a successful call to the <code>nominate(targets)</code> extrinsic resets <code>submitted_in</code> to the current era. This includes calls that re-submit the same target list, by design: re-submission is the explicit, intentional act of re-affirming a choice.</p>
+<p>The following do <strong>not</strong> reset the counter:</p>
+<ul>
+<li><code>bond_extra</code>, <code>unbond</code>, <code>withdraw_unbonded</code>, <code>payout_stakers</code>, and other staking calls that do not change validator selection.</li>
+<li>Any indirect activity such as receiving rewards or being slashed.</li>
+</ul>
+<p><code>chill</code> is a special case: it removes the nominator's entry from <code>Nominators</code> storage entirely. There is no <code>submitted_in</code> to update because there is no nomination. When the nominator returns, they must call <code>nominate</code> to re-enter the active set, which sets <code>submitted_in</code> to the current era. This is a fresh start, aligned with the goal of making nominators reconsider their validator selection at every transition.</p>
+<p>There is intentionally no separate &quot;renew&quot; extrinsic. The act of staying engaged is the act of selecting validators; if a nominator wants to keep their existing list, they call <code>nominate</code> with that list. Adding a cheap renew path would let a nominator refresh without the friction of reviewing their selection. That friction is exactly what the RFC is trying to introduce.</p>
+<h3 id="interaction-with-nomination-pools"><a class="header" href="#interaction-with-nomination-pools">Interaction with Nomination Pools</a></h3>
+<p>Nomination pools call <code>nominate</code> from the pool's bonded account, so the pool's <code>submitted_in</code> is what governs the curve. The freshness counter applies to the pool's nomination as a whole, not to individual members.</p>
+<p>Pool members are exposed to the pool's freshness through reduced pool rewards: as the pool's nomination decays, the pool's validators receive less effective backing, the pool earns a smaller share of those validators' rewards, and members' returns drop accordingly. This places the responsibility for staying fresh on the pool operator, which matches the existing division of responsibility in pools.</p>
+<h3 id="reward-treatment"><a class="header" href="#reward-treatment">Reward Treatment</a></h3>
+<p>Rewards are not burned and are not redirected to the Treasury. The decay multiplier is applied to election input weight only; reward distribution downstream is unchanged.</p>
+<p>A natural consequence of this is that a stale nominator's &quot;lost&quot; share of a validator's reward flows to that validator's non-stale co-nominators. This is intentional and a feature of the design:</p>
+<ul>
+<li>It keeps the implementation surgical: one site of change in election input, no reward-path changes.</li>
+<li>It preserves the protocol-level invariant that era inflation is fully distributed to active stake.</li>
+<li>It rewards active nominators of well-attended validators, reinforcing the desired behavior.</li>
+</ul>
+<h3 id="migration"><a class="header" href="#migration">Migration</a></h3>
+<p>On the upgrade in which this proposal takes effect, all existing nominators have their <code>submitted_in</code> set to the era of the upgrade. Every existing nominator therefore enters the new regime with a full grace period to act.</p>
+<p>This deliberately trades a one-cycle delay in evicting long-stale stake for a much gentler user-experience transition: no nominator is surprised by an immediate reward cut at the upgrade.</p>
+<h3 id="secondary-effect-recurring-ecosystem-engagement"><a class="header" href="#secondary-effect-recurring-ecosystem-engagement">Secondary Effect: Recurring Ecosystem Engagement</a></h3>
+<p>A side benefit of requiring periodic re-nomination is that nominators are brought back into contact with Polkadot's user-facing surface on a regular cadence. Under the proposed defaults, that cadence is roughly once per month. Each visit is an opportunity for staking UIs and the broader ecosystem to surface new applications, features, governance referenda, and other developments to a financially-engaged audience with clear incentive to show up.</p>
+<p>This is not a primary motivation for the RFC, and the curve parameters should not be tuned for engagement metrics. But it is a real upside of the chosen mechanism: stakers who have to re-engage in order to keep getting paid are stakers who are reachable.</p>
+<h2 id="drawbacks"><a class="header" href="#drawbacks">Drawbacks</a></h2>
+<ul>
+<li><strong>User experience</strong>: Nominators must take a periodic action to maintain full influence and rewards. Users who forget, lose access for an extended period, or are simply unaware of the change will see their influence and rewards decay. The grace period is intended to be long enough that ordinary engaged users are not affected, but the new burden is real.</li>
+<li><strong>Asymmetric impact on long-term holders</strong>: Set-and-forget stake (including stake from estates, lost keys, or otherwise dormant accounts) will decay to the floor. This reduces those participants' weight in validator selection, which is the intent, but worth flagging explicitly.</li>
+<li><strong>Custodial and institutional flows</strong>: Custodians staking on behalf of clients will need to integrate periodic re-nomination into their operations.</li>
+<li><strong>Lost rewards are not directly recoverable</strong>: A nominator whose weight decayed during an era cannot retroactively reclaim the rewards they would have earned had they been fresh. The RFC accepts this as the cost of the incentive.</li>
+</ul>
+<h2 id="testing-security-and-privacy"><a class="header" href="#testing-security-and-privacy">Testing, Security, and Privacy</a></h2>
+<h3 id="testing"><a class="header" href="#testing">Testing</a></h3>
+<p>The decay function is pure and trivially testable. Integration tests should cover:</p>
+<ul>
+<li>The freshness counter resetting on <code>nominate</code>, including same-target re-submission.</li>
+<li>The freshness counter <strong>not</strong> resetting on <code>bond_extra</code>, <code>unbond</code>, <code>withdraw_unbonded</code>, <code>chill</code>, or <code>payout_stakers</code>.</li>
+<li>The election snapshot correctly applying the multiplier to voter weight, including the boundary cases at <code>s = GracePeriod</code> and <code>s = GracePeriod + DecayPeriod</code>.</li>
+<li>Voters whose effective weight evaluates to zero being excluded from the snapshot.</li>
+<li>A validator backed only by fully-decayed nominators failing to be elected (assuming insufficient self-bond).</li>
+<li>Pool nominations: pool's <code>submitted_in</code> governs the curve; member-level actions do not refresh the pool.</li>
+<li>Migration: existing nominators have <code>submitted_in</code> set to the upgrade era, and have a full grace period afterwards.</li>
+</ul>
+<h3 id="security"><a class="header" href="#security">Security</a></h3>
+<ul>
+<li><strong>No new attack surface in the election solver.</strong> The reduction in input stake does not change the structure of the optimization problem; the solver receives smaller weights for some voters and proceeds as before.</li>
+<li><strong>Slashing.</strong> Staleness does not interact with slashing. A stale nominator is still slashed in full if their elected validator misbehaves; reducing slashing based on staleness would perversely reward inattention.</li>
+<li><strong>Griefing.</strong> No third party can cause a nominator's freshness to decay; only the passage of time without action by the nominator themselves can do so.</li>
+<li><strong>Self-bond floor.</strong> Validators with significant self-bond are not directly affected, only the nominators backing them. This is consistent with the broader NPoS design.</li>
+</ul>
+<h3 id="privacy"><a class="header" href="#privacy">Privacy</a></h3>
+<p>No change. <code>submitted_in</code> is already on-chain and observable.</p>
+<h2 id="performance-ergonomics-and-compatibility"><a class="header" href="#performance-ergonomics-and-compatibility">Performance, Ergonomics, and Compatibility</a></h2>
+<h3 id="performance"><a class="header" href="#performance">Performance</a></h3>
+<p>The change adds:</p>
+<ul>
+<li>One additional read of <code>submitted_in</code> from each <code>Nominations</code> entry already iterated during snapshot construction (at no marginal storage cost; the field already exists).</li>
+<li>One arithmetic evaluation of the curve per voter per era.</li>
+</ul>
+<p>Both are trivial relative to existing election work. No new storage items are introduced.</p>
+<h3 id="ergonomics"><a class="header" href="#ergonomics">Ergonomics</a></h3>
+<ul>
+<li><strong>For active nominators</strong>: no change in interface. If their existing engagement cadence is faster than the grace period, no behavioral change.</li>
+<li><strong>For passive nominators</strong>: gradually reduced rewards and influence until they re-nominate, with a one-month grace period and five-month linear ramp before reaching the floor (under the proposed defaults).</li>
+<li><strong>For UI developers</strong>: one new derived value to surface (&quot;nomination freshness&quot; or equivalent). All inputs are already on-chain.</li>
+</ul>
+<h3 id="compatibility"><a class="header" href="#compatibility">Compatibility</a></h3>
+<p>This is a runtime upgrade affecting staking economics. It does not change any external interface in a breaking way. Existing extrinsics continue to work with the same signatures. The migration sets <code>submitted_in</code> for all existing nominators to the upgrade era; no other migration is required.</p>
+<h2 id="prior-art-and-references"><a class="header" href="#prior-art-and-references">Prior Art and References</a></h2>
+<ul>
+<li><a href="https://wiki.polkadot.network/docs/learn-staking">Polkadot Wiki: Nominated Proof-of-Stake</a></li>
+<li>Prototype implementation: <a href="https://github.com/paritytech/polkadot-sdk/tree/shawntabrizi-stale-nominations"><code>shawntabrizi-stale-nominations</code></a> branch of <code>polkadot-sdk</code>, modifying <code>frame/staking/src/pallet/impls.rs</code> at the election snapshot site.</li>
+</ul>
+<h2 id="unresolved-questions"><a class="header" href="#unresolved-questions">Unresolved Questions</a></h2>
+<ul>
+<li><strong>Default curve parameters.</strong> A <code>GracePeriod</code> of 28 eras and <code>DecayPeriod</code> of 140 eras (one month plus five months) is proposed. Different values are reasonable. The trait-based design leaves the curve fully configurable; the question is what default values to ship.</li>
+<li><strong>Floor.</strong> Proposed at zero. A non-zero floor (e.g. 25%) would soften the impact on long-term inactive holders at the cost of a less complete fix. The trait permits either choice without code changes elsewhere.</li>
+</ul>
+<h2 id="future-directions-and-related-material"><a class="header" href="#future-directions-and-related-material">Future Directions and Related Material</a></h2>
+<ul>
+<li><strong>Validator-side staleness.</strong> This RFC applies the staleness mechanism only to nominators. Validators' <code>validate(prefs)</code> registrations are not changed and continue to persist indefinitely, as today. A parallel mechanism (requiring validators to periodically re-call <code>validate</code> to remain in the candidate pool) would address dormant or abandoned validator entries, and is a plausible follow-up, but is explicitly <strong>not</strong> included in this RFC and should be proposed as its own RFC.</li>
+<li><strong>Differentiated curves.</strong> The trait shape permits different curves for different contexts (e.g. a longer grace period for nomination pools, a steeper curve for solo nominators), should that prove useful.</li>
+<li><strong>Nominator reputation and analytics.</strong> With per-nominator freshness now load-bearing, downstream tooling can surface &quot;stewardship&quot; metrics for nominators and pools.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../proposed/0000-rewards.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../proposed/0154-multi-slot-aura.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../proposed/0000-rewards.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../proposed/0154-multi-slot-aura.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
